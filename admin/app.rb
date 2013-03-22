@@ -2,9 +2,11 @@ class Admin < Padrino::Application
   use ActiveRecord::ConnectionAdapters::ConnectionManagement
   register Padrino::Rendering
   register Padrino::Mailer
+  register Padrino::Cache
   register Padrino::Helpers
   register Padrino::Admin::AccessControl
 
+  set :cache, Padrino::Cache::Store::Memcache.new(::Dalli::Client.new)
   ##
   # Application configuration options
   #

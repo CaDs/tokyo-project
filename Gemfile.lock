@@ -15,6 +15,7 @@ GEM
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
     builder (3.0.4)
+    dalli (2.6.2)
     diff-lcs (1.2.1)
     erubis (2.7.0)
     http_router (0.10.2)
@@ -25,6 +26,7 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    memcachier (0.0.2)
     mime-types (1.21)
     multi_json (1.7.1)
     mysql2 (0.3.11)
@@ -91,7 +93,9 @@ PLATFORMS
 DEPENDENCIES
   activerecord
   bcrypt-ruby
+  dalli
   erubis (~> 2.7.0)
+  memcachier
   mysql2
   padrino (= 0.10.7)
   rack-test

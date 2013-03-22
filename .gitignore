@@ -1,0 +1,10 @@
+.bundle
+vendor/bundle/*
+log/*.log
+log/
+tmp/**/*
+*.swp
+.DS_Store
+.svn
+.rvmrc
+.sass-cache

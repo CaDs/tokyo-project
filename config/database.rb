@@ -1,3 +1,5 @@
+cleardb = URI.parse(ENV['DATABASE_URL'] || '')
+
 ActiveRecord::Base.configurations[:development] = {
   :adapter   => 'mysql2',
   :encoding  => 'utf8',
@@ -15,13 +17,10 @@ ActiveRecord::Base.configurations[:production] = {
   :adapter   => 'mysql2',
   :encoding  => 'utf8',
   :reconnect => true,
-  :database  => 'tokyo_project_production',
-  :pool      => 5,
-  :username  => 'root',
-  :password  => '',
-  :host      => 'localhost',
-  :socket    => '/tmp/mysql.sock'
-
+  :database  => cleardb.path[1..-1],
+  :username  => cleardb.user,
+  :password  => cleardb.password,
+  :host      => cleardb.host
 }
 
 ActiveRecord::Base.configurations[:test] = {
