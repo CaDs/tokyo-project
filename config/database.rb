@@ -1,20 +1,5 @@
-##
-# You can use other adapters like:
-#
-#   ActiveRecord::Base.configurations[:development] = {
-#     :adapter   => 'mysql',
-#     :encoding  => 'utf8',
-#     :reconnect => true,
-#     :database  => 'your_database',
-#     :pool      => 5,
-#     :username  => 'root',
-#     :password  => '',
-#     :host      => 'localhost',
-#     :socket    => '/tmp/mysql.sock'
-#   }
-#
 ActiveRecord::Base.configurations[:development] = {
-  :adapter   => 'mysql',
+  :adapter   => 'mysql2',
   :encoding  => 'utf8',
   :reconnect => true,
   :database  => 'tokyo_project_development',
@@ -27,7 +12,7 @@ ActiveRecord::Base.configurations[:development] = {
 }
 
 ActiveRecord::Base.configurations[:production] = {
-  :adapter   => 'mysql',
+  :adapter   => 'mysql2',
   :encoding  => 'utf8',
   :reconnect => true,
   :database  => 'tokyo_project_production',
@@ -40,7 +25,7 @@ ActiveRecord::Base.configurations[:production] = {
 }
 
 ActiveRecord::Base.configurations[:test] = {
-  :adapter   => 'mysql',
+  :adapter   => 'mysql2',
   :encoding  => 'utf8',
   :reconnect => true,
   :database  => 'tokyo_project_test',

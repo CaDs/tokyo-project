@@ -9,9 +9,10 @@ gem 'rake'
 gem 'sinatra-flash', :require => 'sinatra/flash'
 
 # Component requirements
+gem 'bcrypt-ruby', :require => "bcrypt"
 gem 'erubis', "~> 2.7.0"
 gem 'activerecord', :require => "active_record"
-gem 'mysql'
+gem 'mysql2'
 
 # Test requirements
 gem 'rspec', :group => "test"

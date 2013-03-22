@@ -5,3 +5,4 @@
 :script: jquery
 :renderer: erb
 :stylesheet: none
+:admin_renderer: erb
