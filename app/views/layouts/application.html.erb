@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%# NewRelic::Agent.browser_timing_header if Padrino.env.to_s == "production" %>
+  <%= stylesheet_link_tag "bootstrap-responsive.min" %>
+  <%= stylesheet_link_tag "bootstrap.min" %>
+  <%= stylesheet_link_tag "style.css" %>
+  <%= javascript_include_tag "jquery" %>
+  <%= javascript_include_tag "bootstrap.min" %>
+  <div id="fb-root"></div>
+  <script>
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=301040653345741";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
+</head>
+<body>
+  <div class="container">
+    <%= flash[:message] if flash[:message]%>
+    <%= flash[:error] if flash[:error]%>
+    <%= yield %>
+  </div>
+
+  <footer>
+    <div class="container" style="text-align:center;">
+      <p>Tokyo Project</p>
+    </div>
+    <%# NewRelic::Agent.browser_timing_footer if Padrino.env.to_s == "production"%>
+  </footer>
+</body>
+</html>
