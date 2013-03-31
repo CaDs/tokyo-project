@@ -3,6 +3,8 @@ class TokyoProject < Padrino::Application
   register Padrino::Rendering
   register Padrino::Mailer
   register Padrino::Helpers
+  register Padrino::Cookies
+  register Padrino::Cache
 
   enable :sessions
 

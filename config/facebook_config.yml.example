@@ -1,0 +1,4 @@
+#Rename this file into facebook_app_config.yml and set the values
+app_key: APP KEY
+app_secret: APP SECRET
+app_redirect: APP REDICET
