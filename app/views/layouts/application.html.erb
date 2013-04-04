@@ -1,35 +1,96 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <%# NewRelic::Agent.browser_timing_header if Padrino.env.to_s == "production" %>
-  <%= stylesheet_link_tag "bootstrap-responsive.min" %>
-  <%= stylesheet_link_tag "bootstrap.min" %>
-  <%= stylesheet_link_tag "style.css" %>
-  <%= javascript_include_tag "jquery" %>
-  <%= javascript_include_tag "bootstrap.min" %>
-  <div id="fb-root"></div>
-  <script>
-    (function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=301040653345741";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-  </script>
-</head>
-<body>
-  <div class="container">
-    <%= flash[:message] if flash[:message]%>
-    <%= flash[:error] if flash[:error]%>
-    <%= yield %>
-  </div>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Tokyo Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Share your vision of Tokyo. A lonely alley, a crowded streed, a field full of cherry blossoms, there is magic on every corner of this city.">
+    <meta name="author" content="Carlos Donderis">
 
-  <footer>
-    <div class="container" style="text-align:center;">
-      <p>Tokyo Project</p>
+    <%= stylesheet_link_tag "bootstrap.min" %>
+    <%= stylesheet_link_tag "style.css" %>
+    <%= javascript_include_tag "jquery" %>
+    <%= javascript_include_tag "bootstrap.min" %>
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+      /* Main marketing message and sign up button */
+      .jumbotron {
+        margin: 60px 0;
+        text-align: center;
+      }
+      .jumbotron h1 {
+        font-size: 72px;
+        line-height: 1;
+      }
+      .jumbotron .btn {
+        font-size: 21px;
+        padding: 14px 24px;
+      }
+
+    </style>
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          </button>
+          <a class="brand" href="#">Tokyo Project</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
-    <%# NewRelic::Agent.browser_timing_footer if Padrino.env.to_s == "production"%>
-  </footer>
-</body>
+
+    <div class="container">
+      <div class="jumbotron">
+        <h1>Tokyo Project</h1>
+        <h4>Share your vision of Tokyo. A lonely alley, a crowded streed, a field full of cherry blossoms, there is magic on every corner of this city.</h4>
+      </div>
+    </div> <!-- /container -->
+    <div class="container">
+      <div class="row-fluid">
+        <ul class="thumbnails">
+          <li class="span4">
+            <div class="image">
+              <%= image_tag "http://farm9.staticflickr.com/8383/8580549156_d7d91a9dec_n.jpg"%>
+            </div>
+            <h2>Shibuya</h2>
+            <p>Siempre en movimiento, bajo la sombra de árboles de neon Shibuya se extiende bajo los pies de los miles de personas que cruzan sus calles cuando los semáforos cambian a verde. Pero aún entre las atestadas calles de esta parte de la ciudad, algunos lugares permanecen aun ocultos. </p>
+            <p><a class="btn" href="#">Visit &raquo;</a></p>
+          </li>
+          <li class="span4">
+            <div class="image">
+              <%= image_tag "http://farm9.staticflickr.com/8513/8577879288_fcaa1c42b5_n.jpg"%>
+            </div>
+            <h2>Shimokitazawa</h2>
+            <p>A pesar de la contínua renovación a la que se ve sometía día tras día, Shimokitazawa aún se mantiene auténtica e inmutable. Disfruta de una taza de té en una diminuta cafetería o date un paseo por las tiendas de ropa de segunda mano. </p>
+            <p><a class="btn" href="#">Visit &raquo;</a></p>
+         </li>
+          <li class="span4">
+            <div class="image">
+              <%= image_tag "http://farm9.staticflickr.com/8377/8595699396_380b8e1759_n.jpg"%>
+            </div>
+            <h2>Shinjuku</h2>
+            <p>Shinjuku es la ciudad del oficinista. Al caer la noche, ejércitos de Salaryman abarrotan las calles en busca de un izakaya donde cenar con los compañeros de trabajo y después de un par de vasos de sake, tal vez algo más de aventura.</p>
+            <p><a class="btn" href="#">Visit &raquo;</a></p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
 </html>
