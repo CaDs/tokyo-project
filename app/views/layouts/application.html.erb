@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <%# NewRelic::Agent.browser_timing_header if Padrino.env.to_s == "production" %>
     <meta charset="utf-8">
     <title>Tokyo Project</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +15,7 @@
     <style>
       body {
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+        min-height: 900px;
       }
       /* Main marketing message and sign up button */
       .jumbotron {
@@ -38,7 +40,6 @@
   </head>
 
   <body>
-
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
@@ -55,42 +56,24 @@
         </div>
       </div>
     </div>
-
-    <div class="container">
-      <div class="jumbotron">
-        <h1>Tokyo Project</h1>
-        <h4>Visions of Tokyo. A lonely alley, a crowded streed, a field full of cherry blossoms, there is magic on every corner of this city.</h4>
-      </div>
-    </div> <!-- /container -->
-    <div class="container">
-      <div class="row-fluid">
-        <ul class="thumbnails">
-          <li class="span4">
-            <div class="image">
-              <%= image_tag "http://farm9.staticflickr.com/8383/8580549156_d7d91a9dec_n.jpg"%>
-            </div>
-            <h2>Shibuya</h2>
-            <p></p>
-            <p><a class="btn" href="#">Visit &raquo;</a></p>
-          </li>
-          <li class="span4">
-            <div class="image">
-              <%= image_tag "http://farm9.staticflickr.com/8513/8577879288_fcaa1c42b5_n.jpg"%>
-            </div>
-            <h2>Shimokitazawa</h2>
-            <p></p>
-            <p><a class="btn" href="#">Visit &raquo;</a></p>
-         </li>
-          <li class="span4">
-            <div class="image">
-              <%= image_tag "http://farm9.staticflickr.com/8377/8595699396_380b8e1759_n.jpg"%>
-            </div>
-            <h2>Shinjuku</h2>
-            <p></p>
-            <p><a class="btn" href="#">Visit &raquo;</a></p>
-          </li>
-        </ul>
-      </div>
+    <div class="content">
+      <%= yield %>
     </div>
   </body>
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="span12">
+          <div align="center">
+            <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">
+              <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/88x31.png" />
+            </a>
+            <br/>
+            This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
+          </div>
+        </div>
+      </div>
+    </div>
+    <%# NewRelic::Agent.browser_timing_footer if Padrino.env.to_s == "production"%>
+  </footer>
 </html>
