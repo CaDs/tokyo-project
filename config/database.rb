@@ -1,10 +1,4 @@
-cleardb = URI.parse(ENV['DATABASE_URL'] || '')
-puts "============================"
-puts cleardb.path
-puts "============================"
-puts "user:#{cleardb.user}"
-puts cleardb.host
-puts "============================"
+cleardb = URI.parse(ENV['CLEARDB_DATABASE_URL'] || '')
 
 ActiveRecord::Base.configurations[:development] = {
   :adapter   => 'mysql2',
