@@ -1,0 +1,42 @@
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first active"><%= link_to pat(:list), url(:areas, :index) %></li>
+      <li><%= link_to pat(:new), url(:areas, :new) %></li>
+    </ul>
+  </div>
+  <div class="content">
+    <h2 class="title"><%= pat(:all) %> <% mt(:areas) %></h2>
+    <div class="inner">
+      <table class="table">
+        <tr>
+          <th class="first"><%= mat(:area, :id) %></th>
+          <th><%= mat(:area, :name) %></th>
+          <th><%= mat(:area, :description) %></th>
+          <th><%= mat(:area, :ward_id) %></th>
+          <th><%= mat(:area, :created_at) %></th>
+          <th><%= mat(:area, :updated_at) %></th>
+          <th class="last">&nbsp;</th>
+        </tr>
+        <% @areas.each do |area| %>
+        <tr>
+          <td class="first"><%= area.id %></td>
+          <td><%= area.name %></td>
+          <td><%= area.description %></td>
+          <td><%= area.ward_id %></td>
+          <td><%= area.created_at %></td>
+          <td><%= area.updated_at %></td>
+          <td class="last">
+            <%= button_to pat(:edit), url(:areas, :edit, :id => area.id), :method => :get, :class => :button_to %> |
+            <%= button_to pat(:delete), url(:areas, :destroy, :id => area.id), :method => :delete, :class => :button_to, :onsubmit => "return confirm('#{pat(:confirm)}')" %>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+      <div class="actions-bar wat-cf">
+        <div class="actions"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<% content_for :sidebar, partial("base/sidebar") %>

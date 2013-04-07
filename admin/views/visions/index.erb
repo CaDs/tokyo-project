@@ -1,0 +1,44 @@
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first active"><%= link_to pat(:list), url(:visions, :index) %></li>
+      <li><%= link_to pat(:new), url(:visions, :new) %></li>
+    </ul>
+  </div>
+  <div class="content">
+    <h2 class="title"><%= pat(:all) %> <% mt(:visions) %></h2>
+    <div class="inner">
+      <table class="table">
+        <tr>
+          <th class="first"><%= mat(:vision, :id) %></th>
+          <th><%= mat(:vision, :title) %></th>
+          <th><%= mat(:vision, :short_description) %></th>
+          <th><%= mat(:vision, :body) %></th>
+          <th><%= mat(:vision, :area_id) %></th>
+          <th><%= mat(:vision, :created_at) %></th>
+          <th><%= mat(:vision, :updated_at) %></th>
+          <th class="last">&nbsp;</th>
+        </tr>
+        <% @visions.each do |vision| %>
+        <tr>
+          <td class="first"><%= vision.id %></td>
+          <td><%= vision.title %></td>
+          <td><%= vision.short_description %></td>
+          <td><%= vision.body %></td>
+          <td><%= vision.area_id %></td>
+          <td><%= vision.created_at %></td>
+          <td><%= vision.updated_at %></td>
+          <td class="last">
+            <%= button_to pat(:edit), url(:visions, :edit, :id => vision.id), :method => :get, :class => :button_to %> |
+            <%= button_to pat(:delete), url(:visions, :destroy, :id => vision.id), :method => :delete, :class => :button_to, :onsubmit => "return confirm('#{pat(:confirm)}')" %>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+      <div class="actions-bar wat-cf">
+        <div class="actions"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<% content_for :sidebar, partial("base/sidebar") %>

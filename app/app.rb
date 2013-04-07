@@ -8,20 +8,9 @@ class TokyoProject < Padrino::Application
 
   enable :sessions
 
-  ##
   # Caching support
-  #
-  # register Padrino::Cache
-  # enable :caching
-  #
-  # You can customize caching store engines:
-  #
-  #   set :cache, Padrino::Cache::Store::Memcache.new(::Memcached.new('127.0.0.1:11211', :exception_retry_limit => 1))
-  #   set :cache, Padrino::Cache::Store::Memcache.new(::Dalli::Client.new('127.0.0.1:11211', :exception_retry_limit => 1))
-  #   set :cache, Padrino::Cache::Store::Redis.new(::Redis.new(:host => '127.0.0.1', :port => 6379, :db => 0))
-  #   set :cache, Padrino::Cache::Store::Memory.new(50)
-  #   set :cache, Padrino::Cache::Store::File.new(Padrino.root('tmp', app_name.to_s, 'cache')) # default choice
-  #
+  enable :caching
+  set :cache, Padrino::Cache::Store::Memcache.new(::Dalli::Client.new)
 
   ##
   # Application configuration options
@@ -60,6 +49,7 @@ class TokyoProject < Padrino::Application
   #   end
   #
   get '/' do
-    redirect url(:site, :index)
+    @visions = Vision.last(3)
+    render'layouts/landing'
   end
 end

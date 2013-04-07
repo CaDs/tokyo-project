@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1>Tokyo Project</h1>
+    <h4>Visions of Tokyo. A lonely alley, a crowded streed, a field full of cherry blossoms, there is magic on every corner of this city.</h4>
+  </div>
+</div> <!-- /container -->
+<div class="container">
+  <div class="row-fluid">
+    <ul class="thumbnails">
+      <% @visions.each do |vision| %>
+      <%puts vision.id%>
+      <li class="span4">
+        <%= partial('layouts/landing_block', :locals => {:vision => vision, :show_link => true})%>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

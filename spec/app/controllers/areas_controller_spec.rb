@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "SiteController" do
+describe "AreasController" do
   before do
     get "/"
   end
