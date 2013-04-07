@@ -48,7 +48,8 @@ class TokyoProject < Padrino::Application
   #     render 'errors/505'
   #   end
   #
-  get '/' do
+  get '/', :cache => true do
+    expires_in 300 #Caching for 5 minutes
     @visions = Vision.last(3)
     render'layouts/landing'
   end
