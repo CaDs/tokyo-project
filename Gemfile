@@ -37,3 +37,6 @@ gem 'koala'
 
 #Debugger
 gem 'debugger'
+
+#Performance
+gem 'padrino-rpm', :git => 'https://github.com/Asquera/padrino-rpm.git'

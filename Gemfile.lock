@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/Asquera/padrino-rpm.git
+  revision: d698f4a3e3a0762866ed8ee3d636fb555e24426e
+  specs:
+    padrino-rpm (0.6.1)
+      newrelic_rpm (~> 3.3.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -46,6 +53,7 @@ GEM
     multi_json (1.7.1)
     multipart-post (1.2.0)
     mysql2 (0.3.11)
+    newrelic_rpm (3.3.5)
     padrino (0.10.7)
       padrino-admin (= 0.10.7)
       padrino-cache (= 0.10.7)
@@ -124,6 +132,7 @@ DEPENDENCIES
   padrino (= 0.10.7)
   padrino-cookies
   padrino-flash
+  padrino-rpm!
   rack-test
   rake
   rspec
