@@ -1,7 +1,90 @@
 <div class="container">
-  <ul class="thumbnails">
-    <li class="span4">
-      <%= partial('layouts/landing_block', :locals => {:vision => @vision, :show_link => false})%>
-    </li>
-  </ul>
+  <div class="row">
+    <div class="span12">
+      <h1><%=@vision.title%></h1>
+      <h4 class="muted"><%= @vision.short_description %></h4>
+    </div>
+  </div>
 </div>
+
+<div class="container">
+  <div id="pictures" class="row">
+    <div class="span12">
+      <div id="myCarousel" class="carousel slide" data-interval="false">
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+          <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="item active">
+            <img src="http://farm9.staticflickr.com/8099/8630641995_a14cb4f300_b.jpg" alt="">
+            <div class="carousel-caption">
+              <ul id="myTab" class="nav nav-tabs">
+                <li class="active"><a href="#en1" data-toggle="tab" class="muted">English</a></li>
+                <li class=""><a href="#es1" data-toggle="tab" class="muted">Español</a></li>
+                <li class=""><a href="#jp1" data-toggle="tab" class="muted">日本語</a></li>
+              </ul>
+              <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade active in" id="en1">
+                  <p>English description.</p>
+                </div>
+                <div class="tab-pane fade" id="es1">
+                  <p>Explicación en Español.</p>
+                </div>
+                <div class="tab-pane fade" id="jp1">
+                  <p>写真の説明.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <img src="http://farm9.staticflickr.com/8254/8631748992_d4a70f33e5_b.jpg" alt="">
+            <div class="carousel-caption">
+              <ul id="myTab" class="nav nav-tabs">
+                <li class="active"><a href="#en2" data-toggle="tab" class="muted">English</a></li>
+                <li class=""><a href="#es2" data-toggle="tab" class="muted">Español</a></li>
+                <li class=""><a href="#jp2" data-toggle="tab" class="muted">日本語</a></li>
+              </ul>
+              <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade active in" id="en2">
+                  <p>English description.</p>
+                </div>
+                <div class="tab-pane fade" id="es2">
+                  <p>Explicación en Español.</p>
+                </div>
+                <div class="tab-pane fade" id="jp2">
+                  <p>写真の説明.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <img src="http://farm9.staticflickr.com/8379/8624954006_c1160c4e64_b.jpg" alt="">
+            <div class="carousel-caption">
+              <ul id="myTab" class="nav nav-tabs">
+                <li class="active"><a href="#en3" data-toggle="tab" class="muted">English</a></li>
+                <li class=""><a href="#es3" data-toggle="tab" class="muted">Español</a></li>
+                <li class=""><a href="#jp3" data-toggle="tab" class="muted">日本語</a></li>
+              </ul>
+              <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade active in" id="en3">
+                  <p>English description.</p>
+                </div>
+                <div class="tab-pane fade" id="es3">
+                  <p>Explicación en Español.</p>
+                </div>
+                <div class="tab-pane fade" id="jp3">
+                  <p>写真の説明.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+      </div>
+    </div>
+  </div>
+</div>
+
