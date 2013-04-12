@@ -4,9 +4,10 @@ TokyoProject.controllers :visions do
     ActiveRecord::Base.connection.close
   end
 
-  get :show, :map => '/visions/:id', :cache => true do
-    expires_in 1 #Caching for 5 minutes
+  get :show, :map => '/visions/:id', :cache => false do
+    # expires_in 1 #Caching for 5 minutes
     @vision = Vision.find(params[:id])
+    @pictures = @vision.pictures
     render 'visions/show'
   end
 

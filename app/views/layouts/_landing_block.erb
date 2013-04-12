@@ -1,5 +1,5 @@
 <div class="image">
-  <%= link_to(image_tag(vision.picture_url), url(:visions, :show, :id => vision.id)) %>
+  <%= link_to(image_tag(vision.pictures.first.medium), url(:visions, :show, :id => vision.id)) %>
 </div>
 <h2><%= vision.title %></h2>
 <p><%= vision.short_description %></p>

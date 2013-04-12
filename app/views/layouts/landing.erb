@@ -8,7 +8,6 @@
   <div class="row-fluid">
     <ul class="thumbnails">
       <% @visions.each do |vision| %>
-      <%puts vision.id%>
       <li class="span4">
         <%= partial('layouts/landing_block', :locals => {:vision => vision, :show_link => true})%>
       </li>

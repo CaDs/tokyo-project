@@ -48,7 +48,7 @@ class TokyoProject < Padrino::Application
   #   end
   #
   get '/', :cache => true do
-    expires_in 300 #Caching for 5 minutes
+    expires_in 1 #Caching for 5 minutes
     @visions = Vision.last(3)
     render'layouts/landing'
   end

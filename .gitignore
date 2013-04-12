@@ -8,3 +8,4 @@ tmp/**/*
 .svn
 .rvmrc
 .sass-cache
+config/flickr.yml

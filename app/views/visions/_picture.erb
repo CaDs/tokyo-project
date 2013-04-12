@@ -1,0 +1,21 @@
+<div class="item <%= css_class %>">
+  <%= image_tag(picture.large) %>
+  <div class="carousel-caption">
+    <ul id="myTab" class="nav nav-tabs">
+      <li class="active"><a href="#en_<%=picture.id%>" data-toggle="tab" class="muted">English</a></li>
+      <li class=""><a href="#es_<%=picture.id%>" data-toggle="tab" class="muted">Español</a></li>
+      <li class=""><a href="#jp_<%=picture.id%>" data-toggle="tab" class="muted">日本語</a></li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane fade active in" id="en_<%=picture.id%>">
+        <p><%= picture.description_en %></p>
+      </div>
+      <div class="tab-pane fade" id="es_<%=picture.id%>">
+        <p><%= picture.description_es %></p>
+      </div>
+      <div class="tab-pane fade" id="jp_<%=picture.id%>">
+        <p><%= picture.description_jp %></p>
+      </div>
+    </div>
+  </div>
+</div>

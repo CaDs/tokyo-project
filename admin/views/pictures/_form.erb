@@ -1,0 +1,32 @@
+<div class="group">
+  <%= f.label :vision_id %><%= f.error_message_on :vision_id %>
+  <%= f.select :vision_id, :options => visions.collect{|v| [v.title, v.id]} %>
+</div>
+<div class="group">
+  <%= f.label "Flickr ID" %><%= f.error_message_on :flickr_id %>
+  <%= f.text_field :flickr_id, :class => :text_field %>
+</div>
+<div class="group">
+  <%= f.label :description_en %><%= f.error_message_on :description_en %>
+  <%= f.text_area :description_en, :class => ":text_area", :id => "rich_text1" %>
+</div>
+<div class="group">
+  <%= f.label :description_es %><%= f.error_message_on :description_es %>
+  <%= f.text_area :description_es, :class => :text_area, :id => "rich_text2" %>
+</div>
+<div class="group">
+  <%= f.label :description_jp %><%= f.error_message_on :description_jp %>
+  <%= f.text_area :description_jp, :class => :text_area, :id => "rich_text3" %>
+</div>
+
+<div class="group navform wat-cf">
+  <%= f.submit pat(:save), :class => :button %>
+  <%= f.submit pat(:cancel), :onclick => "window.location='#{url(:pictures, :index)}';return false", :class => :button %>
+</div>
+
+
+<script>
+    CKEDITOR.replace( 'rich_text1' );
+    CKEDITOR.replace( 'rich_text2' );
+    CKEDITOR.replace( 'rich_text3' );
+</script>

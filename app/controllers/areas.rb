@@ -1,22 +1,13 @@
 TokyoProject.controllers :areas do
-  # get :index, :map => "/foo/bar" do
-  #   session[:foo] = "bar"
-  #   render 'index'
-  # end
+  get :index do
+    @visions = Vision.all
+    render 'areas/index'
+  end
 
-  # get :sample, :map => "/sample/url", :provides => [:any, :js] do
-  #   case content_type
-  #     when :js then ...
-  #     else ...
-  # end
+  get :show, :with => :id do
+    @area = Area.find(params[:id])
+    @visions = @area.visions
+    render 'areas/show'
+  end
 
-  # get :foo, :with => :id do
-  #   "Maps to url '/foo/#{params[:id]}'"
-  # end
-
-  # get "/example" do
-  #   "Hello world!"
-  # end
-
-  
 end
