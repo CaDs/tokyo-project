@@ -47,9 +47,10 @@ class TokyoProject < Padrino::Application
   #     render 'errors/505'
   #   end
   #
-  get '/', :cache => true do
+  get '/', :provides => [:html, :atom, :rss], :cache => true do
     expires_in 1 #Caching for 5 minutes
     @visions = Vision.last(3)
+    @pictures = Picture.all
     render'layouts/landing'
   end
 end
