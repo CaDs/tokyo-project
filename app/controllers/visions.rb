@@ -4,11 +4,6 @@ TokyoProject.controllers :visions do
     ActiveRecord::Base.connection.close
   end
 
-  get :index, :provides => [:atom, :rss] do
-    @pictures = Picture.all
-    render 'visions/index'
-  end
-
   get :show, :map => '/visions/:id(/:pid)', :cache => false do
     # expires_in 1 #Caching for 5 minutes
     @vision = Vision.find(params[:id])
