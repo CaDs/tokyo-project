@@ -1,4 +1,8 @@
 TokyoProject.controllers :areas do
+  after do
+    ActiveRecord::Base.connection.close
+  end
+
   get :index do
     @visions = Vision.all
     render 'areas/index'

@@ -13,6 +13,7 @@ Admin.controllers :visions do
 
   post :create do
     @vision = Vision.new(params[:vision])
+    @vision.account = current_account
     if @vision.save
       flash[:notice] = 'Vision was successfully created.'
       redirect url(:visions, :edit, :id => @vision.id)

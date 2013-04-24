@@ -4,30 +4,17 @@ TokyoProject.controllers :visions do
     ActiveRecord::Base.connection.close
   end
 
-  get :show, :map => '/visions/:id', :cache => false do
+  get :index, :provides => [:atom, :rss] do
+    @pictures = Picture.all
+    render 'visions/index'
+  end
+
+  get :show, :map => '/visions/:id(/:pid)', :cache => false do
     # expires_in 1 #Caching for 5 minutes
     @vision = Vision.find(params[:id])
     @pictures = @vision.pictures
+    @picture = Picture.find(params[:pid]) if params[:pid]
     render 'visions/show'
   end
-
-  # get :index, :map => "/foo/bar" do
-  #   session[:foo] = "bar"
-  #   render 'index'
-  # end
-
-  # get :sample, :map => "/sample/url", :provides => [:any, :js] do
-  #   case content_type
-  #     when :js then ...
-  #     else ...
-  # end
-
-  # get :foo, :with => :id do
-  #   "Maps to url '/foo/#{params[:id]}'"
-  # end
-
-  # get "/example" do
-  #   "Hello world!"
-  # end
 
 end

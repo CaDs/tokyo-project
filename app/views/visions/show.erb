@@ -13,13 +13,13 @@
       <div id="myCarousel" class="carousel slide" data-interval="false">
         <ol class="carousel-indicators">
           <% @pictures.each_with_index do |picture, i| %>
-            <% css_class = (i == 0 ? "active" : "")%>
+            <% css_class = (@picture ? (@picture.id == picture.id ? "active" : "") : (i == 0 ? "active" : "") )%>
             <li data-target="#myCarousel" data-slide-to="<%= i %>" class="<%= css_class %>"></li>
           <% end %>
         </ol>
         <div class="carousel-inner">
           <% @pictures.each_with_index do |picture, i| %>
-            <% css_class = (i == 0 ? "active" : "")%>
+            <% css_class = (@picture ? (@picture.id == picture.id ? "active" : "") : (i == 0 ? "active" : "") )%>
             <%= partial('visions/picture', :locals => {:css_class => css_class, :picture => picture})%>
           <% end %>
         </div>
