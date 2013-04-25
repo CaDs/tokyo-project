@@ -1,5 +1,5 @@
 xml.instruct!
-xml.feed "xmlns" => "http://www.w3.org/2005/Atom" do
+xml.feed version:"2.0", xmlns: "http://www.w3.org/2005/Atom" do
   xml.title   "Tokyo Project"
   xml.link    "rel" => "self", "href" => url_for('/')
   xml.id      uri("/")
