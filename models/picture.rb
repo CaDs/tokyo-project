@@ -6,14 +6,29 @@ class Picture < ActiveRecord::Base
   end
 
   def thumb
-    FlickRaw.url_t(flickr_version) rescue "/images/default_small.jpg"
+    url = TokyoProject.cache.get "cached_picture_#{self.id}_tumb"
+    if url == "" || url == nil
+      url = FlickRaw.url_t(flickr_version) rescue "/images/default_small.jpg"
+      TokyoProject.cache.set("cached_picture_#{self.id}_tumb", url, :expires_in => 6000)
+    end
+    return url
   end
 
   def medium
-    FlickRaw.url_m(flickr_version) rescue "/images/default_medium.jpg"
+    url = TokyoProject.cache.get "cached_picture_#{self.id}_medium"
+    if url == "" || url == nil
+      url = FlickRaw.url_m(flickr_version) rescue ""
+      TokyoProject.cache.set("cached_picture_#{self.id}_medium", url, :expires_in => 6000)
+    end
+    return url
   end
 
   def large
-    FlickRaw.url_b(flickr_version) rescue "/images/default_medium.jpg"
+    url = TokyoProject.cache.get "cached_picture_#{self.id}_large"
+    if url == "" || url == nil
+      url = FlickRaw.url_b(flickr_version) rescue ""
+      TokyoProject.cache.set("cached_picture_#{self.id}_large", url, :expires_in => 6000)
+    end
+    return url
   end
 end
