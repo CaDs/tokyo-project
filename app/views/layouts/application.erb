@@ -23,6 +23,9 @@
     <meta name="author" content="Carlos Donderis Sanz">
     <meta name="keywords" content="japan, tokyo, photography, travel, tokyo-project"/>
 
+    <%= feed_tag(:rss, url(:rss, :index, :format => :rss), :title => "RSS") %>
+    <%= feed_tag(:atom, url(:atom, :index, :format => :atom), :title => "ATOM") %>
+
     <%= stylesheet_link_tag "bootstrap.min" %>
     <%= stylesheet_link_tag "style.css" %>
     <%= javascript_include_tag "jquery" %>
