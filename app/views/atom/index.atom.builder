@@ -15,7 +15,7 @@ xml.feed "xmlns" => "http://www.w3.org/2005/Atom" do
       xml.id      picture_url
       xml.updated picture.updated_at.strftime "%Y-%m-%dT%H:%M:%SZ"
       xml.author  { xml.name picture.vision.account.role  }
-      xml.summary picture.description_en
+      xml.summary xml.description "A new picture has been added to #{picture.vision.title} #{picture.description_en}"
     end
   end
 end
