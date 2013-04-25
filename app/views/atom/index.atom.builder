@@ -1,7 +1,7 @@
 xml.instruct!
 xml.feed "xmlns" => "http://www.w3.org/2005/Atom" do
   xml.title   "Tokyo Project"
-  xml.link    url_for(:posts, :index)
+  xml.link    "rel" => "self", "href" => url_for('/')
   xml.id      uri("/")
   xml.updated @pictures.first.updated_at.strftime "%Y-%m-%dT%H:%M:%SZ" if @pictures.any?
   xml.author  { xml.name @pictures.first.vision.account.role }
