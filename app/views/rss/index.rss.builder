@@ -1,8 +1,9 @@
 xml.instruct!
-xml.rss "version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/" do
+xml.rss "version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/", "xmlns:atom" => "http://www.w3.org/2005/Atom" do
   xml.channel do
     xml.title   "Tokyo Project"
     xml.link uri("/")
+    xml.atom link href=>"/", rel=>"self", type=>"application/rss+xml"
     xml.description "Visions of Tokyo. A lonely alley, a crowded streed, a field full of cherry blossoms, there is magic on every corner of this city."
 
     @pictures.each do |picture|
