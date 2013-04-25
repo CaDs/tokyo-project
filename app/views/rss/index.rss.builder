@@ -1,10 +1,9 @@
 xml.instruct!
-xml.rss "version" => "2.0", "xmlns:media" => "http://search.yahoo.com/mrss/" do
+xml.rss "version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/" do
   xml.channel do
     xml.title   "Tokyo Project"
     xml.link uri("/")
     xml.description "Visions of Tokyo. A lonely alley, a crowded streed, a field full of cherry blossoms, there is magic on every corner of this city."
-    xml.docs "http://backend.userland.com/rss092"
     xml.lastBuildDate Picture.last.updated_at.to_s(:rfc822)
     xml.language "en"
 
