@@ -1,9 +1,5 @@
 source :rubygems
 
-# Server requirements
-# gem 'thin' # or mongrel
-# gem 'trinidad', :platform => 'jruby'
-
 ruby '2.0.0'
 
 # Project requirements
