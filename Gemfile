@@ -1,4 +1,5 @@
 source :rubygems
+
 ruby '2.0.0'
 
 # Project requirements
@@ -16,7 +17,7 @@ gem 'rspec', :group => "test"
 gem 'rack-test', :require => "rack/test", :group => "test"
 
 # Padrino Stable Gem
-gem 'padrino'
+gem 'padrino', '0.10.7'
 gem 'padrino-cookies'
 gem 'padrino-flash'
 
