@@ -27,6 +27,8 @@ class TokyoProject < Padrino::Application
   # disable :flash                # Disables sinatra-flash (enabled by default if Sinatra::Flash is defined)
   # layout  :my_layout            # Layout can be in views/layouts/foo.ext or views/foo.ext (default :application)
   #
+  # disable :raise_errors
+  # disable :show_exceptions
 
   ##
   # You can configure for a specified environment like:
@@ -34,19 +36,17 @@ class TokyoProject < Padrino::Application
   configure :production do
     require 'newrelic_rpm'
   end
-  #
 
-  ##
-  # You can manage errors like:
-  #
-  #   error 404 do
-  #     render 'errors/404'
-  #   end
-  #
-  #   error 505 do
-  #     render 'errors/505'
-  #   end
-  #
+  not_found do
+    @message = "Woops that doesn't seems to exist"
+    render 'layouts/error', :layout => false
+  end
+
+  error 400..510 do
+    @message = "Woa woa stop there!"
+    render 'layouts/error', :layout => false
+  end
+
   get '/', :cache => true do
     expires_in 1 #Caching for 5 minutes
     @visions = Vision.last(3)

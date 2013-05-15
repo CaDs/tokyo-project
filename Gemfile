@@ -16,8 +16,10 @@ gem 'mysql2'
 gem 'rspec', :group => "test"
 gem 'rack-test', :require => "rack/test", :group => "test"
 
+gem 'tilt', '1.3.7'
+
 # Padrino Stable Gem
-gem 'padrino', '0.10.7'
+gem 'padrino', '0.11.1'
 gem 'padrino-cookies'
 gem 'padrino-flash'
 
