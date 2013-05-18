@@ -4,8 +4,9 @@ TokyoProject.controllers :visions do
     ActiveRecord::Base.connection.close
   end
 
-  get :show, :map => '/visions/:id(/:pid)', :cache => false do
-    # expires_in 1 #Caching for 5 minutes
+  get :show, :map => '/visions/:id(/:pid)', :cache => true do
+    expires_in(Padrino.env.to_s == "production" ? 3600 : 1)
+
     @vision = Vision.find(params[:id]) rescue nil
     if @vision
       @pictures = @vision.pictures

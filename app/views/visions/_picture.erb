@@ -1,35 +1,49 @@
 <div class="item <%= css_class %>">
   <%= image_tag(picture.large) %>
-  <% if [picture.description_en, picture.description_es, picture.description_jp].compact.find_all{|d| d!=""}.any? %>
-    <div class="carousel-caption">
-      <ul id="myTab" class="nav nav-tabs">
-        <% if picture.description_en != nil && picture.description_en != "" %>
-          <li class="active"><a href="#en_<%=picture.id%>" data-toggle="tab" class="muted vision_link">English</a></li>
-        <% end %>
-        <% if picture.description_es != nil && picture.description_es != ""%>
-          <li class=""><a href="#es_<%=picture.id%>" data-toggle="tab" class="muted vision_link">Español</a></li>
-        <% end %>
-        <% if picture.description_jp != nil && picture.description_jp != ""%>
-          <li class=""><a href="#jp_<%=picture.id%>" data-toggle="tab" class="muted vision_link">日本語</a></li>
-        <% end %>
-      </ul>
-      <div id="myTabContent" class="tab-content">
-        <% if picture.description_en != nil && picture.description_en != "" %>
-          <div class="tab-pane fade active in" id="en_<%=picture.id%>">
-            <p><%= picture.description_en.html_safe %></p>
-          </div>
-        <% end %>
-        <% if picture.description_es != nil && picture.description_es != ""%>
-          <div class="tab-pane fade" id="es_<%=picture.id%>">
-            <p><%= picture.description_es.html_safe %></p>
-          </div>
-        <% end %>
-        <% if picture.description_jp != nil && picture.description_jp != ""%>
-          <div class="tab-pane fade" id="jp_<%=picture.id%>">
-            <p><%= picture.description_jp.html_safe %></p>
-          </div>
-        <% end %>
-      </div>
+  <div class="carousel-caption">
+    <ul id="myTab" class="nav nav-tabs">
+      <% if picture.description_en != nil && picture.description_en != "" %>
+        <li class="active"><a href="#en_<%=picture.id%>" data-toggle="tab" class="muted vision_link">English</a></li>
+      <% end %>
+      <% if picture.description_es != nil && picture.description_es != ""%>
+        <li class=""><a href="#es_<%=picture.id%>" data-toggle="tab" class="muted vision_link">Español</a></li>
+      <% end %>
+      <% if picture.description_jp != nil && picture.description_jp != ""%>
+        <li class=""><a href="#jp_<%=picture.id%>" data-toggle="tab" class="muted vision_link">日本語</a></li>
+      <% end %>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+      <% if picture.description_en != nil && picture.description_en != "" %>
+        <div class="tab-pane fade active in" id="en_<%=picture.id%>">
+          <p><%= picture.description_en.html_safe %></p>
+        </div>
+      <% end %>
+      <% if picture.description_es != nil && picture.description_es != ""%>
+        <div class="tab-pane fade" id="es_<%=picture.id%>">
+          <p><%= picture.description_es.html_safe %></p>
+        </div>
+      <% end %>
+      <% if picture.description_jp != nil && picture.description_jp != ""%>
+        <div class="tab-pane fade" id="jp_<%=picture.id%>">
+          <p><%= picture.description_jp.html_safe %></p>
+        </div>
+      <% end %>
+      <p>
+        <% picture_url = uri url(:visions, :show, id: "#{picture.vision.id}", pid: picture.id) %>
+        <div class="g-plus" data-action="share" data-annotation="bubble" data-href="<%=picture_url%>"></div>
+        <!-- Place this tag after the last share tag. -->
+        <script type="text/javascript">
+          (function() {
+            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+            po.src = 'https://apis.google.com/js/plusone.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+          })();
+        </script>
+        <div class="fb-like" data-href="<%=picture_url%>" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+        <a href='https://twitter.com/share' class='twitter-share-button' data-url='<%= picture_url %>' data-text='<%= "The Tokyo Project, a vision of 「#{picture.vision.area.name}」: #{picture_url}"%>'>Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        <!-- Place this tag where you want the share button to render. -->
+      </p>
     </div>
-  <% end %>
+  </div>
 </div>
