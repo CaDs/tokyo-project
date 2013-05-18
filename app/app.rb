@@ -5,6 +5,7 @@ class TokyoProject < Padrino::Application
   register Padrino::Helpers
   register Padrino::Cookies
   register Padrino::Cache
+  register Padrino::Flash
 
   enable :sessions
 

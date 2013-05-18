@@ -1,7 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="span12">
-      <h1><%=@vision.title%></h1><%= link_to @vision.area.name, url(:areas, :show, :id => @vision.area)%>
+      <h1><%=@vision.title%></h1>
+      <h4>
+        See more visions for <%= link_to @vision.area.name, url(:areas, :show, :id => @vision.area) %> area
+      </h4>
       <h4 class="muted"><%= @vision.short_description %></h4>
     </div>
   </div>
@@ -10,11 +13,11 @@
 <div class="container">
   <div id="pictures" class="row">
     <div class="span12">
-      <div id="myCarousel" class="carousel slide" data-interval="false">
+      <div id="canvas" class="carousel slide" data-interval="false">
         <ol class="carousel-indicators">
           <% @pictures.each_with_index do |picture, i| %>
             <% css_class = (@picture ? (@picture.id == picture.id ? "active" : "") : (i == 0 ? "active" : "") )%>
-            <li data-target="#myCarousel" data-slide-to="<%= i %>" class="<%= css_class %>"></li>
+            <li data-target="#canvas" data-slide-to="<%= i %>" class="<%= css_class %>"></li>
           <% end %>
         </ol>
         <div class="carousel-inner">
@@ -23,8 +26,8 @@
             <%= partial('visions/picture', :locals => {:css_class => css_class, :picture => picture})%>
           <% end %>
         </div>
-        <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
-        <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+        <a class="left carousel-control vision_link" href="#canvas" data-slide="prev">‹</a>
+        <a class="right carousel-control vision_link" href="#canvas" data-slide="next">›</a>
       </div>
     </div>
   </div>

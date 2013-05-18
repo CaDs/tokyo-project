@@ -6,6 +6,7 @@ GIT
       newrelic_rpm (~> 3.3.3)
 
 GEM
+  remote: https://rubygems.org/
   specs:
     activemodel (3.2.12)
       activesupport (= 3.2.12)

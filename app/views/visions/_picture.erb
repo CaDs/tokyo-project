@@ -4,29 +4,29 @@
     <div class="carousel-caption">
       <ul id="myTab" class="nav nav-tabs">
         <% if picture.description_en != nil && picture.description_en != "" %>
-          <li class="active"><a href="#en_<%=picture.id%>" data-toggle="tab" class="muted">English</a></li>
+          <li class="active"><a href="#en_<%=picture.id%>" data-toggle="tab" class="muted vision_link">English</a></li>
         <% end %>
         <% if picture.description_es != nil && picture.description_es != ""%>
-          <li class=""><a href="#es_<%=picture.id%>" data-toggle="tab" class="muted">Español</a></li>
+          <li class=""><a href="#es_<%=picture.id%>" data-toggle="tab" class="muted vision_link">Español</a></li>
         <% end %>
         <% if picture.description_jp != nil && picture.description_jp != ""%>
-          <li class=""><a href="#jp_<%=picture.id%>" data-toggle="tab" class="muted">日本語</a></li>
+          <li class=""><a href="#jp_<%=picture.id%>" data-toggle="tab" class="muted vision_link">日本語</a></li>
         <% end %>
       </ul>
       <div id="myTabContent" class="tab-content">
         <% if picture.description_en != nil && picture.description_en != "" %>
           <div class="tab-pane fade active in" id="en_<%=picture.id%>">
-            <p><%= picture.description_en %></p>
+            <p><%= picture.description_en.html_safe %></p>
           </div>
         <% end %>
         <% if picture.description_es != nil && picture.description_es != ""%>
           <div class="tab-pane fade" id="es_<%=picture.id%>">
-            <p><%= picture.description_es %></p>
+            <p><%= picture.description_es.html_safe %></p>
           </div>
         <% end %>
         <% if picture.description_jp != nil && picture.description_jp != ""%>
           <div class="tab-pane fade" id="jp_<%=picture.id%>">
-            <p><%= picture.description_jp %></p>
+            <p><%= picture.description_jp.html_safe %></p>
           </div>
         <% end %>
       </div>
