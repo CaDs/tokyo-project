@@ -34,7 +34,7 @@ gem 'flickraw', :require => 'flickraw'
 gem 'koala'
 
 #Debugger
-gem 'debugger'
+gem "debugger", :git => "git://github.com/cldwalker/debugger.git"
 
 #Performance
 gem 'padrino-rpm', :git => 'https://github.com/Asquera/padrino-rpm.git'
