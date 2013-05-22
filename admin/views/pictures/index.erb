@@ -17,6 +17,7 @@
           <th><%= mat(:picture, :description_en) %></th>
           <th><%= mat(:picture, :description_es) %></th>
           <th><%= mat(:picture, :description_jp) %></th>
+          <th><%= mat(:picture, :preview) %></th>
           <th><%= mat(:picture, :created_at) %></th>
           <th><%= mat(:picture, :updated_at) %></th>
           <th class="last">&nbsp;</th>
@@ -27,9 +28,10 @@
           <td><%= picture.vision_id %></td>
           <td><%= picture.account_id %></td>
           <td><%= picture.flickr_id %></td>
-          <td><%= picture.description_en %></td>
-          <td><%= picture.description_es %></td>
-          <td><%= picture.description_jp %></td>
+          <td><%= picture.description_en.html_safe %></td>
+          <td><%= picture.description_es.html_safe %></td>
+          <td><%= picture.description_jp.html_safe %></td>
+          <td><%= image_tag(picture.thumb) %></td>
           <td><%= picture.created_at %></td>
           <td><%= picture.updated_at %></td>
           <td class="last">

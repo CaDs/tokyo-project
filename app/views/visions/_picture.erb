@@ -28,22 +28,6 @@
           <p><%= picture.description_jp.html_safe %></p>
         </div>
       <% end %>
-      <p>
-        <% picture_url = uri url(:visions, :show, id: "#{picture.vision.id}", pid: picture.id) %>
-        <div class="g-plus" data-action="share" data-annotation="bubble" data-href="<%=picture_url%>"></div>
-        <!-- Place this tag after the last share tag. -->
-        <script type="text/javascript">
-          (function() {
-            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-            po.src = 'https://apis.google.com/js/plusone.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-          })();
-        </script>
-        <div class="fb-like" data-href="<%=picture_url%>" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
-        <a href='https://twitter.com/share' class='twitter-share-button' data-url='<%= picture_url %>' data-text='<%= "The Tokyo Project, a vision of 「#{picture.vision.area.name}」: #{picture_url}"%>'>Tweet</a>
-        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-        <!-- Place this tag where you want the share button to render. -->
-      </p>
     </div>
   </div>
 </div>

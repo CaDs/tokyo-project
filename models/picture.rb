@@ -31,4 +31,9 @@ class Picture < ActiveRecord::Base
     end
     return url
   end
+
+  def clear_cache
+    key = "cached_picture_#{self.id}"
+    ['_tumb', '_medium', '_large'].each{|suffix| TokyoProject.cache.delete(key+suffix)}
+  end
 end

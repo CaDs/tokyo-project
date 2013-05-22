@@ -30,6 +30,7 @@ Admin.controllers :pictures do
   put :update, :with => :id do
     @picture = Picture.find(params[:id])
     if @picture.update_attributes(params[:picture])
+      @picture.clear_cache
       flash[:notice] = 'Picture was successfully updated.'
       redirect url(:pictures, :edit, :id => @picture.id)
     else
@@ -39,7 +40,9 @@ Admin.controllers :pictures do
 
   delete :destroy, :with => :id do
     picture = Picture.find(params[:id])
+    vision = picture.vision
     if picture.destroy
+      vision.clear_cache
       flash[:notice] = 'Picture was successfully destroyed.'
     else
       flash[:error] = 'Unable to destroy Picture!'

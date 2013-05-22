@@ -6,6 +6,12 @@
   <%= f.label "Flickr ID" %><%= f.error_message_on :flickr_id %>
   <%= f.text_field :flickr_id, :class => :text_field %>
 </div>
+<% if @picture %>
+  <div class="group">
+    <%= f.label "Preview" %><br/>
+    <%= image_tag(@picture.thumb) %>
+  </div>
+<% end %>
 <div class="group">
   <%= f.label :description_en %><%= f.error_message_on :description_en %>
   <%= f.text_area :description_en, :class => ":text_area", :id => "rich_text1" %>
