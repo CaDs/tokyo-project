@@ -25,16 +25,15 @@
             <% css_class = (@picture ? (@picture.id == picture.id ? "active" : "") : (i == 0 ? "active" : "") )%>
             <%= partial('visions/picture', :locals => {:css_class => css_class, :picture => picture})%>
           <% end %>
-          <br/>
-          <div>
-            <% picture_url = uri url(:visions, :show, id: "#{@vision.id}") %>
-            <div id="fb" class="fb-like" data-href="<%= picture_url %>" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
-            <div id="gplus" class="g-plus" data-action="share" data-annotation="bubble" data-href="<%= picture_url %>"></div>
-            <a id = "twit" href='https://twitter.com/share' class='twitter-share-button' data-url="<%= picture_url %>" data-text='<%= "The Tokyo Project, a vision of 「#{@vision.area.name}」"%>'>Tweet</a>
-        </div>
         </div>
         <a class="left carousel-control vision_link" href="#canvas" data-slide="prev">‹</a>
         <a class="right carousel-control vision_link" href="#canvas" data-slide="next">›</a>
+      </div>
+      <div>
+        <% vision_url = uri url(:visions, :show, id: "#{@vision.id}") %>
+        <div id="fb" class="fb-like" data-href="<%= vision_url %>" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+        <div id="gplus" class="g-plus" data-action="share" data-annotation="bubble" data-href="<%= vision_url %>"></div>
+        <a id = "twit" href='https://twitter.com/share' class='twitter-share-button' data-url="<%= vision_url %>" data-text='<%= "The Tokyo Project, a vision of 「#{@vision.area.name}」"%>'>Tweet</a>
       </div>
     </div>
   </div>
