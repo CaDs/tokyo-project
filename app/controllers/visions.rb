@@ -4,7 +4,7 @@ TokyoProject.controllers :visions do
     ActiveRecord::Base.connection.close
   end
 
-  get :show, :map => '/visions/:id(/:pid)', :cache => true do
+  get :show, :map => '/visions/:id(/:pid)', :cache => false do
     key = "vision_show_#{params[:id]}"
     key += "_#{pid}" if params[:pid]
     cache_key key
