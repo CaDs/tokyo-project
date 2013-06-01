@@ -24,6 +24,10 @@
   <%= f.label :description_jp %><%= f.error_message_on :description_jp %>
   <%= f.text_area :description_jp, :class => 'text_area', :id => "rich_text3" %>
 </div>
+<div class="group">
+  <%= f.label :is_published %><%= f.error_message_on :is_published %>
+  <%= f.select :is_published, :options => [["no", false], ["yes", true]] %>
+</div>
 
 <div class="group navform wat-cf">
   <%= f.submit pat(:save), :class => :button %>

@@ -33,7 +33,11 @@ class Picture < ActiveRecord::Base
   end
 
   def clear_cache
+    #should clear cache for itself, the vision and the area
     key = "cached_picture_#{self.id}"
     ['_tumb', '_medium', '_large'].each{|suffix| TokyoProject.cache.delete(key+suffix)}
+
+    TokyoProject.cache.delete("vision_show_#{self.vision.id}_#{self.id}")
+    vision.clear_cache
   end
 end

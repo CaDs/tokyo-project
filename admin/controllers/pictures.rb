@@ -19,6 +19,7 @@ Admin.controllers :pictures do
     else
       render 'pictures/new'
     end
+    @picture.clear_cache
   end
 
   get :edit, :with => :id do

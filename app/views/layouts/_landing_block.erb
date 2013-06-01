@@ -1,5 +1,5 @@
 <div class="image">
-  <% picture_url = vision.pictures.any? ? vision.pictures.last.medium : Vision::DEFAULT_MEDIUM_PICTURE_URL %>
+  <% picture_url = vision.published_pictures.any? ? vision.published_pictures.last.medium : Vision::DEFAULT_MEDIUM_PICTURE_URL %>
   <%= link_to(image_tag(picture_url), url(:visions, :show, :id => vision.id))%>
 </div>
 <h2><%= vision.title %></h2>
