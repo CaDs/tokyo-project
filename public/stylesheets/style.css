@@ -1,5 +1,5 @@
 body {
-  padding-top: 0px; /* 60px to make the container go all the way to the bottom of the topbar */
+  padding-bottom: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
   min-height: 900px;
 }
 /* Main marketing message and sign up button */
@@ -36,4 +36,8 @@ a.vision_link{
   max-width:90%;
   margin-left: auto;
   margin-right: auto;
+}
+
+.vision{
+  margin-top: 50px;
 }
