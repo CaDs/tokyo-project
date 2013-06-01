@@ -62,7 +62,7 @@
         <%= [:error, :warning, :notice].map { |type| flash[type] }.compact.join(',') %>
       </p>
     </div>
-    <div class="content">
+    <div class="content top">
       <%= yield %>
     </div>
   </body>
