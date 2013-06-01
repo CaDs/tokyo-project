@@ -17,7 +17,7 @@ class Picture < ActiveRecord::Base
   def medium
     url = TokyoProject.cache.get "cached_picture_#{self.id}_medium"
     if url == "" || url == nil
-      url = FlickRaw.url_m(flickr_version) rescue ""
+      url = FlickRaw.url_z(flickr_version) rescue ""
       TokyoProject.cache.set("cached_picture_#{self.id}_medium", url, :expires_in => 6000)
     end
     return url

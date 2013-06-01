@@ -1,5 +1,5 @@
 body {
-  padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+  padding-top: 0px; /* 60px to make the container go all the way to the bottom of the topbar */
   min-height: 900px;
 }
 /* Main marketing message and sign up button */
@@ -30,4 +30,10 @@ a.vision_link{
 
 .footer{
   margin-top: 40px;
+}
+
+.image{
+  max-width:90%;
+  margin-left: auto;
+  margin-right: auto;
 }
