@@ -3,7 +3,7 @@ xml.rss "version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/", "x
   xml.channel do
     xml.title   "Tokyo Project"
     xml.link uri("/")
-    xml.description "Visions of Tokyo. A lonely alley, a crowded streed, a field full of cherry blossoms, there is magic on every corner of this city."
+    xml.description "Visions of Tokyo. A lonely alley, a crowded street, a field full of cherry blossoms, there is magic on every corner of this city."
 
     @pictures.each do |picture|
       xml.item do
