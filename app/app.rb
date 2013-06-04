@@ -51,7 +51,7 @@ class TokyoProject < Padrino::Application
   get '/', :cache => true do
     cache_key  'root_path'
     expires_in(Padrino.env.to_s == "production" ? 3600 : 100)
-    @visions = Vision.order("created_at DESC").last(3)
+    @visions = Vision.order("created_at DESC").first(3)
     render 'layouts/landing'
   end
 
