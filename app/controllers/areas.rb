@@ -7,7 +7,7 @@ TokyoProject.controllers :areas do
     cache_key 'areas'
     expires_in(Padrino.env.to_s == "production" ? 3600 : 1)
 
-    @visions = Vision.order("created_at DESC").all
+    @visions = Vision.order("created_at").all
     render 'areas/index'
   end
 
