@@ -12,7 +12,7 @@ TokyoProject.controllers :visions do
       @vision = Vision.find(params[:id]) rescue nil
       if @vision
         @pictures = @vision.published_pictures
-        @picture = @pictures.find(params[:pid]) if params[:pid] rescue nil
+        @picture = @pictures.find(params[:pid]).first if params[:pid] rescue nil
         @picture ||= @vision.pictures.first
         render 'visions/show'
       else
