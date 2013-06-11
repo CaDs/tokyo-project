@@ -7,6 +7,7 @@ gem 'rake'
 gem 'sinatra-flash', :require => 'sinatra/flash'
 
 # Component requirements
+gem 'will_paginate', '~>3.0'
 gem 'bcrypt-ruby', :require => "bcrypt"
 gem 'erubis', "~> 2.7.0"
 gem 'activerecord', :require => "active_record"
@@ -23,15 +24,15 @@ gem 'padrino', '0.11.1'
 gem 'padrino-cookies'
 gem 'padrino-flash'
 
+#Security
+gem 'rack-protection'
+
 #Cache
 gem 'memcachier', :require => 'memcachier'
 gem 'dalli', :require => 'dalli'
 
 #Images
 gem 'flickraw', :require => 'flickraw'
-
-#Facebook
-gem 'koala'
 
 #Debugger
 gem "debugger", :git => "git://github.com/cldwalker/debugger.git"
