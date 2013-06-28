@@ -13,7 +13,7 @@ TokyoProject.controllers :visions do
       if @vision
         @pictures = @vision.published_pictures
         @picture = @pictures.find{|p| p.id == params[:pid].to_i} if params[:pid] rescue nil
-        @picture ||= @vision.pictures.first
+        @picture ||= @vision.published_pictures.first
         render 'visions/show'
       else
         flash[:notice] = "Vision not founded"

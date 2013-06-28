@@ -6,7 +6,7 @@ class Vision < ActiveRecord::Base
   DEFAULT_MEDIUM_PICTURE_URL = "http://farm9.staticflickr.com/8300/7814117342_b345e98c65_m.jpg"
 
   def published_pictures
-    pictures.find_all{|p| p.is_published }
+    pictures.order("created_at DESC").find_all{|p| p.is_published }
   end
 
   def clear_cache
