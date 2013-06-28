@@ -35,7 +35,9 @@ gem 'dalli', :require => 'dalli'
 gem 'flickraw', :require => 'flickraw'
 
 #Debugger
-gem "debugger", :git => "git://github.com/cldwalker/debugger.git"
+group :development, :test do
+  gem "debugger", :git => "git://github.com/cldwalker/debugger.git"
+end
 
 #Performance
 gem 'padrino-rpm', :git => 'https://github.com/Asquera/padrino-rpm.git'
