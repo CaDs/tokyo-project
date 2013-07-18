@@ -7,8 +7,8 @@ TokyoProject.controllers :visions do
   get :show, :map => '/visions/:id(/:pid)' do
     key = "vision_show_#{params[:id]}"
     key += "_#{params[:pid]}" if params[:pid]
-    cache(key: key, expires_in: (Padrino.env.to_s == "production" ? 3600 : 1)) do
-      # cache_key key
+
+    cache(key, expires_in: (Padrino.env.to_s == "production" ? 3600 : 1)) do
       @vision = Vision.find(params[:id]) rescue nil
       if @vision
         @pictures = @vision.published_pictures

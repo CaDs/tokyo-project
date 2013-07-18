@@ -37,7 +37,8 @@ class Picture < ActiveRecord::Base
     key = "cached_picture_#{self.id}"
     ['_tumb', '_medium', '_large'].each{|suffix| TokyoProject.cache.delete(key+suffix)}
 
-    TokyoProject.cache.delete("vision_show_#{self.vision.id}_#{self.id}")
+    keys = ["vision_show_#{self.vision.id}", "vision_show_#{self.vision.id}_#{self.id}"]
+    keys.each{|k| TokyoProject.cache.delete(k)}
     vision.clear_cache
   end
 end

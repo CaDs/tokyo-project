@@ -36,7 +36,7 @@ gem 'flickraw', :require => 'flickraw'
 
 #Debugger
 group :development, :test do
-  gem "debugger", :git => "git://github.com/cldwalker/debugger.git"
+  gem "debugger"
 end
 
 #Performance

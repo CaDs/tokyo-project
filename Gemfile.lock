@@ -1,13 +1,4 @@
 GIT
-  remote: git://github.com/cldwalker/debugger.git
-  revision: c68e37943f189758d0f98d801593101da34b1e08
-  specs:
-    debugger (1.6.0)
-      columnize (>= 0.3.1)
-      debugger-linecache (~> 1.2.0)
-      debugger-ruby_core_source (~> 1.2.1)
-
-GIT
   remote: https://github.com/Asquera/padrino-rpm.git
   revision: d698f4a3e3a0762866ed8ee3d636fb555e24426e
   specs:
@@ -33,6 +24,10 @@ GEM
     builder (3.0.4)
     columnize (0.3.6)
     dalli (2.6.2)
+    debugger (1.6.0)
+      columnize (>= 0.3.1)
+      debugger-linecache (~> 1.2.0)
+      debugger-ruby_core_source (~> 1.2.1)
     debugger-linecache (1.2.0)
     debugger-ruby_core_source (1.2.2)
     diff-lcs (1.2.4)
@@ -122,7 +117,7 @@ DEPENDENCIES
   activerecord
   bcrypt-ruby
   dalli
-  debugger!
+  debugger
   erubis (~> 2.7.0)
   flickraw
   memcachier

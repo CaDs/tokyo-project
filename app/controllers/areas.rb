@@ -13,7 +13,7 @@ TokyoProject.controllers :areas do
 
   get :show, :with => :id do
     key =  "area_show_#{params[:id]}"
-    cache(key: key, expires_in: (Padrino.env.to_s == "production" ? 3600 : 1)) do
+    cache(key, expires_in: (Padrino.env.to_s == "production" ? 3600 : 1)) do
       @area = Area.find(params[:id])
       @visions = @area.visions
       render 'areas/show'
