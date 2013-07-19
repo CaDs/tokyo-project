@@ -6,34 +6,43 @@
     </ul>
   </div>
   <div class="content">
-    <h2 class="title"><%= pat(:all) %> <% mt(:pictures) %></h2>
+    <h2 class="title"><%= pat(:all) %> <%= mt(:pictures) %></h2>
     <div class="inner">
       <table class="table">
         <tr>
           <th class="first"><%= mat(:picture, :id) %></th>
           <th><%= mat(:picture, :vision_id) %></th>
-          <th><%= mat(:picture, :account_id) %></th>
-          <th><%= mat(:picture, :flickr_id) %></th>
           <th><%= mat(:picture, :description_en) %></th>
           <th><%= mat(:picture, :description_es) %></th>
           <th><%= mat(:picture, :description_jp) %></th>
           <th><%= mat(:picture, :preview) %></th>
           <th>published?</th>
-          <th><%= mat(:picture, :updated_at) %></th>
-          <th class="last">&nbsp;</th>
+          <th class="last">Options</th>
         </tr>
         <% @pictures.each do |picture| %>
         <tr>
           <td class="first"><%= picture.id %></td>
-          <td><%= picture.vision_id %></td>
-          <td><%= picture.account_id %></td>
-          <td><%= picture.flickr_id %></td>
-          <td><%= picture.description_en.html_safe %></td>
-          <td><%= picture.description_es.html_safe %></td>
-          <td><%= picture.description_jp.html_safe %></td>
+          <td><%= link_to picture.vision.title, url(:visions, :edit, picture.vision_id) %></td>
+          <td>
+            <div id="d_en_<%=picture.id%>" style="display:none">
+              <%= picture.description_en.html_safe %>
+            </div>
+            <%= link_to "show", '#', :class=>"show_description", :data =>{'div-id' => "d_en_#{picture.id}"} %>
+          </td>
+          <td>
+            <div id="d_es_<%=picture.id%>" style="display:none">
+              <%= picture.description_es.html_safe %>
+            </div>
+            <%= link_to "show", '#', :class=>"show_description", :data =>{'div-id' => "d_es_#{picture.id}"} %>
+          </td>
+          <td>
+            <div id="d_jp_<%=picture.id%>" style="display:none">
+              <%= picture.description_jp.html_safe %>
+            </div>
+            <%= link_to "show", '#', :class=>"show_description", :data =>{'div-id' => "d_jp_#{picture.id}"} %>
+          </td>
           <td><%= image_tag(picture.thumb) %></td>
           <td><%= picture.is_published %></td>
-          <td><%= picture.updated_at %></td>
           <td class="last">
             <%= button_to pat(:edit), url(:pictures, :edit, :id => picture.id), :method => :get, :class => :button_to %> |
             <%= button_to pat(:delete), url(:pictures, :destroy, :id => picture.id), :method => :delete, :class => :button_to, :onsubmit => "return confirm('#{pat(:confirm)}')" %>
