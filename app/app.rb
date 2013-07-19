@@ -52,7 +52,7 @@ class TokyoProject < Padrino::Application
   get '/', :cache => true do
     cache_key  'root_path'
     expires_in(Padrino.env.to_s == "production" ? 3600 : 100)
-    @visions = Vision.order("created_at DESC").first(3)
+    @visions = Picture.order('created_at DESC').collect(&:vision_id).uniq.first(3).collect{|id| Vision.find(id) }
     render 'layouts/landing'
   end
 
