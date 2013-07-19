@@ -1,7 +1,7 @@
 Admin.controllers :areas do
 
   get :index do
-    @areas = Area.all
+    @areas = Area.order(:id).paginate(:page => params[:page], :per_page => 10)
     render 'areas/index'
   end
 

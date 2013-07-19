@@ -1,7 +1,7 @@
 Admin.controllers :visions do
 
   get :index do
-    @visions = Vision.all
+    @visions = Vision.order(:id).paginate(:page => params[:page], :per_page => 10)
     render 'visions/index'
   end
 

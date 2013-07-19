@@ -15,8 +15,6 @@
           <th><%= mat(:vision, :short_description) %></th>
           <th><%= mat(:vision, :body) %></th>
           <th><%= mat(:vision, :area_id) %></th>
-          <th><%= mat(:vision, :created_at) %></th>
-          <th><%= mat(:vision, :updated_at) %></th>
           <th class="last">&nbsp;</th>
         </tr>
         <% @visions.each do |vision| %>
@@ -25,9 +23,7 @@
           <td><%= vision.title %></td>
           <td><%= vision.short_description %></td>
           <td><%= vision.body %></td>
-          <td><%= vision.area_id %></td>
-          <td><%= vision.created_at %></td>
-          <td><%= vision.updated_at %></td>
+          <td><%= link_to(vision.title, url(:areas, :edit, vision.area_id)) %></td>
           <td class="last">
             <%= button_to pat(:edit), url(:visions, :edit, :id => vision.id), :method => :get, :class => :button_to %> |
             <%= button_to pat(:delete), url(:visions, :destroy, :id => vision.id), :method => :delete, :class => :button_to, :onsubmit => "return confirm('#{pat(:confirm)}')" %>
@@ -35,6 +31,7 @@
         </tr>
         <% end %>
       </table>
+      <%= (will_paginate @visions).html_safe rescue ''%>
       <div class="actions-bar wat-cf">
         <div class="actions"></div>
       </div>
