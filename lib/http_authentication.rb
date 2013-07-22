@@ -6,7 +6,7 @@ module HttpAuthentication
 
     def authenticate_with_http_basic
       if auth_str = request.env['HTTP_AUTHORIZATION']
-        puts "---------------------------AUth REQUEST: #{request.env['HTTP_AUTHORIZATION']}---------------------------"
+        logger.info("---------------------------AUth REQUEST: #{request.env['HTTP_AUTHORIZATION']}---------------------------")
         if Padrino.env.to_s == "production"
           return "#{ENV["BASIC_AUTH_NAME"]}:#{ENV["BASIC_AUTH_PW"]}" == Base64.decode64(auth_str.sub(/^Basic\s+/, ''))
         else
