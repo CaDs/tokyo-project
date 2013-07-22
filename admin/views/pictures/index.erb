@@ -16,6 +16,7 @@
           <th><%= mat(:picture, :description_es) %></th>
           <th><%= mat(:picture, :description_jp) %></th>
           <th><%= mat(:picture, :preview) %></th>
+          <th><%= mat(:picture, :share_url) %></th>
           <th>published?</th>
           <th class="last">Options</th>
         </tr>
@@ -42,6 +43,9 @@
             <%= link_to "show", '#', :class=>"show_description", :data =>{'div-id' => "d_jp_#{picture.id}"} %>
           </td>
           <td><%= image_tag(picture.thumb) %></td>
+          <td>
+            <%= link_to "preview", "http://#{request.host}/visions/#{picture.vision.id}/#{picture.id}" %>
+          </td>
           <td><%= picture.is_published %></td>
           <td class="last">
             <%= button_to pat(:edit), url(:pictures, :edit, :id => picture.id), :method => :get, :class => :button_to %> |
