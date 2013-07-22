@@ -1,5 +1,7 @@
 <div class="item <%= css_class %>">
-  <%= image_tag(picture.large) %>
+  <a data-toggle="lightbox" href="#demoLightbox_<%=picture.id%>">
+    <%= image_tag(picture.large) %>
+  </a>
   <% if (picture.description_en != nil && picture.description_en != "") ||
         (picture.description_es != nil && picture.description_es != "") ||
         (picture.description_jp != nil && picture.description_jp != "")

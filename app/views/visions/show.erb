@@ -40,3 +40,9 @@
     <div class="span1"></div>
   </div>
 </div>
+<br clear="all"/>
+<% @pictures.each do |picture| %>
+  <div id="demoLightbox_<%= picture.id %>" class="lightbox hide fade" role="dialog">
+    <div class='lightbox-content'><%= image_tag picture.x_large %></div>
+  </div>
+<% end %>
