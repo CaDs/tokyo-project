@@ -1,7 +1,7 @@
 Admin.controllers :pictures do
 
   get :index do
-    @pictures = Picture.order(:id).paginate(:page => params[:page], :per_page => 5)
+    @pictures = Picture.order('created at DESC').paginate(:page => params[:page], :per_page => 5)
     render 'pictures/index'
   end
 
