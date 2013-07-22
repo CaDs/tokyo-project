@@ -5,6 +5,7 @@ class Admin < Padrino::Application
   register Padrino::Cache
   register Padrino::Helpers
   register Padrino::Admin::AccessControl
+  register HttpAuthentication::Basic
 
   set :cache, Padrino::Cache::Store::Memcache.new(::Dalli::Client.new)
   ##

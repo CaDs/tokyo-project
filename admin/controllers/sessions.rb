@@ -1,4 +1,9 @@
+include HttpAuthentication::Basic
 Admin.controllers :sessions do
+
+  before do
+    halt(401, 'Not Authorized') unless authenticate_or_request_with_http_basic
+  end
 
   get :new do
     render "/sessions/new", nil, :layout => false
