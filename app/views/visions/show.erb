@@ -43,6 +43,6 @@
 <br clear="all"/>
 <% @pictures.each do |picture| %>
   <div id="demoLightbox_<%= picture.id %>" class="lightbox hide fade" role="dialog">
-    <div class='lightbox-content'><%= image_tag picture.x_large %></div>
+    <div class='lightbox-content'><%= image_tag picture.large %></div>
   </div>
 <% end %>

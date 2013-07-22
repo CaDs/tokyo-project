@@ -32,15 +32,6 @@ class Picture < ActiveRecord::Base
     return url
   end
 
-  def x_large
-    url = TokyoProject.cache.get "cached_picture_#{self.id}_x_large"
-    if url == "" || url == nil
-      url = FlickRaw.url_o(flickr_version) rescue ""
-      TokyoProject.cache.set("cached_picture_#{self.id}_x_large", url, :expires_in => 6000)
-    end
-    return url
-  end
-
   def clear_cache
     #should clear cache for itself, the vision and the area
     key = "cached_picture_#{self.id}"
