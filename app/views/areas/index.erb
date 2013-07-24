@@ -1,1 +1,13 @@
-<%= partial('/areas/grid', :locals => {:areas => @areas} )%>
+<div class="container">
+  <div class="row-fluid">
+    <% @areas.in_groups_of(3) do |group| %>
+      <ul class="thumbnails">
+        <% group.compact.each do |area| %>
+          <li class="span4">
+            <%= partial('areas/area_block', :locals => {:area => area, :vision => area.visions.first, :show_link => true})%>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div>
