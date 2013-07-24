@@ -23,7 +23,7 @@
           <td><%= vision.title %></td>
           <td><%= vision.short_description %></td>
           <td><%= vision.body %></td>
-          <td><%= link_to(vision.title, url(:areas, :edit, vision.area_id)) %></td>
+          <td><%= link_to(vision.area.name, url(:areas, :edit, vision.area_id)) %></td>
           <td class="last">
             <%= button_to pat(:edit), url(:visions, :edit, :id => vision.id), :method => :get, :class => :button_to %> |
             <%= button_to pat(:delete), url(:visions, :destroy, :id => vision.id), :method => :delete, :class => :button_to, :onsubmit => "return confirm('#{pat(:confirm)}')" %>
