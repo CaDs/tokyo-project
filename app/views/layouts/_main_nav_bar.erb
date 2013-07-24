@@ -4,6 +4,7 @@
       <a class="brand" href="/">Tokyo Project</a>
       <div class=".nav-collapse.collapse" data-toggle="collapse" data-target=".nav-collapse">
         <ul class="nav">
+          <%= partial('layouts/main_nav_bar_item', :locals => {:url => '/visions', :caption => "Visions"})%>
           <%= partial('layouts/main_nav_bar_item', :locals => {:url => '/areas', :caption => "Areas"})%>
           <%= partial('layouts/main_nav_bar_item', :locals => {:url => '/about', :caption => "About"})%>
         </ul>

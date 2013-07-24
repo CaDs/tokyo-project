@@ -4,11 +4,11 @@ TokyoProject.controllers :areas do
   end
 
   get :index, :cache => true do
-    cache_key 'areas'
-    expires_in(Padrino.env.to_s == "production" ? 3600 : 1)
-
-    @visions = Vision.order("created_at").all
-    render 'areas/index'
+    key = 'areas'
+    cache(key, expires_in: (Padrino.env.to_s == "production" ? 3600 : 1)) do
+      @areas = Area.order("created_at").all.find_all{|a| a.visions.any?}
+      render 'areas/index'
+    end
   end
 
   get :show, :with => :id do

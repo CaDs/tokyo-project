@@ -4,6 +4,14 @@ TokyoProject.controllers :visions do
     ActiveRecord::Base.connection.close
   end
 
+  get :index, :map => '/visions' do
+    key = "visions"
+    cache(key, expires_in: (Padrino.env.to_s == "production" ? 3600 : 1)) do
+      @visions = Vision.order("created_at").all.find_all{|v| v.pictures.any?}
+      render 'visions/index'
+    end
+  end
+
   get :show, :map => '/visions/:id(/:pid)' do
     key = "vision_show_#{params[:id]}"
     key += "_#{params[:pid]}" if params[:pid]
