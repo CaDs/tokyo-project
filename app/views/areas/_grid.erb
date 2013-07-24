@@ -4,7 +4,7 @@
       <ul class="thumbnails">
         <% group.compact.each do |area| %>
           <li class="span4">
-            <%= partial('layouts/landing_block', :locals => {:vision => area.visions.first, :show_link => true})%>
+            <%= partial('areas/area_block', :locals => {:area => area, :vision => area.visions.first, :show_link => true})%>
           </li>
         <% end %>
       </ul>
