@@ -6,7 +6,7 @@ TokyoProject.controllers :areas do
   get :index, :cache => true do
     key = 'areas'
     cache(key, expires_in: (Padrino.env.to_s == "production" ? 3600 : 1)) do
-      @areas = Area.order("created_at").all.find_all{|a| a.visions.any?}
+      @areas = Area.order("created_at DESC").all.find_all{|a| a.visions.any?}
       render 'areas/index'
     end
   end
