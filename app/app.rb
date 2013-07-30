@@ -68,22 +68,7 @@ class TokyoProject < Padrino::Application
     static_pages = [uri(url("/")), uri(url("/about"))]
     areas = Area.all.collect{|area| uri url(:areas, :show, id: "#{area.id}")}
     visions = Vision.all.collect{|vision| uri url(:visions, :show, id: "#{vision.id}")}
-    pictures = Picture.all.collect{|picture| uri url(:visions, :show, id: "#{picture.vision.id}", pid: picture.id)}
-    @urls = static_pages + areas + visions + pictures
-
-    xml = Builder::XmlMarkup.new(:target =>"", :indent => 2)
-    xml.instruct! :xml, :encoding => "UTF-8"
-    xml.urlset(
-      'xmlns'.to_sym => "http://www.sitemaps.org/schemas/sitemap/0.9",
-      'xmlns:image'.to_sym => "http://www.google.com/schemas/sitemap-image/1.1"
-    )do
-      @urls.each do |url|
-        xml.url do |url_tag|
-          url_tag.loc url
-          url_tag.changefreq "hourly"
-        end
-      end
-    end
-    xml
+    @urls = static_pages + areas + visions
+    render 'layouts/sitemap'
   end
 end
