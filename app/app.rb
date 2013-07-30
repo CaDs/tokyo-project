@@ -62,7 +62,7 @@ class TokyoProject < Padrino::Application
 
   require 'builder'
   get '/sitemap', :provides => [:xml] do
-    static_pages = [uri(url("/")), uri(url("/about"))]
+    static_pages = [uri(url("/")), uri(url("/about")), uri(url(:areas, :index)), uri(url(:visions, :index))]
     areas = Area.all.collect{|area| uri url(:areas, :show, id: "#{area.id}")}
     visions = Vision.all.collect{|vision| uri url(:visions, :show, id: "#{vision.id}")}
     @urls = static_pages + areas + visions
