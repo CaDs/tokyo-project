@@ -61,10 +61,7 @@ class TokyoProject < Padrino::Application
   end
 
   require 'builder'
-  get '/sitemap', :provides => [:xml], :cache => true do
-    cache_key 'sitemap'
-    expires_in(Padrino.env.to_s == "production" ? 3600 : 100)
-
+  get '/sitemap', :provides => [:xml] do
     static_pages = [uri(url("/")), uri(url("/about"))]
     areas = Area.all.collect{|area| uri url(:areas, :show, id: "#{area.id}")}
     visions = Vision.all.collect{|vision| uri url(:visions, :show, id: "#{vision.id}")}
