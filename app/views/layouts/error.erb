@@ -1,6 +1,9 @@
 <style media="screen" type="text/css">
   body {
     background-image: url('images/scbw.jpg');
+    background-repeat:no-repeat;
+    background-size:contain;
+    background-position:center;
   }
   .error_message{
     font-size: 40pt;
@@ -10,5 +13,7 @@
 </style>
 
 <body>
-  <div class="error_message"><%= @message %></div>
+  <div class="container">
+    <div class="error_message"><%= @message %></div>
+  </div>
 </body>
