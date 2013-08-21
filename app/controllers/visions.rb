@@ -7,7 +7,7 @@ TokyoProject.controllers :visions do
   get :index, :map => '/visions' do
     key = "visions"
     cache(key, expires_in: (Padrino.env.to_s == "production" ? 3600 : 1)) do
-      @visions = Vision.order("created_at DESC").all.find_all{|v| v.pictures.any?}
+      @visions = Vision.order("created_at DESC").all.find_all{|v| v.published_pictures.any?}
       render 'visions/index'
     end
   end

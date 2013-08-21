@@ -15,7 +15,7 @@ TokyoProject.controllers :areas do
     key =  "area_show_#{params[:id]}"
     cache(key, expires_in: (Padrino.env.to_s == "production" ? 3600 : 1)) do
       @area = Area.find(params[:id])
-      @visions = @area.visions
+      @visions = @area.visions.find_all{|v| v.published_pictures.any?}
       render 'areas/show'
     end
   end

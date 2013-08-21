@@ -1,7 +1,7 @@
 Admin.controllers :visions do
 
   get :index do
-    @visions = Vision.order(:id).find_all{|v| v.published_pictures.count > 0}.paginate(:page => params[:page], :per_page => 10)
+    @visions = Vision.order(:id).paginate(:page => params[:page], :per_page => 10)
     render 'visions/index'
   end
 
