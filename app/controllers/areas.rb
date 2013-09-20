@@ -3,7 +3,7 @@ TokyoProject.controllers :areas do
     ActiveRecord::Base.connection.close
   end
 
-  get :index, :cache => true do
+  get :index do
     key = 'areas'
     cache(key, expires_in: (Padrino.env.to_s == "production" ? 3600 : 1)) do
       @areas = Area.order("created_at DESC").all.find_all{|a| a.visions.any?}
