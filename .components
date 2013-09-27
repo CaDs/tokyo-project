@@ -6,3 +6,4 @@
 :renderer: erb
 :stylesheet: none
 :admin_renderer: erb
+:namespace: TokyoProject
