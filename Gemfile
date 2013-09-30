@@ -34,6 +34,9 @@ gem 'dalli', :require => 'dalli'
 #Images
 gem 'flickraw', :require => 'flickraw'
 
+#GeoStuff
+gem "geocoder"
+
 #Debugger
 group :development, :test do
   gem "debugger"

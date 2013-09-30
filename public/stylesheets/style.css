@@ -49,3 +49,7 @@ a.vision_link{
 .twitter-share-button {
   width: 80px !important;
 }
+
+.big_number {
+  font-size: 12pt;
+}
