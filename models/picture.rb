@@ -32,6 +32,10 @@ class Picture < ActiveRecord::Base
     return url
   end
 
+  def pinpoint_code(label="1")
+    code = (self.latitude && self.longitude) ? "&markers=|color:blue|label:#{label}|#{self.longitude},#{self.latitude}" : ""
+  end
+
   def clear_cache
     #should clear cache for itself, the vision and the area
     key = "cached_picture_#{self.id}"

@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="span12">
+      <h2><%=@vision.title%></h2>
+      <h4>
+         Back to <%= link_to "normal view", url(:visions, :show, :id => @vision.id) %> 
+      </h4>
+      <h4 class="muted"><%= @vision.short_description %></h4>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="span6">
+      <div id="map_canvas">
+        <%= image_tag(@map_url)%>
+      </div>
+    </div>
+    <div class="span1">
+    </div>
+    <div class="span5">
+      <div id="picture_list">
+        <% @map_legend.each do |box|%>
+          <div class="container">
+            <div class="row">
+              <div class="span12">
+                <span class="big_number"> <%= box[0] %> </span>
+                <% picture = Picture.find(box[1]) %>
+                <%= link_to(image_tag(picture.thumb), url(:visions, :show, id: "#{picture.vision.id}", pid: picture.id))%>
+              </div>
+            </div>
+          </div>
+          <br/>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

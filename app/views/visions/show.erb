@@ -4,6 +4,7 @@
       <h2><%=@vision.title%></h2>
       <h4>
         See more visions for <%= link_to @vision.area.name, url(:areas, :show, :id => @vision.area) %> area
+        <% link_to "(View on map)", url(:maps, :show, :id => @vision.id) %>
       </h4>
       <h4 class="muted"><%= @vision.short_description %></h4>
     </div>

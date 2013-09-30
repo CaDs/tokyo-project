@@ -6,12 +6,20 @@
   <%= f.label "Flickr ID" %><%= f.error_message_on :flickr_id %>
   <%= f.text_field :flickr_id, :class => :text_field %>
 </div>
-<% if @picture %>
+<% if @picture && @picture.flickr_id %>
   <div class="group">
     <%= f.label "Preview" %><br/>
     <%= image_tag(@picture.thumb) %>
   </div>
 <% end %>
+<div class="group">
+  <%= f.label "Longitude" %><%= f.error_message_on :longigute %>
+  <%= f.text_field :longitude, :class => :text_field %>
+</div>
+<div class="group">
+  <%= f.label "Latitude" %><%= f.error_message_on :latitude %>
+  <%= f.text_field :latitude, :class => :text_field %>
+</div>
 <div class="group">
   <%= f.label :description_en %><%= f.error_message_on :description_en %>
   <%= f.text_area :description_en, :class => 'text_area', :id => "rich_text1" %>

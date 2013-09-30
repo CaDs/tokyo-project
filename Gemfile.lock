@@ -33,6 +33,7 @@ GEM
     diff-lcs (1.2.4)
     erubis (2.7.0)
     flickraw (0.9.6)
+    geocoder (1.1.8)
     http_router (0.11.0)
       rack (>= 1.0.0)
       url_mount (~> 0.2.1)
@@ -120,6 +121,7 @@ DEPENDENCIES
   debugger
   erubis (~> 2.7.0)
   flickraw
+  geocoder
   memcachier
   mysql2
   padrino (= 0.11.1)
