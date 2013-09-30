@@ -33,7 +33,7 @@ class Picture < ActiveRecord::Base
   end
 
   def pinpoint_code(label="1")
-    code = (self.latitude && self.longitude) ? "&markers=|color:blue|label:#{label}|#{self.longitude},#{self.latitude}" : ""
+    code = (self.latitude && self.longitude) ? "&markers=|color:blue|label:#{label}|#{self.latitude},#{self.longitude}" : ""
   end
 
   def clear_cache

@@ -11,7 +11,7 @@ class Vision < ActiveRecord::Base
 
   def map_data
     res = {}
-    geolocations = self.pictures.find_all{|p| p.is_published == true}.collect{|p| [p.longitude, p.latitude].compact}.delete_if{|a| a.empty?}
+    geolocations = self.pictures.find_all{|p| p.is_published == true}.collect{|p| [p.latitude, p.longitude].compact}.delete_if{|a| a.empty?}
     center = Geocoder::Calculations.geographic_center(geolocations)
     url = "http://maps.googleapis.com/maps/api/staticmap?center=#{center}&zoom=13&size=600x300&maptype=roadmap&sensor=false"
     legend = []
