@@ -9,6 +9,10 @@ class Vision < ActiveRecord::Base
     pictures.order("created_at DESC").find_all{|p| p.is_published }
   end
 
+  def has_map_info?
+    pictures.where('latitude != ? && longitude != ?', '', '').any?
+  end
+
   def map_data
     res = {}
     geolocations = self.pictures.find_all{|p| p.is_published == true}.collect{|p| [p.latitude, p.longitude].compact}.delete_if{|a| a.empty?}
