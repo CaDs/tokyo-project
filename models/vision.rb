@@ -39,6 +39,7 @@ class Vision < ActiveRecord::Base
   def clear_cache
     TokyoProject.cache.delete("visions")
     TokyoProject.cache.delete("vision_show_#{self.id}")
+    TokyoProject.cache.delete("maps_show_#{self.id}")
     area.clear_cache
   end
 
