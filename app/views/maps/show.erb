@@ -11,27 +11,35 @@
 </div>
 <div class="container">
   <div class="row">
-    <div class="span6">
-      <div id="map_canvas">
-        <%= image_tag(@map_url)%>
+    <div class="span12">
+      <div class="Flexible-container">
+        <%= link_to(image_tag(@static_map_url), @dynamic_map_url, :target => '_alt') %>
       </div>
     </div>
-    <div class="span1">
-    </div>
-    <div class="span5">
+  </div>
+</div>
+<br/>
+<div class="container">
+  <div class="row">
+    <div class="span12">
       <div id="picture_list">
-        <% @map_legend.each do |box|%>
-          <div class="container">
-            <div class="row">
-              <div class="span12">
-                <span class="big_number"> <%= box[0] %> </span>
-                <% picture = Picture.find(box[1]) %>
-                <%= link_to(image_tag(picture.thumb), url(:visions, :show, id: "#{picture.vision.id}", pid: picture.id))%>
-              </div>
-            </div>
+        <div class="container">
+          <div class="row-fluid">
+            <% @map_legend.in_groups_of(3) do |group| %>
+              <ul class="thumbnails">
+                <% group.compact.each do |box| %>
+                  <li class="span4">
+                    <div class="image_ban">
+                      <% picture = Picture.find(box[1]) %>
+                      <h4> <%= box[0] %></h4>
+                      <%= link_to(image_tag(picture.medium), url(:visions, :show, id: "#{picture.vision.id}", pid: picture.id))%>
+                    </div>
+                  </li>
+                <% end %>
+              </ul>
+            <% end %>
           </div>
-          <br/>
-        <% end %>
+        </div>
       </div>
     </div>
   </div>

@@ -13,19 +13,21 @@ class Vision < ActiveRecord::Base
     res = {}
     geolocations = self.pictures.find_all{|p| p.is_published == true}.collect{|p| [p.latitude, p.longitude].compact}.delete_if{|a| a.empty?}
     center = Geocoder::Calculations.geographic_center(geolocations)
-    url = "http://maps.googleapis.com/maps/api/staticmap?center=#{center}&zoom=13&size=600x300&maptype=roadmap&sensor=false"
+    static_url = "http://maps.googleapis.com/maps/api/staticmap?center=#{center}&zoom=16&size=650x350&maptype=roadmap&sensor=false"
+    dynamic_url = "http://maps.google.com/maps?q=#{center.first},#{center.last}&zoom=16&size=650x350&maptype=roadmap&sensor=false"
     legend = []
     index = 1
     self.pictures.find_all{|p| p.is_published == true}.each do |picture|
       pinpoint = picture.pinpoint_code(index)
       if pinpoint != ""
         legend <<  [index, picture.id]
-        url += pinpoint
+        static_url += pinpoint
+        dynamic_url += pinpoint
         index += 1
       end
     end
-    res['url'] = url
-    puts url
+    res['static_url'] = static_url
+    res['dynamic_url'] = dynamic_url
     res['legend'] = legend
     return res
   end

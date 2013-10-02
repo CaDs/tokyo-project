@@ -38,6 +38,23 @@ a.vision_link{
   margin-right: auto;
 }
 
+.image_ban h4{
+  color: white;
+  position: absolute;
+  font: bold 16px Helvetica;
+  letter-spacing: -1px;
+  background: #000;
+  padding: 8px;
+}
+
+.image_ban h4 a {
+  color: white;
+}
+
+.image h4 a{
+  color: white;
+}
+
 .top{
   margin-top: 2em;
 }
@@ -50,6 +67,20 @@ a.vision_link{
   width: 80px !important;
 }
 
-.big_number {
-  font-size: 12pt;
+/* Flexible iFrame */
+
+.Flexible-container {
+    position: relative;
+    padding-bottom: 50%;
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
+}
+
+.Flexible-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
