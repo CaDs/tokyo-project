@@ -32,5 +32,4 @@ end
 
 # Mounts the core application for this project
 Padrino.mount("TokyoProject").to('/')
-
-Padrino.mount("Admin").to("/admin")
+Padrino.mount("Admin", :app_file => File.expand_path('../../admin/app.rb', __FILE__)).to("/admin")
