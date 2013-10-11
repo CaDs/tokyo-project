@@ -16,7 +16,7 @@
     <div class="navbar navbar-fixed-top">
       <div class=navbar-inner>
         <div class=container>
-          <%= link_to 'Padrino', url(:base_index), :class => 'navbar-brand', :title => 'Padrino Admin' %>
+          <%= link_to '東京 Project', url(:base_index), :class => 'navbar-brand', :title => 'Padrino Admin' %>
           <ul class="nav pull-right">
             <li class=navbar-edit-account><%= link_to tag_icon(:user), url(:accounts, :edit, :id => current_account.id), :title => pat(:profile), :class => 'navbar-nav-link' %></li>
             <li class=navbar-logout>
@@ -49,13 +49,7 @@
 
     <footer>
       <div class='footer-wrapper container'>
-        <p class='pull-left'>Copyright &copy; 2013 Your Site - Powered by Padrino v.0.11.1</p>
-        <ul class='pull-right footer-links'>
-          <li><%= link_to tag_icon(:home, 'web'), 'http://www.padrinorb.com', :target => :_blank, :class => 'footer-links-link' %></li>
-          <li><%= link_to tag_icon(:heart, 'blog'), 'http://www.padrinorb.com/blog', :target => :_blank, :class => 'footer-links-link' %></li>
-          <li><%= link_to tag_icon(:github, 'code'), 'https://github.com/padrino/padrino-framework', :target => :_blank, :class => 'footer-links-link' %></li>
-          <li><%= link_to tag_icon(:twitter, 'twitter'), 'http://twitter.com/padrinorb', :target => :_blank, :class => 'footer-links-link' %></li>
-        </ul>
+        <p class='pull-left'>Copyright &copy; 2013 Tokyo Project - Powered by Padrino <%= Padrino.version %></p>
       </div>
     </footer>
 
