@@ -1,10 +1,4 @@
-include HttpAuthentication::Basic
-Admin.controllers :sessions do
-
-  before do
-    halt(401, 'Not Authorized') unless authenticate_or_request_with_http_basic
-  end
-
+::Admin.controllers :sessions do
   get :new do
     render "/sessions/new", nil, :layout => false
   end
@@ -19,7 +13,7 @@ Admin.controllers :sessions do
       redirect url(:base, :index)
     else
       params[:email], params[:password] = h(params[:email]), h(params[:password])
-      flash[:warning] = "Login or password wrong."
+      flash[:error] = pat('login.error')
       redirect url(:sessions, :new)
     end
   end

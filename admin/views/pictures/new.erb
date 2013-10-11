@@ -1,17 +1,9 @@
-<div class="block">
-  <div class="secondary-navigation">
-    <ul class="wat-cf">
-      <li class="first"><%= link_to pat(:list), url(:pictures, :index) %></li>
-      <li class="active"><%= link_to pat(:new), url(:pictures, :new) %></li>
-    </ul>
-  </div>
-  <div class="content">
-    <h2 class="title"><%= pat(:new) %> <% mt(:picture) %></h2>
-    <div class="inner">
-      <% form_for :picture, url(:pictures, :create), :class => :form do |f| %>
-        <%= partial "pictures/form", :locals => { :f => f, :visions => @visions } %>
-      <% end %>
-    </div>
-  </div>
+<ul class="nav nav-tabs">
+  <li> <%= link_to tag_icon(:list, pat(:list)), url(:pictures, :index) %></li>
+  <li class="active"> <%= link_to tag_icon(:plus, pat(:new)), url(:pictures, :new) %></li>
+</ul>
+<div class="tabs-content">
+  <% form_for :picture, url(:pictures, :create), :class => 'form-horizontal' do |f| %>
+    <%= partial "pictures/form", :locals => { :f => f, :visions => @visions } %>
+  <% end %>
 </div>
-<% content_for :sidebar, partial("base/sidebar") %>
