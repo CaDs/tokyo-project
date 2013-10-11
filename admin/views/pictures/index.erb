@@ -15,6 +15,7 @@
         <th class="header"><%= mat(:picture, :preview) %></th>
         <th class="header"><%= mat(:picture, :share_url) %></th>
         <th class="header">published?</th>
+        <th class="header list-row-action-header"></th>
       </tr>
     </thead>
     <tbody>
@@ -47,18 +48,18 @@
         <td class=list-column><%= picture.is_published %></td>
         <td class="list-column list-row-action">
           <div class='list-row-action-wrapper'>
-          <%= link_to tag_icon(:edit), url(:pictures, :edit, :id => picture.id), :method => :get, :rel => :tooltip, :title => "#{pat(:edit)} picture", :class => 'list-row-action-wrapper-link' %>
-          <%= link_to tag_icon(:trash), url(:pictures, :destroy, :id => picture.id), :method => :delete, :rel => :tooltip, :title => "#{pat(:delete)} picture", :class => 'list-row-action-delete-one list-row-action-wrapper-link', :onsubmit => "return confirm('#{pat(:confirm)}')" %>
-          <div class="popover list-row-action-popover-delete-one left">
-                 <div class=arrow> </div>
-                 <h3 class=popover-title><%= pat(:delete, :model => "account") %></h3>
-                 <div class=popover-content>
-                   <%- form_tag url(:pictures, :destroy, :id => picture.id), :method => :delete do %>
-                     <%= submit_tag pat(:delete), :class =>'list-row-action-popover-delete-one-btn btn btn-danger btn-small' %>
-                     <div class="btn btn-small cancel"><%= pat(:cancel) %></div>
-                   <% end %>
-               </div>
-             </div>
+            <%= link_to tag_icon(:edit), url(:pictures, :edit, :id => picture.id), :method => :get, :rel => :tooltip, :title => "#{pat(:edit)} picture", :class => 'list-row-action-wrapper-link' %>
+            <%= link_to tag_icon(:trash), url(:pictures, :destroy, :id => picture.id), :method => :delete, :rel => :tooltip, :title => "#{pat(:delete)} picture", :class => 'list-row-action-delete-one list-row-action-wrapper-link', :onsubmit => "return confirm('#{pat(:confirm)}')" %>
+            <div class="popover list-row-action-popover-delete-one left">
+              <div class=arrow> </div>
+              <h3 class=popover-title><%= pat(:delete, :model => "account") %></h3>
+              <div class=popover-content>
+                <%- form_tag url(:pictures, :destroy, :id => picture.id), :method => :delete do %>
+                  <%= submit_tag pat(:delete), :class =>'list-row-action-popover-delete-one-btn btn btn-danger btn-small' %>
+                  <div class="btn btn-small cancel"><%= pat(:cancel) %></div>
+                <% end %>
+              </div>
+            </div>
           </div>
         </td>
       </tr>

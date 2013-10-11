@@ -3,14 +3,8 @@
   <li> <%= link_to tag_icon(:plus, pat(:new)), url(:pictures, :new) %></li>
   <li class="active"> <%= link_to tag_icon(:edit, pat(:edit)), url(:pictures, :edit, :id => @picture.id) %></li>
 </ul>
-<div class="block">
-  <div class="content">
-    <h2 class="title"><%= pat(:edit) %> <% mt(:picture) %></h2>
-    <div class="inner">
-      <% form_for :picture, url(:pictures, :update, :id => @picture.id), :method => :put, :class => 'form-horizontal' do |f| %>
-        <%= partial "pictures/form", :locals => { :f => f, :visions => @visions } %>
-      <% end %>
-    </div>
-  </div>
+<div class="tabs-content">
+  <% form_for :picture, url(:pictures, :update, :id => @picture.id), :method => :put, :class => 'form-horizontal' do |f| %>
+    <%= partial "pictures/form", :locals => { :f => f, :visions => @visions } %>
+  <% end %>
 </div>
-<% content_for :sidebar, partial("base/sidebar") %>
