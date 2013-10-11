@@ -1,4 +1,4 @@
-::Admin.controllers :posts do
+Admin.controllers :posts do
   get :index do
     @title = "Posts"
     @posts = Post.all
@@ -13,6 +13,7 @@
 
   post :create do
     @post = Post.new(params[:post])
+    @post.account_id = current_account.id
     if @post.save
       @title = pat(:create_title, :model => "post #{@post.id}")
       flash[:success] = pat(:create_success, :model => 'Post')

@@ -3,23 +3,20 @@
   <%= f.label :title, :class => 'control-label' %>
   <div class='controls'>
     <%= f.text_field :title, :class => 'input-xlarge input-with-feedback', :autofocus => true %>
-    <span class='help-inline'><%= error ? f.error_message_on(:title) : "Ex: a simple text" %></span>
   </div>
 </fieldset>
 <% error = @post.errors.include?(:body) %>
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
   <%= f.label :body, :class => 'control-label' %>
   <div class='controls'>
-    <%= f.text_area :body, :class => 'input-xlarge input-with-feedback' %>
-    <span class='help-inline'><%= error ? f.error_message_on(:body) : "Ex: a simple text" %></span>
+    <%= f.text_area :body, :class => 'input-xlarge input-with-feedback', :rows => 20 %>
   </div>
 </fieldset>
-<% error = @post.errors.include?(:published?) %>
+<% error = @post.errors.include?(:is_published) %>
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :published?, :class => 'control-label' %>
+  <%= f.label :is_published, :class => 'control-label' %>
   <div class='controls'>
-    <%= f.check_box :published?, :class => 'input-xlarge input-with-feedback' %>
-    <span class='help-inline'><%= error ? f.error_message_on(:published?) : "Ex: a simple text" %></span>
+    <%= f.check_box :is_published, :class => 'input-xlarge input-with-feedback' %>
   </div>
 </fieldset>
 
@@ -31,3 +28,10 @@
   &nbsp;
   <%= link_to pat(:cancel), url(:posts, :index), :class => 'btn' %>
 </div>
+
+<script>
+  CKEDITOR.replace("post_body",{
+        toolbar : 'Basic',
+        height: 300
+    })
+</script>

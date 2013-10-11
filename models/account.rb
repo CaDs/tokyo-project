@@ -16,6 +16,7 @@ class Account < ActiveRecord::Base
   before_save :encrypt_password, :if => :password_required
 
   has_many :visions
+  has_many :posts
 
   ##
   # This method is for authentication purpose

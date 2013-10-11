@@ -38,8 +38,7 @@
         </th>
                 <th class=header> <%= :id %></th>
                 <th class=header> <%= :title %></th>
-                <th class=header> <%= :body %></th>
-                <th class=header> <%= :published? %></th>
+                <th class=header> <%= :is_published %></th>
                 <th class=header> <%= :created_at %></th>
                 <th class=header> <%= :updated_at %></th>
                 <th class="header list-row-action-header"></th>
@@ -53,8 +52,7 @@
            </td>
           <td class=list-column> <%= post.id %> </td>
           <td class=list-column> <%= post.title %> </td>
-          <td class=list-column> <%= post.body %> </td>
-          <td class=list-column> <%= post.published? ? tag_icon(:ok) : tag_icon(:remove) %> </td>
+          <td class=list-column> <%= post.is_published ? tag_icon(:ok) : tag_icon(:remove) %> </td>
           <td class=list-column> <%= time_ago_in_words post.created_at %></td>
           <td class=list-column> <%= time_ago_in_words post.updated_at %></td>
           <td class="list-column list-row-action">

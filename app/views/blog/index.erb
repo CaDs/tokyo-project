@@ -1,0 +1,3 @@
+<% @posts.each do |post| %>
+  <%= partial 'blog/post', :locals => { :post => post } %>
+<% end %>
