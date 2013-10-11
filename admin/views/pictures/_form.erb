@@ -1,43 +1,66 @@
-<div class="group">
-  <%= f.label :vision_id %><%= f.error_message_on :vision_id %>
-  <%= f.select :vision_id, :options => visions.collect{|v| [v.title, v.id]} %>
-</div>
-<div class="group">
-  <%= f.label "Flickr ID" %><%= f.error_message_on :flickr_id %>
-  <%= f.text_field :flickr_id, :class => :text_field %>
-</div>
-<% if @picture && @picture.flickr_id %>
-  <div class="group">
-    <%= f.label "Preview" %><br/>
-    <%= image_tag(@picture.thumb) %>
+<% error = @picture.errors.include?(:name) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :vision_id, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.select :vision_id, :options => visions.collect{|v| [v.title, v.id]} %>
   </div>
+</fieldset>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label "Flickr ID", :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :flickr_id, :class => :text_field %>
+  </div>
+</fieldset>
+<% if @picture && @picture.flickr_id %>
+  <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+    <%= f.label "Preview", :class => 'control-label' %><br/>
+    <div class='controls'>
+      <%= image_tag(@picture.thumb) %>
+    </div>
+  </fieldset>
 <% end %>
-<div class="group">
-  <%= f.label "Latitude" %><%= f.error_message_on :latitude %>
-  <%= f.text_field :latitude, :class => :text_field %>
-</div>
-<div class="group">
-  <%= f.label "Longitude" %><%= f.error_message_on :longigute %>
-  <%= f.text_field :longitude, :class => :text_field %>
-</div>
-<div class="group">
-  <%= f.label :description_en %><%= f.error_message_on :description_en %>
-  <%= f.text_area :description_en, :class => 'text_area', :id => "rich_text1" %>
-</div>
-<div class="group">
-  <%= f.label :description_es %><%= f.error_message_on :description_es %>
-  <%= f.text_area :description_es, :class => 'text_area', :id => "rich_text2" %>
-</div>
-<div class="group">
-  <%= f.label :description_jp %><%= f.error_message_on :description_jp %>
-  <%= f.text_area :description_jp, :class => 'text_area', :id => "rich_text3" %>
-</div>
-<div class="group">
-  <%= f.label :is_published %><%= f.error_message_on :is_published %>
-  <%= f.select :is_published, :options => [["no", false], ["yes", true]] %>
-</div>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label "Latitude", :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :latitude, :class => :text_field %>
+  </div>
+</fieldset>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label "Longitude", :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :longitude, :class => :text_field %>
+  </div>
+</fieldset>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :description_en, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_area :description_en, :class => 'text_area', :id => "rich_text1" %>
+  </div>
+</fieldset>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :description_es, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.error_message_on :description_es %>
+    <%= f.text_area :description_es, :class => 'text_area', :id => "rich_text2" %>
+  </div>
+</fieldset>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :description_jp, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_area :description_jp, :class => 'text_area', :id => "rich_text3" %>
+  </div>
+</fieldset>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :is_published, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.select :is_published, :options => [["no", false], ["yes", true]] %>
+  </div>
+</fieldset>
 
-<div class="group navform wat-cf">
-  <%= f.submit pat(:save), :class => :button %>
-  <%= f.submit pat(:cancel), :onclick => "window.location='#{url(:pictures, :index)}';return false", :class => :button %>
+<div class="form-actions">
+  <%= f.submit pat(:save), :class => 'btn btn-primary' %>
+  &nbsp;
+  <%= f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue' %>
+  &nbsp;
+  <%= link_to pat(:cancel), url(:pictures, :index), :class => 'btn' %>
 </div>
