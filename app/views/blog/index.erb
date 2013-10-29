@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="span4 zordor">
+      <%=image_tag "http://farm4.staticflickr.com/3743/8875634115_8e5cc1c6a9_n.jpg"%>
+      <br/>
+      <h3 style="margin-top:0px;">Hola!</h3>
+      <p>My name is <%= link_to "Carlos", "http://about.me/cdonderis", :style => "font-weight:bold;" %>, I write software and I love to take pictures.</p>
+      <p>
+        A couple of years ago I decided to change the streets of my hometown in<%= link_to "San Lorenzo", "http://en.wikipedia.org/wiki/San_Lorenzo_de_El_Escorial", :style => "font-weight:bold;" %>  for the crowded avenues of this metropolis called <%= link_to "Tokyo", "http://en.wikipedia.org/wiki/Tokyo", :style => "font-weight:bold;"%>.
+        I have been loving this city since then.<br/>
+      </p>
+      <p>
+        There's so much beauty everywhere around here that I decided to build this site to share my visions of this city. I hope you will find them interesting.
+      </p>
+      <p>
+        Feel free to use any content on this site as you wish, and if you like the web
+        <%= link_to "here is the source code", "http://github.com/CaDs/tokyo-project", :style => "font-weight:bold;" %>
+        so you can build your own version (I hope you like Ruby).
+      </p>
+      <a href="https://twitter.com/CaDsTokyo" class="twitter-follow-button" data-show-count="false">Follow @CaDsTokyo</a>
+      <br/>
+      <div class="fb-like-box" data-href="https://www.facebook.com/tokyoprojectpage" data-width="300" data-show-faces="false" data-stream="false" data-show-border="false" data-header="false"></div>
+    </div>
+    <div class="span8">
+      <% @posts.each do |post| %>
+        <%= partial 'blog/post', :locals => { :post => post } %>
+      <% end %>
+    </div>
+  </div>
+</div>

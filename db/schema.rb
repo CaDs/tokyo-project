@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 6) do
+ActiveRecord::Schema.define(:version => 9) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -41,6 +41,17 @@ ActiveRecord::Schema.define(:version => 6) do
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
     t.boolean  "is_published"
+    t.string   "longitude"
+    t.string   "latitude"
+  end
+
+  create_table "posts", :force => true do |t|
+    t.integer  "account_id"
+    t.string   "title"
+    t.text     "body"
+    t.boolean  "is_published"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "visions", :force => true do |t|
@@ -51,6 +62,7 @@ ActiveRecord::Schema.define(:version => 6) do
     t.integer  "account_id"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.string   "wiki_url"
   end
 
   create_table "wards", :force => true do |t|

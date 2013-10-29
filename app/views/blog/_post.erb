@@ -1,0 +1,6 @@
+<h2><%= post.title %></h2>
+<div>Published on <%= post.created_at.strftime("%F") %></div>
+<br/>
+<div>
+  <%= post.body.html_safe%>
+</div>
