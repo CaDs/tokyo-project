@@ -65,7 +65,8 @@ class TokyoProject < Padrino::Application
     static_pages = [uri(url("/")), uri(url("/about")), uri(url(:areas, :index)), uri(url(:visions, :index))]
     areas = Area.all.collect{|area| uri url(:areas, :show, id: "#{area.id}")}
     visions = Vision.all.collect{|vision| uri url(:visions, :show, id: "#{vision.id}")}
-    @urls = static_pages + areas + visions
+    posts = Post.all.collect{|post| uri url(:blog, :show, id: "#{post.id}")}
+    @urls = static_pages + areas + visions + posts
     render 'layouts/sitemap'
   end
 end
