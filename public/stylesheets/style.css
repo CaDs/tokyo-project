@@ -56,7 +56,7 @@ a.vision_link{
 }
 
 .top{
-  margin-top: 2em;
+  margin-top: 4em;
 }
 
 .zordor{
@@ -87,6 +87,7 @@ a.vision_link{
 
 .navbar {
   height: 55px;
+  padding-bottom: 5px;
 }
 .navbar .nav {
   margin-top: 10px;
