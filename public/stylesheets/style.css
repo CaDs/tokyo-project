@@ -84,3 +84,10 @@ a.vision_link{
     width: 100%;
     height: 100%;
 }
+
+.navbar {
+  height: 55px;
+}
+.navbar .nav {
+  margin-top: 10px;
+}
