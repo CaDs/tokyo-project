@@ -16,6 +16,7 @@ Admin.controllers :posts do
     @post.account_id = current_account.id
     if @post.save
       @title = pat(:create_title, :model => "post #{@post.id}")
+      @post.clear_cache
       flash[:success] = pat(:create_success, :model => 'Post')
       params[:save_and_continue] ? redirect(url(:posts, :index)) : redirect(url(:posts, :edit, :id => @post.id))
     else
@@ -42,6 +43,7 @@ Admin.controllers :posts do
     if @post
       if @post.update_attributes(params[:post])
         flash[:success] = pat(:update_success, :model => 'Post', :id =>  "#{params[:id]}")
+        @post.clear_cache
         params[:save_and_continue] ?
           redirect(url(:posts, :index)) :
           redirect(url(:posts, :edit, :id => @post.id))
@@ -60,6 +62,7 @@ Admin.controllers :posts do
     post = Post.find(params[:id])
     if post
       if post.destroy
+        TokyoProject.cache.delete("blog")
         flash[:success] = pat(:delete_success, :model => 'Post', :id => "#{params[:id]}")
       else
         flash[:error] = pat(:delete_error, :model => 'post')
@@ -81,7 +84,7 @@ Admin.controllers :posts do
     posts = Post.find(ids)
     
     if Post.destroy posts
-    
+      TokyoProject.cache.delete("blog")
       flash[:success] = pat(:destroy_many_success, :model => 'Posts', :ids => "#{ids.to_sentence}")
     end
     redirect url(:posts, :index)

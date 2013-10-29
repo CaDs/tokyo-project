@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="row">
+    <div class="span4 zordor">
+      <%= partial 'blog/left_column' %>
+    </div>
+    <div class="span8">
+      <%= partial 'blog/post', :locals => { :post => @post } %>
+    </div>
+  </div>
+</div>
