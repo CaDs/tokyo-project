@@ -1,4 +1,4 @@
-source :rubygems
+source 'https://rubygems.org'
 
 ruby '2.0.0'
 
@@ -16,6 +16,8 @@ gem 'mysql2'
 # Test requirements
 gem 'rspec', :group => "test"
 gem 'rack-test', :require => "rack/test", :group => "test"
+gem 'factory_girl', :group => "test"
+gem 'database_cleaner', :group => "test"
 
 gem 'tilt', '1.3.7'
 
@@ -40,6 +42,8 @@ gem "geocoder"
 #Debugger
 group :development, :test do
   gem "debugger"
+  gem "cucumber"
+  gem "capybara"
 end
 
 #Performance
