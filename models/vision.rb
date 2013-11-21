@@ -21,7 +21,7 @@ class Vision < ActiveRecord::Base
     dynamic_url = "http://maps.google.com/maps?q=#{center.first},#{center.last}&zoom=16&size=650x350&maptype=roadmap&sensor=false"
     legend = []
     index = 1
-    self.pictures.find_all{|p| p.is_published == true}.each do |picture|
+    self.pictures.find_all{|p| p.is_published == true && p.latitude.to_s != ''}.each do |picture|
       pinpoint = picture.pinpoint_code(index)
       if pinpoint != ""
         legend <<  [index, picture.id]
