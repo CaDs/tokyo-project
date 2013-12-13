@@ -1,7 +1,7 @@
 Admin.controllers :posts do
   get :index do
     @title = "Posts"
-    @posts = Post.all
+    @posts = Post.order('created_at DESC')
     render 'posts/index'
   end
 

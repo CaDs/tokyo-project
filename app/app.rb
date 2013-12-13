@@ -52,7 +52,7 @@ class TokyoProject < Padrino::Application
   get '/', :cache => true do
     cache_key  'root_path'
     expires_in(Padrino.env.to_s == "production" ? 3600 : 1)
-    @visions = Picture.order('created_at DESC').collect(&:vision_id).uniq.first(3).collect{|id| Vision.find(id) }
+    @visions = Picture.where(:is_published => true).order('created_at DESC').collect(&:vision_id).uniq.first(3).collect{|id| Vision.find(id) }
     render 'layouts/landing'
   end
 
@@ -63,9 +63,9 @@ class TokyoProject < Padrino::Application
   require 'builder'
   get '/sitemap', :provides => [:xml] do
     static_pages = [uri(url("/")), uri(url("/about")), uri(url(:areas, :index)), uri(url(:visions, :index))]
-    areas = Area.all.collect{|area| uri url(:areas, :show, id: "#{area.id}")}
-    visions = Vision.all.collect{|vision| uri url(:visions, :show, id: "#{vision.id}")}
-    posts = Post.all.collect{|post| uri url(:blog, :show, id: "#{post.id}")}
+    areas = Area.scoped.collect{|area| uri url(:areas, :show, id: "#{area.id}")}
+    visions = Vision.scoped.collect{|vision| uri url(:visions, :show, id: "#{vision.id}")}
+    posts = Post.scoped.collect{|post| uri url(:blog, :show, id: "#{post.id}")}
     @urls = static_pages + areas + visions + posts
     render 'layouts/sitemap'
   end
