@@ -24,7 +24,7 @@ TokyoProject.controllers :visions do
         @picture ||= @vision.published_pictures.first
         render 'visions/show'
       else
-        flash[:notice] = "Vision not founded"
+        flash[:notice] = "Vision not found"
         redirect url(:areas, :index)
       end
     end #cache
