@@ -1,6 +1,6 @@
 source :rubygems
 
-ruby '2.0.0'
+ruby '2.1.0'
 
 # Project requirements
 gem 'rake'
@@ -39,7 +39,7 @@ gem "geocoder"
 
 #Debugger
 group :development, :test do
-  gem "debugger"
+  gem "byebug"
 end
 
 #Performance

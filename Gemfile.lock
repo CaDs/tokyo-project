@@ -6,7 +6,7 @@ GIT
       newrelic_rpm (~> 3.3.3)
 
 GEM
-  remote: https://rubygems.org/
+  remote: http://rubygems.org/
   specs:
     activemodel (3.2.12)
       activesupport (= 3.2.12)
@@ -22,14 +22,12 @@ GEM
     arel (3.0.2)
     bcrypt-ruby (3.1.1)
     builder (3.0.4)
+    byebug (2.5.0)
+      columnize (~> 0.3.6)
+      debugger-linecache (~> 1.2.0)
     columnize (0.3.6)
     dalli (2.6.4)
-    debugger (1.6.1)
-      columnize (>= 0.3.1)
-      debugger-linecache (~> 1.2.0)
-      debugger-ruby_core_source (~> 1.2.3)
     debugger-linecache (1.2.0)
-    debugger-ruby_core_source (1.2.3)
     diff-lcs (1.2.4)
     erubis (2.7.0)
     flickraw (0.9.6)
@@ -117,8 +115,8 @@ PLATFORMS
 DEPENDENCIES
   activerecord
   bcrypt-ruby
+  byebug
   dalli
-  debugger
   erubis (~> 2.7.0)
   flickraw
   geocoder
