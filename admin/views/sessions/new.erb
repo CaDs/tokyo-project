@@ -7,14 +7,14 @@
     <![endif]-->
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
     <meta name=viewport content='width=device-width,initial-scale=1' />
-    <title><%= @title.present? ? "#{@title} | Padrino Admin" : "#{pat('login.title')} | Padrino Admin" %></title>
+    <title><%= @title.present? ? "#{@title} | Tokyo Project Admin" : "#{pat('login.title')} | Tokyo Project Admin" %></title>
     <%= favicon_tag "favicon.ico" %>
     <%= stylesheet_link_tag "bootstrap", "application" %>
   </head>
   <body>
     <% form_tag url(:sessions, :create), :class=>"login form-horizontal" do %>
       <div class="login-header modal-header">
-        <div class="login-logo"> <%= image_tag("logo.png", :alt => "Padrino's logo", :height => 250, :width => 193) %> </div>
+        <div class="login-logo"> <%= image_tag("logo.png", :alt => "Tokyo Project's logo", :height => 250, :width => 193) %> </div>
       </div>
       <div class="login-body modal-body">
 
