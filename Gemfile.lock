@@ -23,7 +23,7 @@ GEM
     debugger-linecache (1.2.0)
     diff-lcs (1.2.4)
     erubis (2.7.0)
-    flickraw (0.9.6)
+    flickraw (0.9.8)
     geocoder (1.1.8)
     http_router (0.11.0)
       rack (>= 1.0.0)
