@@ -1,6 +1,6 @@
 source :rubygems
 
-ruby '2.1.0'
+ruby '2.1.2'
 
 # Project requirements
 gem 'rake'
