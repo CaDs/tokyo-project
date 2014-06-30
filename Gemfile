@@ -43,4 +43,5 @@ group :development, :test do
 end
 
 #Performance
-gem 'padrino-rpm', :git => 'https://github.com/Asquera/padrino-rpm.git'
+# gem 'padrino-rpm', :git => 'https://github.com/Asquera/padrino-rpm.git'
+gem 'newrelic_rpm'
