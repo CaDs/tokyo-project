@@ -44,6 +44,8 @@ end
 # Add your after (RE)load hooks here
 #
 Padrino.after_load do
+  Time.zone = 'Tokyo'
+  ActiveRecord::Base.default_timezone = :local
 end
 
 Padrino.load!
