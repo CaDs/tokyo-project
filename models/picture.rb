@@ -47,6 +47,6 @@ class Picture < ActiveRecord::Base
   end
 
   def seconds_to_publish
-    schedule_at.to_i - Time.now.to_i rescue 0
+    schedule_at.in_time_zone('Tokyo').to_i - Time.now.in_time_zone('Tokyo').to_i rescue 0
   end
 end
