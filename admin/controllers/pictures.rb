@@ -33,7 +33,7 @@ Admin.controllers :pictures do
     if @picture.update_attributes(params[:picture])
       @picture.clear_cache
       if params[:picture] && params[:picture][:schedule_at]
-        PictureJob.new.schedule(@picture.seconds_to_publish, @picture.id)
+        PictureJob.new.async.schedule(@picture.seconds_to_publish, @picture.id)
       end
       flash[:notice] = 'Picture was successfully updated.'
       redirect url(:pictures, :edit, :id => @picture.id)
