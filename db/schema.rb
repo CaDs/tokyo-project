@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 9) do
+ActiveRecord::Schema.define(:version => 10) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(:version => 9) do
     t.boolean  "is_published"
     t.string   "longitude"
     t.string   "latitude"
+    t.datetime "schedule_at"
   end
 
   create_table "posts", :force => true do |t|
