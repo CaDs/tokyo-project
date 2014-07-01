@@ -30,9 +30,12 @@ Admin.controllers :pictures do
 
   put :update, :with => :id do
     @picture = Picture.find(params[:id])
-    if @picture.update_attributes(params[:picture])
+    #ugly fix for ensuring Tokyo time
+    atts = params[:picture]
+    if @picture.update_attributes(atts.merge("schedule_at" => "#{params[:picture][:schedule_at]} +0900"))
+      @picture.reload
       @picture.clear_cache
-      if params[:picture] && params[:picture][:schedule_at]
+      if @picture.schedule_at
         PictureJob.new.async.schedule(@picture.seconds_to_publish, @picture.id)
       end
       flash[:notice] = 'Picture was successfully updated.'
