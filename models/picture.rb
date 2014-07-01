@@ -45,4 +45,8 @@ class Picture < ActiveRecord::Base
     keys.each{|k| TokyoProject.cache.delete(k)}
     vision.clear_cache
   end
+
+  def seconds_to_publish
+    schedule_at.to_i - Time.now.to_i rescue 0
+  end
 end

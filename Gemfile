@@ -45,3 +45,6 @@ end
 #Performance
 # gem 'padrino-rpm', :git => 'https://github.com/Asquera/padrino-rpm.git'
 gem 'newrelic_rpm'
+
+#Workers
+gem "sucker_punch"
