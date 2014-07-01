@@ -30,9 +30,7 @@ Admin.controllers :pictures do
 
   put :update, :with => :id do
     @picture = Picture.find(params[:id])
-    #ugly fix for ensuring Tokyo time
-    atts = params[:picture]
-    if @picture.update_attributes(atts.merge("schedule_at" => "#{params[:picture][:schedule_at]} +0900"))
+    if @picture.update_attributes(params[:picture])
       @picture.reload
       @picture.clear_cache
       if @picture.schedule_at

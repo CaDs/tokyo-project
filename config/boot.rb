@@ -45,7 +45,7 @@ end
 #
 Padrino.after_load do
   Time.zone = 'Tokyo'
-  ActiveRecord::Base.default_timezone = :local
+  ActiveRecord::Base.default_timezone = "Asia/Tokyo"
 end
 
 Padrino.load!
