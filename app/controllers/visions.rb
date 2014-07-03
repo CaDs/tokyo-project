@@ -19,7 +19,7 @@ TokyoProject.controllers :visions do
 
     cache(key, expires_in: (Padrino.env.to_s == "production" ? 3600 : 1)) do
       @vision = Vision.find(params[:id]) rescue nil
-      content_for(:meta_description) { @vision.meta_description}
+      content_for(:meta_description) { @vision.meta_description.present? ? @vision.meta_description : @vision.short_description}
       content_for(:meta_keywords) { @vision.meta_keywords}
       if @vision
         @pictures = @vision.published_pictures
