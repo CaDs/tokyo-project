@@ -8,6 +8,7 @@ TokyoProject.controllers :visions do
     key = "visions"
     cache(key, expires_in: (Padrino.env.to_s == "production" ? 3600 : 1)) do
       @visions = Vision.order("created_at DESC").scoped.find_all{|v| v.published_pictures.any?}
+      content_for(:meta_description) { "Unique moments and places captured around Tokyo"}
       render 'visions/index'
     end
   end
@@ -18,6 +19,8 @@ TokyoProject.controllers :visions do
 
     cache(key, expires_in: (Padrino.env.to_s == "production" ? 3600 : 1)) do
       @vision = Vision.find(params[:id]) rescue nil
+      content_for(:meta_description) { @vision.meta_description}
+      content_for(:meta_keywords) { @vision.meta_keywords}
       if @vision
         @pictures = @vision.published_pictures
         @picture = @pictures.find{|p| p.id == params[:pid].to_i} if params[:pid] rescue nil

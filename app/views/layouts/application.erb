@@ -18,9 +18,15 @@
     <% end %>
     <meta charset="utf-8">
     <title>Tokyo Project</title>
-    <meta name="description" content="Visions and pictures from Tokyo. A lonely alley, a crowded street, a field full of cherry blossoms, there is magic on every corner of this city.">
+    <%
+      meta_description = yield_content(:meta_description)
+      default_meta_description = "Visions and pictures from Tokyo. A lonely alley, a crowded street, a field full of cherry blossoms, there is magic on every corner of this city."
+      meta_keywords = yield_content(:meta_keywords)
+      default_meta_keywords = "japan, tokyo, photography, travel, tokyo-project, tokyo project, fotografía, japón"
+    %>
+    <meta name="description" content="<%= meta_description.present? ?  meta_description : default_meta_description %>" />
+    <meta name="keywords" content="<%= meta_keywords.present? ? meta_keywords : default_meta_keywords %>"/>
     <meta name="author" content="Carlos Donderis Sanz">
-    <meta name="keywords" content="japan, tokyo, photography, travel, tokyo-project, tokyo project, fotografía, japón"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <%= feed_tag(:rss, url(:rss, :index, :format => :rss), :title => "RSS") %>

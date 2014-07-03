@@ -17,6 +17,18 @@
     <%= f.text_area :short_description, :class => :text_area %>
   </div>
 </fieldset>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :meta_description, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_area :meta_description, :class => :text_area %>
+  </div>
+</fieldset>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :meta_keywords, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :meta_keywords, :class => :text_field %>
+  </div>
+</fieldset>
 <div class="form-actions">
   <%= f.submit pat(:save), :class => 'btn btn-primary' %>
   &nbsp;
