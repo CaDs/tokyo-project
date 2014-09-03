@@ -9,24 +9,28 @@
 </style>
 
 <body class="loading">
-  <div id="preload">
-    <% images.each do |url| %>
-      <img src="<%= url %>">
-    <% end %>
-  </div>
-  <main>
-    <% @latest_visions.each_with_index do |vision, index| %>
-      <section id="slide-<%=index+1%>" class="homeSlide">
-        <div class="bcg">
-          <div class="hsContainer">
-            <div class="hsContent">
-              <h2><%= vision.title%></h2>
+  <div class='container main'>
+    <div class='main-wrapper'>
+      <div id="preload">
+        <% images.each do |url| %>
+          <img src="<%= url %>">
+        <% end %>
+      </div>
+      <main>
+        <% @latest_visions.each_with_index do |vision, index| %>
+          <section id="slide-<%=index+1%>" class="homeSlide">
+            <div class="bcg">
+              <div class="hsContainer">
+                <div class="hsContent">
+                  <h2><%= vision.title%></h2>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </section>
-    <% end %>
-  </main>
+          </section>
+        <% end %>
+      </main>
+    </div>
+  </div>
 </body>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
