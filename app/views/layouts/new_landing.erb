@@ -1,15 +1,40 @@
-<%= stylesheet_link_tag "main.css" %>
-<%= stylesheet_link_tag "normalize" %>
+<head>
+  <%= stylesheet_link_tag "bootstrap.min" %>
+  <%= stylesheet_link_tag "bootstrap-responsive.min" %>
+  <%= stylesheet_link_tag "style.css" %>
+  <%= stylesheet_link_tag "bootstrap-lightbox.min" %>
+  <%= stylesheet_link_tag "main" %>
+  <meta charset="utf-8">
+    <%
+      title = "Tokyo Project #{yield_content(:title)}"
+      meta_description = yield_content(:meta_description)
+      meta_description ||= "Visions and pictures from Tokyo. A lonely alley, a crowded street, a field full of cherry blossoms, there is magic on every corner of this city."
+      meta_keywords = yield_content(:meta_keywords)
+      meta_keywords ||= "japan, tokyo, photography, travel, tokyo-project, tokyo project, fotografía, japón"
+    %>
+    <title><%= title %></title>
+    <meta name="description" content="<%= meta_description %>" />
+    <meta name="keywords" content="<%= meta_keywords %>"/>
+    <meta name="author" content="Carlos Donderis Sanz">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <%= feed_tag(:rss, url(:rss, :index, :format => :rss), :title => "RSS") %>
+    <%= feed_tag(:atom, url(:atom, :index, :format => :atom), :title => "ATOM") %>
+</head>
 <% images = @latest_visions.collect{|vision| vision.pictures.first.large} %>
-
 <style>
   <% @latest_visions.each_with_index do |vision, index| %>
     #slide-<%=index + 1%> .bcg {background-image:url('<%=images[index]%>')}
   <% end %>
 </style>
 
-<body class="loading">
-  <div class='container main'>
+<body>
+  <%= partial('layouts/main_nav_bar')%>
+  <br clear="all"/>
+  <br clear="all"/>
+  <br clear="all"/>
+  <div class='container-fluid'>
     <div class='main-wrapper'>
       <div id="preload">
         <% images.each do |url| %>
@@ -22,7 +47,8 @@
             <div class="bcg">
               <div class="hsContainer">
                 <div class="hsContent">
-                  <h2><%= vision.title%></h2>
+                  <h2><%= link_to(vision.title, url(:visions, :show, :id => vision.id)) %></h2>
+                  <h3><%= vision.short_description %></h3>
                 </div>
               </div>
             </div>
@@ -33,8 +59,8 @@
   </div>
 </body>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
-<%= javascript_include_tag 'imagesloaded' %>
-<%= javascript_include_tag 'skrollr' %>
-<%= javascript_include_tag '_main' %>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+  <%= javascript_include_tag 'imagesloaded' %>
+  <%= javascript_include_tag 'skrollr' %>
+  <%= javascript_include_tag '_main' %>

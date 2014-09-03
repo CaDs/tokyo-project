@@ -129,8 +129,13 @@ main {
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: cover;
-	height: 100%;
+	height: 90%;
 	width: 100%;
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .hsContainer {
@@ -143,10 +148,10 @@ main {
 .hsContent {
 	max-width: 700px;
 	position: absolute;
-	left: 50%;
-	top: 50%;
+	left: 5%;
+	top: 10%;
 }
-	.hsContent h2  {
+	.hsContent h2,  {
 		color: #fff8de;
 		background-color: rgba(0,0,0,0.5);
 		padding: 10px 5px;
@@ -154,46 +159,26 @@ main {
 		line-height: 38px;
 		margin-bottom: 12px;
 	}
+
+  .hsContent h3  {
+    color: #fffffe;
+    background-color: rgba(0,0,0,0.5);
+    padding: 5px 5px;
+    font-size: 16px;
+    line-height: 20px;
+    margin-bottom: 12px;
+  }
 	.hsContent p {
 		width: 400px;
 		color: #b2b2b2;
 	}
 	.hsContent a {
-		color: #b2b2b2;
-		text-decoration: underline;
+		color: #fffffe;
+    padding: 5px 10px;
+    background-color: rgba(0,0,0,0.5);
+		text-decoration: none;
 	}
 
-/* Slide 1 */
-#slide-1 .hsContent {
-	bottom: 200px;
-	top: auto;
-}
-
-/* Slide 2 */
-#slide-2 .hsContent {
-	margin-left: -450px;
-	bottom: 200px;
-	top: auto;
-}
-
-/* Slide 3 */
-#slide-3 .hsContent {
-	margin-left: -239px;
-}
-	#slide-3 h2 {
-		color: #f2ead6;
-		background-color: rgba(0,0,0,0.6);
-	}
-
-/* Slide 4 */
-#slide-4 .hsContent {
-	margin-left: -450px;
-}
-	#slide-4 h2 {
-		background: none;
-		padding-left: 0;
-		padding-right: 0;
-	}
 
 /* ==========================================================================
    Helper classes
