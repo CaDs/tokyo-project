@@ -22,7 +22,7 @@
     <%= feed_tag(:rss, url(:rss, :index, :format => :rss), :title => "RSS") %>
     <%= feed_tag(:atom, url(:atom, :index, :format => :atom), :title => "ATOM") %>
 </head>
-<% images = @latest_visions.collect{|vision| vision.pictures.last.large} %>
+<% images = @latest_visions.collect{|vision| vision.pictures.published.last.large} %>
 <style>
   <% @latest_visions.each_with_index do |vision, index| %>
     #slide-<%=index + 1%> .bcg {background-image:url('<%=images[index]%>')}
