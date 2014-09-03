@@ -56,6 +56,11 @@ class TokyoProject < Padrino::Application
     render 'layouts/landing'
   end
 
+  get '/new_landing' do
+    @latest_visions = Picture.where(:is_published => true).order('created_at DESC').collect(&:vision_id).uniq.first(10).collect{|id| Vision.find(id) }
+    render 'layouts/new_landing', :layout => false
+  end
+
   get '/about' do
     render 'layouts/about'
   end
