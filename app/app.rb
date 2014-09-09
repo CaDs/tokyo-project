@@ -57,6 +57,8 @@ class TokyoProject < Padrino::Application
   end
 
   get '/new_landing' do
+    cache_key  'new_landing'
+    expires_in(Padrino.env.to_s == "production" ? 3600 : 1)
     @latest_visions = Picture.published.order('created_at DESC').collect(&:vision_id).uniq.first(10).collect{|id| Vision.find(id) }
     render 'layouts/new_landing', :layout => false
   end
