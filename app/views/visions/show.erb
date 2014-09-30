@@ -35,7 +35,7 @@
         <% vision_url = uri url(:visions, :show, id: "#{@vision.id}") %>
         <div id="fb" class="fb-like" data-href="<%= vision_url %>" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
         <div id="gplus" class="g-plus" data-action="share" data-annotation="bubble" data-href="<%= vision_url %>"></div>
-        <a id = "twit" href='https://twitter.com/share' class='twitter-share-button' data-url="<%= vision_url %>" data-text='<%= "The Tokyo Project, a vision of 「#{@vision.area.name}」"%>'>Tweet</a>
+        <a id = "twit" href='https://twitter.com/share' class='twitter-share-button' data-url="<%= vision_url %>" data-text='<%= "The Tokyo Project, 「#{@vision.title}」"%>'>Tweet</a>
       </div>
     </div>
     <div class="span1"></div>
