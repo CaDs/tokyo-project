@@ -17,7 +17,8 @@ Admin.controllers :pictures do
       flash[:notice] = 'Picture was successfully created.'
       redirect url(:pictures, :edit, :id => @picture.id)
     else
-      render 'pictures/new'
+      flash[:error] = 'Picture is not valid.'
+      redirect url(:pictures, :new)
     end
     @picture.clear_cache
   end

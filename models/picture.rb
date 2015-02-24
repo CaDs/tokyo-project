@@ -1,6 +1,7 @@
 class Picture < ActiveRecord::Base
   belongs_to :vision
   scope :published, where(:is_published => true)
+  validates_uniqueness_of :flickr_id
 
   def flickr_version
     FlickrConnector.new.get_picture(self.flickr_id)
