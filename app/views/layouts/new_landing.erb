@@ -40,10 +40,6 @@
 <% images = @latest_visions.collect{|vision| vision.pictures.published.last.large} %>
 
 <body>
-  <%= partial('layouts/main_nav_bar')%>
-  <br clear="all"/>
-  <br clear="all"/>
-  <br clear="all"/>
   <div class='container-fluid'>
     <!--
       We position the images fixed and therefore need to place them outside of #skrollr-body.
@@ -69,13 +65,19 @@
     <% end %>
 
     <div id="skrollr-body">
+      <ul class="fake_menu">
+        <%= partial('layouts/main_nav_bar')%>
+      </ul>
+      <br clear="all"/>
+      <br clear="all"/>
       <% @latest_visions.each_with_index do |vision, index| %>
         <div class="header" id="anchor_<%= vision.id %>">
           <h3><%= link_to(vision.title, url(:visions, :show, :id => vision.id)) %></h3>
-          <p><%= vision.short_description %></p>
         </div>
         <div class="gap gap-100" style="background-image:url(<%= vision.pictures.published.last.large%>);"></div>
-        <div class="content" id="anchor_<%= vision.id %>"></div>
+        <div class="content" id="anchor_<%= vision.id %>">
+          <p><%= vision.short_description %></p>
+        </div>
       <% end %>
     </div>
   </div>
