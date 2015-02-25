@@ -38,11 +38,6 @@
     <%= feed_tag(:atom, url(:atom, :index, :format => :atom), :title => "ATOM") %>
 </head>
 <% images = @latest_visions.collect{|vision| vision.pictures.published.last.large} %>
-<style>
-  <% @latest_visions.each_with_index do |vision, index| %>
-    #slide-<%=index + 1%> .bcg {background-image:url('<%=images[index]%>')}
-  <% end %>
-</style>
 
 <body>
   <%= partial('layouts/main_nav_bar')%>
@@ -50,26 +45,38 @@
   <br clear="all"/>
   <br clear="all"/>
   <div class='container-fluid'>
-    <div class='main-wrapper'>
-      <div id="preload">
-        <% images.each do |url| %>
-          <img src="<%= url %>">
-        <% end %>
+    <!--
+      We position the images fixed and therefore need to place them outside of #skrollr-body.
+      We will then use data-anchor-target to display the correct image matching the current section (.gap element).
+    -->
+    <% @latest_visions.each do |vision| %>
+      <% img_url = vision.pictures.published.last.large %>
+      <div
+        class="parallax-image-wrapper parallax-image-wrapper-100"
+        data-anchor-target="#anchor_<%= vision.id%> + .gap"
+        data-bottom-top="transform:translate3d(0px, 200%, 0px)"
+        data-top-bottom="transform:translate3d(0px, 0%, 0px)">
+
+        <div
+          class="parallax-image parallax-image-100"
+          style="background-image:url(<%= img_url%>)"
+          data-anchor-target="#anchor_<%= vision.id%> + .gap"
+          data-bottom-top="transform: translate3d(0px, -80%, 0px);"
+          data-top-bottom="transform: translate3d(0px, 80%, 0px);"
+        ></div>
+        <!--the +/-80% translation can be adjusted to control the speed difference of the image-->
       </div>
-      <main>
-        <% @latest_visions.each_with_index do |vision, index| %>
-          <section id="slide-<%=index+1%>" class="homeSlide">
-            <div class="bcg">
-              <div class="hsContainer">
-                <div class="hsContent">
-                  <h2><%= link_to(vision.title, url(:visions, :show, :id => vision.id)) %></h2>
-                  <h3><%= vision.short_description %></h3>
-                </div>
-              </div>
-            </div>
-          </section>
-        <% end %>
-      </main>
+    <% end %>
+
+    <div id="skrollr-body">
+      <% @latest_visions.each_with_index do |vision, index| %>
+        <div class="header" id="anchor_<%= vision.id %>">
+          <h3><%= link_to(vision.title, url(:visions, :show, :id => vision.id)) %></h3>
+          <p><%= vision.short_description %></p>
+        </div>
+        <div class="gap gap-100" style="background-image:url(<%= vision.pictures.published.last.large%>);"></div>
+        <div class="content" id="anchor_<%= vision.id %>"></div>
+      <% end %>
     </div>
   </div>
 </body>
@@ -79,3 +86,9 @@
   <%= javascript_include_tag 'imagesloaded' %>
   <%= javascript_include_tag 'skrollr' %>
   <%= javascript_include_tag '_main' %>
+  <script type="text/javascript">
+  skrollr.init({
+    smoothScrolling: false,
+    mobileDeceleration: 0.004
+  });
+  </script>

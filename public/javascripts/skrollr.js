@@ -19,7 +19,7 @@
 		init: function(options) {
 			return _instance || new Skrollr(options);
 		},
-		VERSION: '0.6.26'
+		VERSION: '0.6.29'
 	};
 
 	//Minify optimization.
@@ -49,6 +49,8 @@
 	var DEFAULT_EASING = 'linear';
 	var DEFAULT_DURATION = 1000;//ms
 	var DEFAULT_MOBILE_DECELERATION = 0.004;//pixel/ms²
+
+	var DEFAULT_SKROLLRBODY = 'skrollr-body';
 
 	var DEFAULT_SMOOTH_SCROLLING_DURATION = 200;//ms
 
@@ -277,7 +279,7 @@
 		})());
 
 		if(_isMobile) {
-			_skrollrBody = document.getElementById('skrollr-body');
+			_skrollrBody = document.getElementById(options.skrollrBody || DEFAULT_SKROLLRBODY);
 
 			//Detect 3d transform if there's a skrollr-body (only needed for #skrollr-body).
 			if(_skrollrBody) {
@@ -1566,8 +1568,14 @@
 	 * Returns the height of the document.
 	 */
 	var _getDocumentHeight = function() {
-		var skrollrBodyHeight = (_skrollrBody && _skrollrBody.offsetHeight || 0);
-		var bodyHeight = Math.max(skrollrBodyHeight, body.scrollHeight, body.offsetHeight, documentElement.scrollHeight, documentElement.offsetHeight, documentElement.clientHeight);
+		var skrollrBodyHeight = 0;
+		var bodyHeight;
+
+		if(_skrollrBody) {
+			skrollrBodyHeight = Math.max(_skrollrBody.offsetHeight, _skrollrBody.scrollHeight);
+		}
+
+		bodyHeight = Math.max(skrollrBodyHeight, body.scrollHeight, body.offsetHeight, documentElement.scrollHeight, documentElement.offsetHeight, documentElement.clientHeight);
 
 		return bodyHeight - documentElement.clientHeight;
 	};
@@ -1757,9 +1765,9 @@
 	//Animation frame id returned by RequestAnimationFrame (or timeout when RAF is not supported).
 	var _animFrame;
 
-	//Expose skrollr as either a global variable or a require.js module
+	//Expose skrollr as either a global variable or a require.js module.
 	if(typeof define === 'function' && define.amd) {
-		define('skrollr', function () {
+		define([], function () {
 			return skrollr;
 		});
 	} else if (typeof module !== 'undefined' && module.exports) {
