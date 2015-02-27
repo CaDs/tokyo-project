@@ -3,7 +3,7 @@
     <div class="span12">
       <h2><%=@vision.title%></h2>
       <h4>
-        See more visions for <%= link_to @vision.area.name, url(:areas, :show, :id => @vision.area) %> area
+        See more visions for <%= link_to @vision.area.name, url(:areas, :show, :id => @vision.area.url_title) %> area
         <%= link_to "(View on map)", url(:maps, :show, :id => @vision.id) if @vision.has_map_info?%>
       </h4>
       <h4 class="muted"><%= @vision.short_description %></h4>
@@ -32,7 +32,7 @@
         <a class="right carousel-control vision_link" href="#canvas" data-slide="next">›</a>
       </div>
       <div>
-        <% vision_url = uri url(:visions, :show, id: "#{@vision.id}") %>
+        <% vision_url = uri url(:visions, :show, id: "#{@vision.url_title}") %>
         <div id="fb" class="fb-like" data-href="<%= vision_url %>" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
         <div id="gplus" class="g-plus" data-action="share" data-annotation="bubble" data-href="<%= vision_url %>"></div>
         <a id = "twit" href='https://twitter.com/share' class='twitter-share-button' data-url="<%= vision_url %>" data-text='<%= "The Tokyo Project, 「#{@vision.title}」"%>'>Tweet</a>

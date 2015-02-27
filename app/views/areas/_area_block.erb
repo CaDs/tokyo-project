@@ -1,6 +1,6 @@
 <div class="image">
   <% picture_url = vision.published_pictures.any? ? vision.published_pictures.first.medium : Vision::DEFAULT_MEDIUM_PICTURE_URL %>
-  <%= link_to(image_tag(picture_url), url(:areas, :show, :id => area.id))%>
+  <%= link_to(image_tag(picture_url), url(:areas, :show, :id => area.url_title))%>
 </div>
-<h2><%= link_to(area.name, url(:areas, :show, :id => area.id)) %></h2>
+<h2><%= link_to(area.name, url(:areas, :show, :id => area.url_title)) %></h2>
 <p><%= area.description %></p>

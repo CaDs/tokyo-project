@@ -16,7 +16,8 @@ TokyoProject.controllers :areas do
   get :show, :with => :id do
     key =  "area_show_#{params[:id]}"
     cache(key, expires_in: (Padrino.env.to_s == "production" ? 3600 : 1)) do
-      @area = Area.find(params[:id])
+      @area = Area.find(params[:id]) rescue nil
+      @area ||= Area.find_by_url_title(params[:id]) rescue nil
       content_for(:meta_description) { "#{@area.description}"}
       content_for(:title) { @area.name }
       @visions = @area.visions.find_all{|v| v.published_pictures.any?}

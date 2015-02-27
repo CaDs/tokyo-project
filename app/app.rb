@@ -71,7 +71,9 @@ class TokyoProject < Padrino::Application
   get '/sitemap', :provides => [:xml] do
     static_pages = [uri(url("/")), uri(url("/about")), uri(url(:areas, :index)), uri(url(:visions, :index))]
     areas = Area.scoped.collect{|area| uri url(:areas, :show, id: "#{area.id}")}
+    areas += Area.scoped.collect{|area| uri url(:areas, :show, id: "#{area.url_title}")}
     visions = Vision.scoped.collect{|vision| uri url(:visions, :show, id: "#{vision.id}")}
+    visions += Vision.scoped.collect{|vision| uri url(:visions, :show, id: "#{vision.url_title}")}
     posts = Post.scoped.collect{|post| uri url(:blog, :show, id: "#{post.id}")}
     @urls = static_pages + areas + visions + posts
     render 'layouts/sitemap'

@@ -3,7 +3,7 @@
     <div class="span12">
       <h2><%=@vision.title%></h2>
       <h4>
-         Back to <%= link_to "normal view", url(:visions, :show, :id => @vision.id) %> 
+         Back to <%= link_to "normal view", url(:visions, :show, :id => @vision.url_title) %> 
       </h4>
       <h4 class="muted"><%= @vision.short_description %></h4>
     </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 11) do
+ActiveRecord::Schema.define(:version => 13) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(:version => 11) do
     t.integer  "ward_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "url_title"
   end
 
   create_table "pictures", :force => true do |t|
@@ -66,6 +67,7 @@ ActiveRecord::Schema.define(:version => 11) do
     t.string   "wiki_url"
     t.string   "meta_keywords"
     t.string   "meta_description"
+    t.string   "url_title"
   end
 
   create_table "wards", :force => true do |t|
