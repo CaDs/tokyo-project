@@ -1,9 +1,9 @@
 TokyoProject.controllers :rss do
   get :index, :provides => [:rss] do
-    @pictures = cache("rss_pictures", expires_in: (Padrino.env.to_s == "production" ? 3600 : 5)) do
-      Picture.published
+    @cached_pictures = cache("rss_pictures", expires_in: (Padrino.env.to_s == "production" ? 3600 : 5)) do
+      @pictures_array = Picture.published.last(50).collect{|picture| [picture, picture.vision]}
     end
-    @posts = cache("rss_posts", expires_in: (Padrino.env.to_s == "production" ? 3600 : 5)) do
+    @cached_posts = cache("rss_posts", expires_in: (Padrino.env.to_s == "production" ? 3600 : 5)) do
       @posts = Post.where(:is_published => true)
     end
     render 'rss/index'
