@@ -47,3 +47,15 @@
     <div class='lightbox-content'><%= image_tag picture.large %></div>
   </div>
 <% end %>
+
+
+<script type="text/javascript">
+  $(".carousel-inner").on({
+      mouseenter: function () {
+        $(".carousel-caption").fadeIn()
+      },
+      mouseleave: function () {
+        $(".carousel-caption").fadeOut()
+      }
+  });
+</script>
