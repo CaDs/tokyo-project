@@ -3,7 +3,7 @@
   <a data-toggle="lightbox" href="#demoLightbox_<%=picture.id%>">
     <%= image_tag(picture.large) %>
   </a>
-    <div class="carousel-caption">
+    <div class="carousel-caption" style="display:none">
       <ul id="myTab" class="nav nav-tabs">
         <li class="active"><a href="#share_<%=picture.id%>" data-toggle="tab" class="muted vision_link">Share</a></li>
         <% if picture.description_en != nil && picture.description_en != "" %>
