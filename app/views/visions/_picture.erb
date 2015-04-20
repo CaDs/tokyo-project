@@ -1,15 +1,13 @@
 <div class="item <%= css_class %>">
+  <% picture_url = uri url(:visions, :show, id: "#{picture.vision.id}", pid: picture.id) %>
   <a data-toggle="lightbox" href="#demoLightbox_<%=picture.id%>">
     <%= image_tag(picture.large) %>
   </a>
-  <% if (picture.description_en != nil && picture.description_en != "") ||
-        (picture.description_es != nil && picture.description_es != "") ||
-        (picture.description_jp != nil && picture.description_jp != "")
-  %>
     <div class="carousel-caption">
       <ul id="myTab" class="nav nav-tabs">
+        <li class="active"><a href="#share_<%=picture.id%>" data-toggle="tab" class="muted vision_link">Share</a></li>
         <% if picture.description_en != nil && picture.description_en != "" %>
-          <li class="active"><a href="#en_<%=picture.id%>" data-toggle="tab" class="muted vision_link">English</a></li>
+          <li class=""><a href="#en_<%=picture.id%>" data-toggle="tab" class="muted vision_link">English</a></li>
         <% end %>
         <% if picture.description_es != nil && picture.description_es != ""%>
           <li class=""><a href="#es_<%=picture.id%>" data-toggle="tab" class="muted vision_link">Español</a></li>
@@ -19,8 +17,11 @@
         <% end %>
       </ul>
       <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade active in" id="share_<%=picture.id%>">
+          <p><%= link_to picture_url, picture_url, target: "_alt", style: "color:lightgrey;" %></p>
+        </div>
         <% if picture.description_en != nil && picture.description_en != "" %>
-          <div class="tab-pane fade active in" id="en_<%=picture.id%>">
+          <div class="tab-pane fade" id="en_<%=picture.id%>">
             <p><%= picture.description_en.html_safe %></p>
           </div>
         <% end %>
@@ -36,5 +37,4 @@
         <% end %>
       </div>
     </div>
-  <% end %>
 </div>
