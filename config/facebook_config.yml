@@ -1,9 +1,0 @@
-development:
-  app_key: 501953129845093
-  app_secret: 66765262ab12f3014fa628a2e4f631cb
-  app_redirect: http://localhost:3000/auth/callback
-
-production:
-  app_key: 301040653345741
-  app_secret: 3138d3f1e6ac1d45d8e5044124b0aff4
-  app_redirect: http://tokyo-project.com/auth/callback

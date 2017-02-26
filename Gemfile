@@ -1,50 +1,64 @@
-source :rubygems
+# frozen_string_literal: true
+source 'https://rubygems.org'
 
-ruby '2.1.2'
+# Padrino supports Ruby version 1.9 and later
+# ruby '2.4.0'
+
+# Distribute your app as a gem
+# gemspec
+
+# Server requirements
+gem 'puma'
+
+# Optional JSON codec (faster performance)
+gem 'oj'
 
 # Project requirements
+gem 'padrino-cookies'
 gem 'rake'
-gem 'sinatra-flash', :require => 'sinatra/flash'
+gem 'sinatra-flash', require: 'sinatra/flash'
 
 # Component requirements
-gem 'will_paginate', '~>3.0'
-gem 'bcrypt-ruby', :require => "bcrypt"
-gem 'erubis', "~> 2.7.0"
-gem 'activerecord', :require => "active_record"
+gem 'activerecord', '>= 3.1', require: 'active_record'
+gem 'activesupport', '>= 3.1'
+gem 'bcrypt'
+gem 'erubis', '~> 2.7.0'
 gem 'mysql2'
 
-# Test requirements
-gem 'rspec', :group => "test"
-gem 'rack-test', :require => "rack/test", :group => "test"
-
-gem 'tilt', '1.3.7'
-
-# Padrino Stable Gem
-gem 'padrino', '0.11.1'
-gem 'padrino-cookies'
-gem 'padrino-flash'
-
-#Security
+# Security
 gem 'rack-protection'
 
-#Cache
-gem 'memcachier', :require => 'memcachier'
-gem 'dalli', :require => 'dalli'
+# Cache
+gem 'dalli', require: 'dalli'
+gem 'memcachier', require: 'memcachier'
 
-#Images
-gem 'flickraw', :require => 'flickraw'
+# Images
+gem 'flickraw', require: 'flickraw'
 
-#GeoStuff
-gem "geocoder"
+# GeoStuff
+gem 'geocoder'
 
-#Debugger
+gem 'kaminari'
+
+gem 'dotenv'
+
+# Test requirements
+gem 'rack-test', require: 'rack/test', group: 'test'
+gem 'rspec', group: 'test'
+
+# Padrino Stable Gem
+gem 'padrino', '0.13.3.3'
+gem 'padrino-sprockets', require: ['padrino/sprockets']
+# enable js minification
+gem 'uglifier'
+# enable css compression
+gem 'yui-compressor'
+
+gem 'builder'
+
 group :development, :test do
-  gem "byebug"
+  gem 'awesome_print'
+  gem 'byebug'
+  gem 'rubocop', require: false
+  gem 'rubocop-checkstyle_formatter', require: false
 end
-
-#Performance
-# gem 'padrino-rpm', :git => 'https://github.com/Asquera/padrino-rpm.git'
-gem 'newrelic_rpm'
-
-#Workers
-gem "sucker_punch"

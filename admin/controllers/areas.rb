@@ -1,7 +1,7 @@
-Admin.controllers :areas do
-
+# frozen_string_literal: true
+TokyoProject::Admin.controllers :areas do
   get :index do
-    @areas = Area.order('created_at DESC').paginate(:page => params[:page], :per_page => 10)
+    @areas = Area.order('created_at DESC').page(params[:page]).per(10)
     render 'areas/index'
   end
 
@@ -15,29 +15,29 @@ Admin.controllers :areas do
     @area = Area.new(params[:area])
     if @area.save
       flash[:notice] = 'Area was successfully created.'
-      redirect url(:areas, :edit, :id => @area.id)
+      redirect url(:areas, :edit, id: @area.id)
     else
       render 'areas/new'
     end
   end
 
-  get :edit, :with => :id do
+  get :edit, with: :id do
     @area = Area.find(params[:id])
     @wards = Ward.all
     render 'areas/edit'
   end
 
-  put :update, :with => :id do
+  put :update, with: :id do
     @area = Area.find(params[:id])
     if @area.update_attributes(params[:area])
       flash[:notice] = 'Area was successfully updated.'
-      redirect url(:areas, :edit, :id => @area.id)
+      redirect url(:areas, :edit, id: @area.id)
     else
       render 'areas/edit'
     end
   end
 
-  delete :destroy, :with => :id do
+  delete :destroy, with: :id do
     area = Area.find(params[:id])
     if area.destroy
       flash[:notice] = 'Area was successfully destroyed.'

@@ -7,13 +7,11 @@ xml.rss "version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/", "x
     pictures = @cached_pictures
     pictures ||= @pictures_array
     pictures.each do |p|
-      picture = p[0]
-      vision = p[1]
+      picture_url = uri url(:visions, :show, id: "#{p.vision_id}", pid: p.id)
       xml.item do
-        picture_url = uri url(:visions, :show, id: "#{vision.id}", pid: picture.id)
-        xml.title   vision.title
-        xml.description "<p>#{image_tag(picture.medium)}</p><p>A new picture has been added to #{vision.title}</p><br/><p>#{picture.description_en} </p>"
-        xml.pubDate picture.updated_at.to_s(:rfc822)
+        xml.title   p.vision.title
+        xml.description "<p>#{image_tag(p.medium)}</p><p>A new picture has been added to #{p.vision.title}</p><br/><p>#{p.description_en} </p>"
+        xml.pubDate p.updated_at.to_s(:rfc822)
         xml.link    picture_url
         xml.guid    picture_url
       end
@@ -23,8 +21,8 @@ xml.rss "version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/", "x
     posts.each do |post|
       xml.item do
         post_url = uri url(:blog, :show, id: "#{post.id}")
-        xml.title   post.title
-        xml.description  post.body
+        xml.title  post.title
+        xml.description post.body
         xml.pubDate post.updated_at.to_s(:rfc822)
         xml.link    post_url
       end

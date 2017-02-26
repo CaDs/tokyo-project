@@ -1,8 +1,6 @@
+# frozen_string_literal: true
 require 'spec_helper'
 
-describe "Picture Model" do
-  let(:picture) { Picture.new }
-  it 'can be created' do
-    picture.should_not be_nil
-  end
+RSpec.describe Picture do
+  pending "add some examples to (or delete) #{__FILE__}"
 end

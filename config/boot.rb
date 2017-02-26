@@ -1,11 +1,14 @@
+# frozen_string_literal: true
 # Defines our constants
-PADRINO_ENV  = ENV['PADRINO_ENV'] ||= ENV['RACK_ENV'] ||= 'development'  unless defined?(PADRINO_ENV)
+RACK_ENV = ENV['RACK_ENV'] ||= 'development' unless defined?(RACK_ENV)
 PADRINO_ROOT = File.expand_path('../..', __FILE__) unless defined?(PADRINO_ROOT)
 
 # Load our dependencies
-require 'rubygems' unless defined?(Gem)
 require 'bundler/setup'
-Bundler.require(:default, PADRINO_ENV)
+require 'dotenv/load'
+Bundler.require(:default, RACK_ENV)
+
+# $LOAD_PATH.push Padrino.root('lib')
 
 ##
 # ## Enable devel logging
@@ -13,9 +16,18 @@ Bundler.require(:default, PADRINO_ENV)
 # Padrino::Logger::Config[:development][:log_level]  = :devel
 # Padrino::Logger::Config[:development][:log_static] = true
 #
-# ## Configure your I18n
+# ## Configure Ruby to allow requiring features from your lib folder
+#
+# $LOAD_PATH.unshift Padrino.root('lib')
+#
+# ## Enable logging of source location
+#
+# Padrino::Logger::Config[:development][:source_location] = true
+#
+# ## Configure your I18n
 #
 # I18n.default_locale = :en
+# I18n.enforce_available_locales = false
 #
 # ## Configure your HTML5 data helpers
 #
@@ -31,21 +43,22 @@ Bundler.require(:default, PADRINO_ENV)
 # end
 
 ##
+# Require initializers before all other dependencies.
+# Dependencies from 'config' folder are NOT re-required on reload.
+#
+Padrino.dependency_paths.unshift Padrino.root('config/initializers/*.rb')
+
+##
 # Add your before (RE)load hooks here
+# These hooks are run before any dependencies are required.
 #
 Padrino.before_load do
-  require 'will_paginate'
-  require 'will_paginate/active_record'
-  require 'will_paginate/view_helpers/sinatra'
-  include WillPaginate::Sinatra::Helpers
 end
 
 ##
 # Add your after (RE)load hooks here
 #
 Padrino.after_load do
-  Time.zone = 'Tokyo'
-  ActiveRecord::Base.default_timezone = "Asia/Tokyo"
 end
 
 Padrino.load!

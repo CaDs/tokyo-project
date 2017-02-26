@@ -1,12 +1,13 @@
-Admin.controllers :posts do
+# frozen_string_literal: true
+TokyoProject::Admin.controllers :posts do
   get :index do
-    @title = "Posts"
+    @title = 'Posts'
     @posts = Post.order('created_at DESC')
     render 'posts/index'
   end
 
   get :new do
-    @title = pat(:new_title, :model => 'post')
+    @title = pat(:new_title, model: 'post')
     @post = Post.new
     render 'posts/new'
   end
@@ -15,77 +16,77 @@ Admin.controllers :posts do
     @post = Post.new(params[:post])
     @post.account_id = current_account.id
     if @post.save
-      @title = pat(:create_title, :model => "post #{@post.id}")
+      @title = pat(:create_title, model: "post #{@post.id}")
       @post.clear_cache
-      flash[:success] = pat(:create_success, :model => 'Post')
-      params[:save_and_continue] ? redirect(url(:posts, :index)) : redirect(url(:posts, :edit, :id => @post.id))
+      flash[:success] = pat(:create_success, model: 'Post')
+      params[:save_and_continue] ? redirect(url(:posts, :index)) : redirect(url(:posts, :edit, id: @post.id))
     else
-      @title = pat(:create_title, :model => 'post')
-      flash.now[:error] = pat(:create_error, :model => 'post')
+      @title = pat(:create_title, model: 'post')
+      flash.now[:error] = pat(:create_error, model: 'post')
       render 'posts/new'
     end
   end
 
-  get :edit, :with => :id do
-    @title = pat(:edit_title, :model => "post #{params[:id]}")
+  get :edit, with: :id do
+    @title = pat(:edit_title, model: "post #{params[:id]}")
     @post = Post.find(params[:id])
     if @post
       render 'posts/edit'
     else
-      flash[:warning] = pat(:create_error, :model => 'post', :id => "#{params[:id]}")
+      flash[:warning] = pat(:create_error, model: 'post', id: params[:id].to_s)
       halt 404
     end
   end
 
-  put :update, :with => :id do
-    @title = pat(:update_title, :model => "post #{params[:id]}")
+  put :update, with: :id do
+    @title = pat(:update_title, model: "post #{params[:id]}")
     @post = Post.find(params[:id])
     if @post
       if @post.update_attributes(params[:post])
-        flash[:success] = pat(:update_success, :model => 'Post', :id =>  "#{params[:id]}")
+        flash[:success] = pat(:update_success, model: 'Post', id: params[:id].to_s)
         @post.clear_cache
         params[:save_and_continue] ?
           redirect(url(:posts, :index)) :
-          redirect(url(:posts, :edit, :id => @post.id))
+          redirect(url(:posts, :edit, id: @post.id))
       else
-        flash.now[:error] = pat(:update_error, :model => 'post')
+        flash.now[:error] = pat(:update_error, model: 'post')
         render 'posts/edit'
       end
     else
-      flash[:warning] = pat(:update_warning, :model => 'post', :id => "#{params[:id]}")
+      flash[:warning] = pat(:update_warning, model: 'post', id: params[:id].to_s)
       halt 404
     end
   end
 
-  delete :destroy, :with => :id do
-    @title = "Posts"
+  delete :destroy, with: :id do
+    @title = 'Posts'
     post = Post.find(params[:id])
     if post
       if post.destroy
-        TokyoProject.cache.delete("blog")
-        flash[:success] = pat(:delete_success, :model => 'Post', :id => "#{params[:id]}")
+        TokyoProject.cache.delete('blog')
+        flash[:success] = pat(:delete_success, model: 'Post', id: params[:id].to_s)
       else
-        flash[:error] = pat(:delete_error, :model => 'post')
+        flash[:error] = pat(:delete_error, model: 'post')
       end
       redirect url(:posts, :index)
     else
-      flash[:warning] = pat(:delete_warning, :model => 'post', :id => "#{params[:id]}")
+      flash[:warning] = pat(:delete_warning, model: 'post', id: params[:id].to_s)
       halt 404
     end
   end
 
   delete :destroy_many do
-    @title = "Posts"
+    @title = 'Posts'
     unless params[:post_ids]
-      flash[:error] = pat(:destroy_many_error, :model => 'post')
+      flash[:error] = pat(:destroy_many_error, model: 'post')
       redirect(url(:posts, :index))
     end
     ids = params[:post_ids].split(',').map(&:strip).map(&:to_i)
     posts = Post.find(ids)
-    
+
     if Post.destroy posts
-      TokyoProject.cache.delete("blog")
-      flash[:success] = pat(:destroy_many_success, :model => 'Posts', :ids => "#{ids.to_sentence}")
+      TokyoProject.cache.delete('blog')
+      flash[:success] = pat(:destroy_many_success, model: 'Posts', ids: ids.to_sentence.to_s)
     end
     redirect url(:posts, :index)
   end
