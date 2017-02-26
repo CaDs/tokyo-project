@@ -9,7 +9,7 @@ source 'https://rubygems.org'
 
 # Server requirements
 gem 'puma'
-gem 'bundler', '~> 1.14.5'
+gem 'bundler', '1.14.5'
 
 # Optional JSON codec (faster performance)
 gem 'oj'
