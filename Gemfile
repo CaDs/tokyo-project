@@ -54,6 +54,8 @@ gem 'uglifier'
 # enable css compression
 gem 'yui-compressor'
 
+gem 'builder'
+
 group :development, :test do
   gem 'awesome_print'
   gem 'byebug'

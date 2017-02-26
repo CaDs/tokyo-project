@@ -10,9 +10,9 @@ module TokyoProject
     register Padrino::Flash
     register Padrino::Cache
     register Padrino::Sprockets
-    sprockets minify: true
+    sprockets minify: false
 
-    Padrino.cache = Padrino::Cache.new(:Memcached, server: '127.0.0.1:11211', exception_retry_limit: 1)
+    Padrino.cache = Padrino::Cache.new(:Memcached, backend: ::Dalli::Client.new)
     enable :caching
 
     ##
@@ -47,14 +47,25 @@ module TokyoProject
     get '/', cache: true do
       cache_key 'root_path'
       expires(Padrino.env.to_s == 'production' ? 86_400 : 1)
-      @visions = Picture.published.order('created_at DESC').collect(&:vision_id).uniq.first(3).collect { |id| Vision.find(id) }
+      latest_visions = Picture.published
+                              .select('vision_id')
+                              .order('created_at DESC')
+                              .pluck(:vision_id)
+                              .uniq
+                              .first(3)
+      @visions = Vision.find(latest_visions)
       render 'layouts/landing'
     end
 
     get '/new_landing', cache: true do
       cache_key 'new_landing'
       expires(Padrino.env.to_s == 'production' ? 86_400 : 1)
-      @latest_visions = Picture.published.order('created_at DESC').collect(&:vision_id).uniq.first(10).collect { |id| Vision.find(id) }
+      @latest_visions = Picture.published
+                               .order('created_at DESC')
+                               .collect(&:vision_id)
+                               .uniq
+                               .first(10)
+                               .collect { |id| Vision.find(id) }
       render 'layouts/new_landing', layout: false
     end
 
@@ -65,9 +76,9 @@ module TokyoProject
     require 'builder'
     get '/sitemap', provides: [:xml] do
       static_pages = [uri(url('/')), uri(url('/about')), uri(url(:areas, :index)), uri(url(:visions, :index))]
-      areas = Area.collect { |area| uri url(:areas, :show, id: area.url_title.to_s) }
-      visions = Vision.collect { |vision| uri url(:visions, :show, id: vision.url_title.to_s) }
-      posts = Post.all.collect { |post| uri url(:blog, :show, id: post.id.to_s) }
+      areas = Area.find_each.collect { |area| uri url(:areas, :show, id: area.url_title.to_s) }
+      visions = Vision.find_each.collect { |vision| uri url(:visions, :show, id: vision.url_title.to_s) }
+      posts = Post.find_each.collect { |post| uri url(:blog, :show, id: post.id.to_s) }
       @urls = static_pages + areas + visions + posts
       render 'layouts/sitemap'
     end
