@@ -36,4 +36,6 @@ end
 # Mounts the core application for this project
 
 Padrino.mount('TokyoProject::Admin', app_file: Padrino.root('admin/app.rb')).to('/admin')
+
+Padrino.mount("TokyoProject::Admin", :app_file => Padrino.root('admin/app.rb')).to("/admin")
 Padrino.mount('TokyoProject::App', app_file: Padrino.root('app/app.rb')).to('/')

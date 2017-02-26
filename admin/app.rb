@@ -1,17 +1,11 @@
-# frozen_string_literal: true
 require 'active_support/core_ext/object/blank'
 
 module TokyoProject
   class Admin < Padrino::Application
     use ConnectionPoolManagement
-    register Padrino::Rendering
     register Padrino::Mailer
     register Padrino::Helpers
     register Padrino::Admin::AccessControl
-    register Padrino::Sprockets
-    sprockets minify: true
-
-    set :cache, Padrino::Cache.new(:Memcached, backend: ::Dalli::Client.new)
 
     ##
     # Application configuration options
@@ -42,16 +36,12 @@ module TokyoProject
 
     access_control.roles_for :admin do |role|
       role.project_module :posts, '/posts'
-      role.project_module :pictures, '/pictures'
-      role.project_module :visions, '/visions'
-      role.project_module :areas, '/areas'
-      role.project_module :wards, '/wards'
       role.project_module :accounts, '/accounts'
     end
 
-    # Custom error management
-    error(403) { @title = 'Error 403'; render('errors/403', layout: :error) }
-    error(404) { @title = 'Error 404'; render('errors/404', layout: :error) }
-    error(500) { @title = 'Error 500'; render('errors/500', layout: :error) }
+    # Custom error management 
+    error(403) { @title = "Error 403"; render('errors/403', :layout => :error) }
+    error(404) { @title = "Error 404"; render('errors/404', :layout => :error) }
+    error(500) { @title = "Error 500"; render('errors/500', :layout => :error) }
   end
 end

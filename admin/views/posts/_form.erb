@@ -1,22 +1,33 @@
+<% error = @post.errors.include?(:account_id) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :account_id, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :account_id, :class => 'form-control input-xlarge input-with-feedback', :autofocus => true %>
+    <span class='help-inline'><%= error ? f.error_message_on(:account_id) : "Ex: a simple text" %></span>
+  </div>
+</fieldset>
 <% error = @post.errors.include?(:title) %>
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
   <%= f.label :title, :class => 'control-label' %>
   <div class='controls'>
-    <%= f.text_field :title, :class => 'input-xlarge input-with-feedback', :autofocus => true %>
+    <%= f.text_field :title, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:title) : "Ex: a simple text" %></span>
   </div>
 </fieldset>
 <% error = @post.errors.include?(:body) %>
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
   <%= f.label :body, :class => 'control-label' %>
   <div class='controls'>
-    <%= f.text_area :body, :class => 'input-xlarge input-with-feedback', :rows => 20 %>
+    <%= f.text_area :body, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:body) : "Ex: a simple text" %></span>
   </div>
 </fieldset>
 <% error = @post.errors.include?(:is_published) %>
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
   <%= f.label :is_published, :class => 'control-label' %>
   <div class='controls'>
-    <%= f.check_box :is_published, :class => 'input-xlarge input-with-feedback' %>
+    <%= f.check_box :is_published, :class => 'form-control input-xlarge input-with-feedback' %>
+    <span class='help-inline'><%= error ? f.error_message_on(:is_published) : "Ex: a simple text" %></span>
   </div>
 </fieldset>
 
@@ -26,12 +37,5 @@
   &nbsp;
   <%= f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue' %>
   &nbsp;
-  <%= link_to pat(:cancel), url(:posts, :index), :class => 'btn' %>
+  <%= link_to pat(:cancel), url(:posts, :index), :class => 'btn btn-default' %>
 </div>
-
-<script>
-  CKEDITOR.replace("post_body",{
-        toolbar : 'Basic',
-        height: 300
-    })
-</script>
