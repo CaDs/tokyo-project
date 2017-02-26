@@ -58,4 +58,12 @@ class Picture < ActiveRecord::Base
   rescue
     0
   end
+
+  def self.preload_all_pictures
+    Picture.find_each do |picture|
+      puts picture.thumb
+      puts picture.medium
+      puts picture.large
+    end
+  end
 end
