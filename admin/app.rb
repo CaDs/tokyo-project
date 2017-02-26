@@ -1,12 +1,16 @@
+require 'active_support/core_ext/object/blank'
+
+module TokyoProjectng
   class Admin < Padrino::Application
-    use ActiveRecord::ConnectionAdapters::ConnectionManagement
+    use ConnectionPoolManagement
     register Padrino::Rendering
     register Padrino::Mailer
     register Padrino::Helpers
     register Padrino::Admin::AccessControl
-    register HttpAuthentication::Basic
+    register Padrino::Sprockets
+    sprockets minify: true
 
-    set :cache, Padrino::Cache::Store::Memcache.new(::Dalli::Client.new)
+    set :cache, Padrino::Cache.new(:Memcached, backend: ::Dalli::Client.new)
 
     ##
     # Application configuration options
@@ -25,7 +29,7 @@
     #
 
     set :admin_model, 'Account'
-    set :login_page,  '/admin/sessions/new'
+    set :login_page,  '/sessions/new'
 
     enable  :sessions
     disable :store_location
@@ -37,15 +41,16 @@
 
     access_control.roles_for :admin do |role|
       role.project_module :posts, '/posts'
-      role.project_module :pictures, '/pictures'
-      role.project_module :visions, '/visions'
-      role.project_module :areas, '/areas'
-      role.project_module :wards, '/wards'
-      role.project_module :accounts, '/accounts'
+    role.project_module :pictures, '/pictures'
+    role.project_module :visions, '/visions'
+    role.project_module :areas, '/areas'
+    role.project_module :wards, '/wards'
+    role.project_module :accounts, '/accounts'
     end
 
     # Custom error management
-    error(403) { @title = "Error 403"; render('errors/403', :layout => :error) }
-    error(404) { @title = "Error 404"; render('errors/404', :layout => :error) }
-    error(500) { @title = "Error 500"; render('errors/500', :layout => :error) }
+    error(403) { @title = 'Error 403'; render('errors/403', layout: :error) }
+    error(404) { @title = 'Error 404'; render('errors/404', layout: :error) }
+    error(500) { @title = 'Error 500'; render('errors/500', layout: :error) }
   end
+end

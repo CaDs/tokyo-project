@@ -1,7 +1,13 @@
 # Helper methods defined here can be accessed in any controller or view in the application
 
-TokyoProject::TokyoProject.helpers do
-  # def simple_helper_method
-  #  ...
-  # end
+module TokyoProjectng
+  class App
+    module MapsHelper
+      # def simple_helper_method
+      # ...
+      # end
+    end
+
+    helpers MapsHelper
+  end
 end

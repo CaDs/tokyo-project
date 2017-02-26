@@ -1,8 +1,5 @@
 require 'spec_helper'
 
-describe "Vision Model" do
-  let(:vision) { Vision.new }
-  it 'can be created' do
-    vision.should_not be_nil
-  end
+RSpec.describe Vision do
+  pending "add some examples to (or delete) #{__FILE__}"
 end

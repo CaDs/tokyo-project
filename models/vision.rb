@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'open-uri'
 
 class Vision < ActiveRecord::Base
@@ -5,50 +6,59 @@ class Vision < ActiveRecord::Base
   belongs_to :account
   has_many :pictures
 
-  DEFAULT_MEDIUM_PICTURE_URL = "http://farm9.staticflickr.com/8300/7814117342_b345e98c65_m.jpg"
+  DEFAULT_MEDIUM_PICTURE_URL =
+    'http://farm9.staticflickr.com/8300/7814117342_b345e98c65_m.jpg'.freeze
+
   before_save :update_url_title
 
   def published_pictures
-    pictures.order("created_at DESC").find_all{|p| p.is_published }
+    pictures.order('created_at DESC').find_all(&:is_published)
   end
 
-  def has_map_info?
+  def map_info?
     pictures.where('latitude != ? && longitude != ?', '', '').any?
   end
 
   def map_data
     res = {}
-    geolocations = self.pictures.find_all{|p| p.is_published == true}.collect{|p| [p.latitude, p.longitude].compact}.delete_if{|a| a.empty?}
+    geolocations = pictures.find_all { |p| p.is_published == true }.collect { |p| [p.latitude, p.longitude].compact }.delete_if(&:empty?)
     center = Geocoder::Calculations.geographic_center(geolocations)
     static_url = "http://maps.googleapis.com/maps/api/staticmap?center=#{center}&zoom=16&size=650x350&maptype=roadmap&sensor=false"
     dynamic_url = "http://maps.google.com/maps?q=#{center.first},#{center.last}&zoom=16&size=650x350&maptype=roadmap&sensor=false"
     legend = []
     index = 1
-    self.pictures.find_all{|p| p.is_published == true && p.latitude.to_s != ''}.each do |picture|
+    pictures.find_all { |p| p.is_published == true && p.latitude.to_s != '' }.each do |picture|
       pinpoint = picture.pinpoint_code(index)
-      if pinpoint != ""
-        legend <<  [index, picture.id]
-        static_url += pinpoint
-        dynamic_url += pinpoint
-        index += 1
-      end
+      next unless pinpoint != ''
+      legend <<  [index, picture.id]
+      static_url += pinpoint
+      dynamic_url += pinpoint
+      index += 1
     end
     res['static_url'] = static_url
     res['dynamic_url'] = dynamic_url
     res['legend'] = legend
-    return res
+    res
   end
 
   def clear_cache
-    TokyoProject.cache.delete("visions")
-    TokyoProject.cache.delete("vision_show_#{self.id}")
-    TokyoProject.cache.delete("maps_show_#{self.id}")
+    TokyoProject.cache.delete('visions')
+    TokyoProject.cache.delete("vision_show_#{id}")
+    TokyoProject.cache.delete("maps_show_#{id}")
     area.clear_cache
   end
 
   def update_url_title
-    tmp_title = self.title.gsub(',', '').gsub('.', '').split(' ').collect{|word| word.capitalize}.join('').underscore rescue nil
-    self.url_title= URI::encode(tmp_title)
+    tmp_title = begin
+                  title.delete(',')
+                       .delete('.')
+                       .split(' ')
+                       .collect(&:capitalize)
+                       .join('')
+                       .underscore
+                rescue
+                  nil
+                end
+    self.url_title = URI.encode(tmp_title)
   end
-
 end
