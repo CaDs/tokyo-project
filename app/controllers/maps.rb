@@ -2,8 +2,9 @@
 TokyoProject::App.controllers :maps do
   get :show, map: '/maps/:id' do
     key = "maps_show_#{params[:id]}"
+    cache_time = Padrino.env == :production ? 86_400 : 1
 
-    cache(key, expires: (Padrino.env.to_s == 'production' ? 86_400 : 1)) do
+    cache(key, expires: cache_time) do
       @vision = Vision.find(params[:id])
       map_data = @vision.map_data
       @static_map_url = map_data['static_url']

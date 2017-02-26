@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 cleardb = URI.parse(ENV['CLEARDB_DATABASE_URL'] || '')
+mariadb = URI.parse(ENV['JAWSDB_MARIA_URL'] || '')
 
 ActiveRecord::Base.configurations[:development] = {
   adapter: 'mysql2',
@@ -15,14 +16,24 @@ ActiveRecord::Base.configurations[:development] = {
 
 }
 
+# ActiveRecord::Base.configurations[:production] = {
+#   adapter: 'mysql2',
+#   encoding: 'utf8',
+#   reconnect: true,
+#   database: cleardb.path[1..-1],
+#   username: cleardb.user,
+#   password: cleardb.password,
+#   host: cleardb.host
+# }
+
 ActiveRecord::Base.configurations[:production] = {
   adapter: 'mysql2',
   encoding: 'utf8',
   reconnect: true,
-  database: cleardb.path[1..-1],
-  username: cleardb.user,
-  password: cleardb.password,
-  host: cleardb.host
+  database: mariadb.path[1..-1],
+  username: mariadb.user,
+  password: mariadb.password,
+  host: mariadb.host
 }
 
 ActiveRecord::Base.configurations[:test] = {

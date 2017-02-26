@@ -6,7 +6,9 @@ TokyoProject::App.controllers :visions do
 
   get :index, map: '/visions' do
     key = 'visions'
-    cache(key, expires: (Padrino.env.to_s == 'production' ? 86_400 : 1)) do
+    cache_time = Padrino.env == :production ? 86_400 : 1
+
+    cache(key, expires: cache_time) do
       @visions = Vision.order('created_at DESC').find_all { |v| v.published_pictures.any? }
       content_for(:meta_description) { 'Unique moments and places captured around Tokyo' }
       content_for(:title) { 'Visions' }
@@ -17,8 +19,9 @@ TokyoProject::App.controllers :visions do
   get :show, map: '/visions/:id/:pid?' do
     key = "vision_show_#{params[:id]}"
     key += "_#{params[:pid]}" if params[:pid]
+    cache_time = Padrino.env == :production ? 86_400 : 1
 
-    cache(key, expires: (Padrino.env.to_s == 'production' ? 86_400 : 1)) do
+    cache(key, expires: cache_time) do
       @vision = Vision.find(params[:id]) rescue nil
       @vision ||= Vision.find_by_url_title(params[:id])
 
