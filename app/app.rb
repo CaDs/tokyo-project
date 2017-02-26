@@ -53,7 +53,8 @@ module TokyoProject
                               .pluck(:vision_id)
                               .uniq
                               .first(3)
-      @visions = Vision.find(latest_visions)
+      @visions = Vision.preload(:pictures)
+                       .find(latest_visions)
       render 'layouts/landing'
     end
 

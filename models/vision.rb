@@ -12,7 +12,7 @@ class Vision < ActiveRecord::Base
   before_save :update_url_title
 
   def published_pictures
-    pictures.order('created_at DESC').find_all(&:is_published)
+    pictures.published.order('created_at DESC')
   end
 
   def map_info?

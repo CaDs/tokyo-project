@@ -173,7 +173,7 @@ DEPENDENCIES
   byebug
   dalli
   dotenv
-  erubis (~> 2.7.0)
+  erubis
   flickraw
   foreman
   geocoder

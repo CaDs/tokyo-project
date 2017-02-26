@@ -22,7 +22,7 @@ TokyoProject::App.controllers :visions do
     cache_time = Padrino.env == :production ? 86_400 : 1
 
     cache(key, expires: cache_time) do
-      @vision = Vision.find(params[:id]) rescue nil
+      @vision = Vision.preload(:pictures, :area).find(params[:id]) rescue nil
       @vision ||= Vision.find_by_url_title(params[:id])
 
       content_for(:meta_description) { @vision.meta_description.present? ? @vision.meta_description : @vision.short_description }

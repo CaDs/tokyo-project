@@ -24,7 +24,7 @@ gem 'sinatra-flash', require: 'sinatra/flash'
 gem 'activerecord', '>= 3.1', require: 'active_record'
 gem 'activesupport', '>= 3.1'
 gem 'bcrypt'
-gem 'erubis', '~> 2.7.0'
+gem 'erubis'
 gem 'mysql2'
 
 # Security
