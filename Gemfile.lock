@@ -103,7 +103,6 @@ GEM
     parser (2.4.0.0)
       ast (~> 2.2)
     powerpack (0.1.1)
-    puma (3.7.1)
     rack (1.6.5)
     rack-protection (1.5.3)
       rack
@@ -180,7 +179,6 @@ DEPENDENCIES
   padrino (= 0.13.3.3)
   padrino-cookies
   padrino-sprockets
-  puma
   rack-protection
   rack-test
   rake
