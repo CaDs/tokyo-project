@@ -1,4 +1,5 @@
-TokyoProjectng::Admin.controllers :accounts do
+# frozen_string_literal: true
+TokyoProject::Admin.controllers :accounts do
   get :index do
     @title = 'Accounts'
     @accounts = Account.all

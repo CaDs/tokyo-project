@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class CreateAreas < ActiveRecord::Migration
   def self.up
     create_table :areas do |t|

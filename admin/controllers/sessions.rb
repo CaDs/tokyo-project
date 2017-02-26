@@ -1,4 +1,5 @@
-TokyoProjectng::Admin.controllers :sessions do
+# frozen_string_literal: true
+TokyoProject::Admin.controllers :sessions do
   get :new do
     render '/sessions/new', nil, layout: false
   end

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 ##
 # This file mounts each app in the Padrino project to a specified sub-uri.
 # You can mount additional applications using any of these commands below:
@@ -34,5 +35,5 @@ end
 
 # Mounts the core application for this project
 
-Padrino.mount('TokyoProjectng::Admin', app_file: Padrino.root('admin/app.rb')).to('/admin')
-Padrino.mount('TokyoProjectng::App', app_file: Padrino.root('app/app.rb')).to('/')
+Padrino.mount('TokyoProject::Admin', app_file: Padrino.root('admin/app.rb')).to('/admin')
+Padrino.mount('TokyoProject::App', app_file: Padrino.root('app/app.rb')).to('/')

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 source 'https://rubygems.org'
 
 # Padrino supports Ruby version 1.9 and later
@@ -13,8 +14,8 @@ gem 'puma'
 gem 'oj'
 
 # Project requirements
-gem 'rake'
 gem 'padrino-cookies'
+gem 'rake'
 gem 'sinatra-flash', require: 'sinatra/flash'
 
 # Component requirements
@@ -39,6 +40,8 @@ gem 'geocoder'
 
 gem 'kaminari'
 
+gem 'dotenv'
+
 # Test requirements
 gem 'rack-test', require: 'rack/test', group: 'test'
 gem 'rspec', group: 'test'
@@ -53,6 +56,7 @@ gem 'yui-compressor'
 
 group :development, :test do
   gem 'awesome_print'
+  gem 'byebug'
   gem 'rubocop', require: false
   gem 'rubocop-checkstyle_formatter', require: false
 end

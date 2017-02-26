@@ -1,4 +1,5 @@
-module TokyoProjectng
+# frozen_string_literal: true
+module TokyoProject
   class App < Padrino::Application
     use ConnectionPoolManagement
     register Padrino::Rendering
@@ -9,7 +10,7 @@ module TokyoProjectng
     register Padrino::Flash
     register Padrino::Cache
     register Padrino::Sprockets
-    sprockets #minify: (Padrino.env == :production)
+    sprockets # minify: (Padrino.env == :production)
     enable :caching
     # enable :sessions
 
@@ -59,14 +60,14 @@ module TokyoProjectng
 
     get '/', cache: true do
       cache_key 'root_path'
-      expires(Padrino.env.to_s == 'production' ? 3600 : 1)
+      expires(Padrino.env.to_s == 'production' ? 86_400 : 1)
       @visions = Picture.published.order('created_at DESC').collect(&:vision_id).uniq.first(3).collect { |id| Vision.find(id) }
       render 'layouts/landing'
     end
 
     get '/new_landing', cache: true do
       cache_key 'new_landing'
-      expires(Padrino.env.to_s == 'production' ? 3600 : 1)
+      expires(Padrino.env.to_s == 'production' ? 86_400 : 1)
       @latest_visions = Picture.published.order('created_at DESC').collect(&:vision_id).uniq.first(10).collect { |id| Vision.find(id) }
       render 'layouts/new_landing', layout: false
     end
@@ -78,9 +79,9 @@ module TokyoProjectng
     require 'builder'
     get '/sitemap', provides: [:xml] do
       static_pages = [uri(url('/')), uri(url('/about')), uri(url(:areas, :index)), uri(url(:visions, :index))]
-      areas = Area.scoped.collect { |area| uri url(:areas, :show, id: area.url_title.to_s) }
-      visions = Vision.scoped.collect { |vision| uri url(:visions, :show, id: vision.url_title.to_s) }
-      posts = Post.scoped.collect { |post| uri url(:blog, :show, id: post.id.to_s) }
+      areas = Area.collect { |area| uri url(:areas, :show, id: area.url_title.to_s) }
+      visions = Vision.collect { |vision| uri url(:visions, :show, id: vision.url_title.to_s) }
+      posts = Post.all.collect { |post| uri url(:blog, :show, id: post.id.to_s) }
       @urls = static_pages + areas + visions + posts
       render 'layouts/sitemap'
     end

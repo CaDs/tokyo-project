@@ -1,23 +1,24 @@
-TokyoProjectng::App.controllers :visions do
+# frozen_string_literal: true
+TokyoProject::App.controllers :visions do
   after do
     ActiveRecord::Base.connection.close
   end
 
   get :index, map: '/visions' do
     key = 'visions'
-    cache(key, expires: (Padrino.env.to_s == 'production' ? 3600 : 1)) do
-      @visions = Vision.order('created_at DESC').scoped.find_all { |v| v.published_pictures.any? }
+    cache(key, expires: (Padrino.env.to_s == 'production' ? 86_400 : 1)) do
+      @visions = Vision.order('created_at DESC').find_all { |v| v.published_pictures.any? }
       content_for(:meta_description) { 'Unique moments and places captured around Tokyo' }
       content_for(:title) { 'Visions' }
       render 'visions/index'
     end
   end
 
-  get :show, map: '/visions/:id(/:pid)' do
+  get :show, map: '/visions/:id/:pid?' do
     key = "vision_show_#{params[:id]}"
     key += "_#{params[:pid]}" if params[:pid]
 
-    cache(key, expires: (Padrino.env.to_s == 'production' ? 3600 : 1)) do
+    cache(key, expires: (Padrino.env.to_s == 'production' ? 86_400 : 1)) do
       @vision = begin
                   Vision.find(params[:id])
                 rescue

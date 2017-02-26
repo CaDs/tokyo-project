@@ -1,0 +1,38 @@
+AllCops:
+  Exclude:
+    - db/schema.rb
+    - admin/app.rb
+SymbolProc:
+  Enabled: false
+RedundantBegin:
+    Enabled: false
+Style/IndentationConsistency:
+  Description: 'I would like to use private indentation'
+  Enabled: false
+Style/AndOr:
+  Description: 'I would like to use Rails style and return'
+  Enabled: false
+Metrics/LineLength:
+  Max: 150
+  Exclude:
+    - "**/*_spec.rb"
+    - lib/tasks/*.rake
+    - spec/factories
+Metrics/MethodLength:
+  Max: 50
+  Exclude:
+    - "**/*_spec.rb"
+Metrics/ClassLength:
+  Max: 300
+Style/Documentation:
+  Enabled: false
+Metrics/AbcSize:
+  Enabled: false
+Style/GuardClause:
+  Enabled: false
+Metrics/ModuleLength:
+  Exclude:
+    - "**/*_spec.rb"
+Metrics/BlockLength:
+  Exclude:
+    - "**/*_spec.rb"

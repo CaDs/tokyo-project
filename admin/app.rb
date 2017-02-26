@@ -1,6 +1,7 @@
+# frozen_string_literal: true
 require 'active_support/core_ext/object/blank'
 
-module TokyoProjectng
+module TokyoProject
   class Admin < Padrino::Application
     use ConnectionPoolManagement
     register Padrino::Rendering
@@ -41,11 +42,11 @@ module TokyoProjectng
 
     access_control.roles_for :admin do |role|
       role.project_module :posts, '/posts'
-    role.project_module :pictures, '/pictures'
-    role.project_module :visions, '/visions'
-    role.project_module :areas, '/areas'
-    role.project_module :wards, '/wards'
-    role.project_module :accounts, '/accounts'
+      role.project_module :pictures, '/pictures'
+      role.project_module :visions, '/visions'
+      role.project_module :areas, '/areas'
+      role.project_module :wards, '/wards'
+      role.project_module :accounts, '/accounts'
     end
 
     # Custom error management

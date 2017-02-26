@@ -7,7 +7,7 @@ class Vision < ActiveRecord::Base
   has_many :pictures
 
   DEFAULT_MEDIUM_PICTURE_URL =
-    'http://farm9.staticflickr.com/8300/7814117342_b345e98c65_m.jpg'.freeze
+    'http://farm9.staticflickr.com/8300/7814117342_b345e98c65_m.jpg'
 
   before_save :update_url_title
 
@@ -42,9 +42,9 @@ class Vision < ActiveRecord::Base
   end
 
   def clear_cache
-    TokyoProject.cache.delete('visions')
-    TokyoProject.cache.delete("vision_show_#{id}")
-    TokyoProject.cache.delete("maps_show_#{id}")
+    Padrino.cache.delete('visions')
+    Padrino.cache.delete("vision_show_#{id}")
+    Padrino.cache.delete("maps_show_#{id}")
     area.clear_cache
   end
 

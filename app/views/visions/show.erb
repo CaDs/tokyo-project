@@ -4,7 +4,7 @@
       <h2><%=@vision.title%></h2>
       <h4>
         See more visions for <%= link_to @vision.area.name, url(:areas, :show, :id => @vision.area.url_title) %> area
-        <%= link_to "(View on map)", url(:maps, :show, :id => @vision.id) if @vision.has_map_info?%>
+        <%= link_to "(View on map)", url(:maps, :show, :id => @vision.id) if @vision.map_info?%>
       </h4>
       <h4 class="muted"><%= @vision.short_description %></h4>
     </div>

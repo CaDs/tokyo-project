@@ -1,4 +1,5 @@
-RACK_ENV = 'test'.freeze unless defined?(RACK_ENV)
+# frozen_string_literal: true
+RACK_ENV = 'test' unless defined?(RACK_ENV)
 require File.expand_path(File.dirname(__FILE__) + '/../config/boot')
 Dir[File.expand_path(File.dirname(__FILE__) + '/../app/helpers/**/*.rb')].each(&method(:require))
 
@@ -9,9 +10,9 @@ end
 # You can use this method to custom specify a Rack app
 # you want rack-test to invoke:
 #
-#   app TokyoProjectng::App
-#   app TokyoProjectng::App.tap { |a| }
-#   app(TokyoProjectng::App) do
+#   app TokyoProject::App
+#   app TokyoProject::App.tap { |a| }
+#   app(TokyoProject::App) do
 #     set :foo, :bar
 #   end
 #
