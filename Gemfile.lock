@@ -166,7 +166,7 @@ DEPENDENCIES
   awesome_print
   bcrypt
   builder
-  bundler (= 1.14.5)
+  bundler (= 1.13.7)
   byebug
   dalli
   dotenv
@@ -192,4 +192,4 @@ DEPENDENCIES
   yui-compressor
 
 BUNDLED WITH
-   1.14.5
+   1.13.7
