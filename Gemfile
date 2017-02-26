@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 source 'https://rubygems.org'
 
-# Padrino supports Ruby version 1.9 and later
 # ruby '2.4.0'
+# Padrino supports Ruby version 1.9 and later
 
 # Distribute your app as a gem
 # gemspec
 
 # Server requirements
 gem 'puma'
-gem 'bundler', '~> 1.14.5'
+gem 'bundler', '1.14.5'
 
 # Optional JSON codec (faster performance)
 gem 'oj'

@@ -166,7 +166,7 @@ DEPENDENCIES
   awesome_print
   bcrypt
   builder
-  bundler (~> 1.14.5)
+  bundler (= 1.14.5)
   byebug
   dalli
   dotenv
