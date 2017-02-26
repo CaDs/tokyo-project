@@ -1,0 +1,84 @@
+<% error = @picture.errors.include?(:name) %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :vision_id, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.select :vision_id, :options => visions.collect{|v| [v.title, v.id]} %>
+  </div>
+</fieldset>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label "Flickr ID", :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :flickr_id, :class => :text_field %>
+  </div>
+</fieldset>
+<% if @picture && @picture.flickr_id %>
+  <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+    <%= f.label "Preview", :class => 'control-label' %><br/>
+    <div class='controls'>
+      <%= image_tag(@picture.thumb) %>
+    </div>
+  </fieldset>
+<% end %>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label "Latitude", :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :latitude, :class => :text_field %>
+  </div>
+</fieldset>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label "Longitude", :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_field :longitude, :class => :text_field %>
+  </div>
+</fieldset>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :description_en, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_area :description_en, :class => 'text_area', :id => "rich_text1" %>
+  </div>
+</fieldset>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :description_es, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.error_message_on :description_es %>
+    <%= f.text_area :description_es, :class => 'text_area', :id => "rich_text2" %>
+  </div>
+</fieldset>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :description_jp, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.text_area :description_jp, :class => 'text_area', :id => "rich_text3" %>
+  </div>
+</fieldset>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= f.label :is_published, :class => 'control-label' %>
+  <div class='controls'>
+    <%= f.select :is_published, :options => [["no", false], ["yes", true]] %>
+  </div>
+</fieldset>
+<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
+  <%= label_tag :schedule_at, :class => 'control-label' %>
+  <div id="schedule_at" class="controls input-append date">
+    <%= f.text_field :schedule_at, :class => :text_field, :data => {:format => "dd/MM/yyyy hh:mm:ss"} %>
+    <span class="add-on">
+      <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+      </i>
+    </span>
+  </div>
+</fieldset>
+
+<div class="form-actions">
+  <%= f.submit pat(:save), :class => 'btn btn-primary' %>
+  &nbsp;
+  <%= f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue' %>
+  &nbsp;
+  <%= link_to pat(:cancel), url(:pictures, :index), :class => 'btn' %>
+</div>
+
+<script type="text/javascript">
+  $(function() {
+    $('#schedule_at').datetimepicker({
+      language: 'en'
+    });
+  });
+</script>
