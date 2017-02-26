@@ -58,6 +58,7 @@ GEM
     mustermann19 (0.4.4)
       enumerable-lazy
     mysql2 (0.4.5)
+    newrelic_rpm (3.18.1.330)
     nokogiri (1.7.0.1)
       mini_portile2 (~> 2.1.0)
     oj (2.18.1)
@@ -175,6 +176,7 @@ DEPENDENCIES
   kaminari
   memcachier
   mysql2
+  newrelic_rpm
   oj
   padrino (= 0.13.3.3)
   padrino-cookies

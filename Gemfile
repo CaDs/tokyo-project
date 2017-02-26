@@ -55,6 +55,8 @@ gem 'uglifier'
 # enable css compression
 gem 'yui-compressor'
 
+gem 'newrelic_rpm'
+
 gem 'builder'
 
 group :development, :test do
