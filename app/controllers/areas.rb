@@ -15,7 +15,7 @@ TokyoProject::App.controllers :areas do
     end
   end
 
-  get :show, map: '/areas/:id(/:pid?)' do
+  get :show, map: '/areas/:id(/:pid)?' do
     key = "area_show_#{params[:id]}"
     cache_time = Padrino.env == :production ? 86_400 : 1
     cache(key, expires: cache_time) do

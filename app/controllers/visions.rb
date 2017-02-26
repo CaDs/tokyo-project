@@ -16,7 +16,7 @@ TokyoProject::App.controllers :visions do
     end
   end
 
-  get :show, map: '/visions/:id(/:pid?)' do
+  get :show, map: '/visions/:id(/:pid)?' do
     key = "vision_show_#{params[:id]}"
     key += "_#{params[:pid]}" if params[:pid]
     cache_time = Padrino.env == :production ? 86_400 : 1
