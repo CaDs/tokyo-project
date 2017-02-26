@@ -10,18 +10,7 @@ class Picture < ActiveRecord::Base
   end
 
   def thumb
-    url = Padrino.cache.get "cached_picture_#{id}_tumb"
-    if url == '' || url.nil?
-      url = begin
-              FlickRaw.url_t(flickr_version)
-            rescue
-              '/images/default_small.jpg'
-            end
-      Padrino.cache.set("cached_picture_#{id}_tumb",
-                             url,
-                             expires: 86_400)
-    end
-    url
+    FlickRaw.url_t(flickr_version)
   end
 
   def medium

@@ -77,14 +77,14 @@ TokyoProject::Admin.controllers :accounts do
       flash[:error] = pat(:destroy_many_error, model: 'account')
       redirect(url(:accounts, :index))
     end
-    ids = params[:account_ids].split(',').map(&:strip)
+    ids = params[:account_ids].split(',').map(&:strip).map(&:to_i)
     accounts = Account.find(ids)
 
     if accounts.include? current_account
       flash[:error] = pat(:delete_error, model: 'account')
     elsif Account.destroy accounts
 
-      flash[:success] = pat(:destroy_many_success, model: 'Accounts', ids: ids.join(', ').to_s)
+      flash[:success] = pat(:destroy_many_success, model: 'Accounts', ids: ids.to_sentence.to_s)
     end
     redirect url(:accounts, :index)
   end
