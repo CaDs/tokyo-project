@@ -10,3 +10,4 @@ tmp/**/*
 .ruby-version
 .sass-cache
 config/flickr.yml
+.byebug_history
