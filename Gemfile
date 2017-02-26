@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 source 'https://rubygems.org'
 
-# Padrino supports Ruby version 1.9 and later
 # ruby '2.4.0'
+# Padrino supports Ruby version 1.9 and later
 
 # Distribute your app as a gem
 # gemspec
