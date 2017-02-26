@@ -10,15 +10,24 @@ class Picture < ActiveRecord::Base
   end
 
   def thumb
-    FlickRaw.url_t(flickr_version)
+    cache_key = "cached_picture_#{id}_tumb"
+    Padrino.cache.fetch(cache_key, expires: 86_400) do
+      FlickRaw.url_t(flickr_version)
+    end
   end
 
   def medium
-    FlickRaw.url_z(flickr_version)
+    cache_key = "cached_picture_#{id}_medium"
+    Padrino.cache.fetch(cache_key, expires: 86_400) do
+      FlickRaw.url_z(flickr_version)
+    end
   end
 
   def large
-    FlickRaw.url_b(flickr_version)
+    cache_key = "cached_picture_#{id}_large"
+    Padrino.cache.fetch(cache_key, expires: 86_400) do
+      FlickRaw.url_b(flickr_version)
+    end
   end
 
   def pinpoint_code(label = '1')

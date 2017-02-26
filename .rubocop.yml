@@ -2,6 +2,8 @@ AllCops:
   Exclude:
     - db/schema.rb
     - admin/app.rb
+Style/RescueModifier:
+  Enabled: false
 SymbolProc:
   Enabled: false
 RedundantBegin:

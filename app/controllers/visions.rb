@@ -19,16 +19,9 @@ TokyoProject::App.controllers :visions do
     key += "_#{params[:pid]}" if params[:pid]
 
     cache(key, expires: (Padrino.env.to_s == 'production' ? 86_400 : 1)) do
-      @vision = begin
-                  Vision.find(params[:id])
-                rescue
-                  nil
-                end
-      @vision ||= begin
-                    Vision.find_by_url_title(params[:id])
-                  rescue
-                    nil
-                  end
+      @vision = Vision.find(params[:id]) rescue nil
+      @vision ||= Vision.find_by_url_title(params[:id])
+
       content_for(:meta_description) { @vision.meta_description.present? ? @vision.meta_description : @vision.short_description }
       content_for(:meta_keywords) { @vision.meta_keywords }
       content_for(:title) { @vision.title }
