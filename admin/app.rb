@@ -35,6 +35,10 @@ module TokyoProject
     end
 
     access_control.roles_for :admin do |role|
+      role.project_module :wards, '/wards'
+      role.project_module :visions, '/visions'
+      role.project_module :pictures, '/pictures'
+      role.project_module :areas, '/areas'
       role.project_module :posts, '/posts'
       role.project_module :accounts, '/accounts'
     end

@@ -25,11 +25,6 @@
                   <div class=arrow></div>
                   <h3 class=popover-title><%= pat(:delete_selected_title) %></h3>
                   <div class=popover-content>
-                    <% form_tag url(:accounts, :destroy_many), :method => :delete do %>
-                      <%=hidden_field_tag :account_ids, :'data-delete-many-ids' => true %>
-                      <%=submit_tag pat(:delete), :class =>'list-menu-popover-delete-selected-btn btn btn-danger btn-small' %>
-                      <div class='btn btn-default btn-small cancel'><%= pat(:cancel) %></div>
-                    <% end %>
                   </div>
                 </div>
               </li>

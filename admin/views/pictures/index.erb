@@ -1,0 +1,70 @@
+<ul class="nav nav-tabs">
+  <li class=active> <%= link_to tag_icon(:list, pat(:list)), url(:pictures, :index) %></li>
+  <li> <%= link_to tag_icon(:plus, pat(:new)), url(:pictures, :new) %></li>
+</ul>
+
+<div class=tabs-content>
+  <table id=list class="table table-striped table-hover table-condensed">
+    <thead>
+      <tr>
+        <th class="header"><%= mat(:picture, :id) %></th>
+        <th class="header"><%= mat(:picture, :vision_id) %></th>
+        <th class="header"><%= mat(:picture, :description_en) %></th>
+        <th class="header"><%= mat(:picture, :description_es) %></th>
+        <th class="header"><%= mat(:picture, :description_jp) %></th>
+        <th class="header"><%= mat(:picture, :preview) %></th>
+        <th class="header"><%= mat(:picture, :share_url) %></th>
+        <th class="header">is published</th>
+        <th class="header list-row-action-header"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @pictures.each do |picture| %>
+      <tr class=list-row>
+        <td class=list-column><%= picture.id %></td>
+        <td class=list-column><%= link_to picture.vision.title, url(:visions, :edit, picture.vision_id) %></td>
+        <td class=list-column>
+          <div id="d_en_<%=picture.id%>" style="display:none">
+            <%= picture.description_en.html_safe %>
+          </div>
+          <%= link_to "show", '#', :class=>"show_description", :data =>{'div-id' => "d_en_#{picture.id}"} %>
+        </td>
+        <td class=list-column>
+          <div id="d_es_<%=picture.id%>" style="display:none">
+            <%= picture.description_es.html_safe %>
+          </div>
+          <%= link_to "show", '#', :class=>"show_description", :data =>{'div-id' => "d_es_#{picture.id}"} %>
+        </td>
+        <td class=list-column>
+          <div id="d_jp_<%=picture.id%>" style="display:none">
+            <%= picture.description_jp.html_safe %>
+          </div>
+          <%= link_to "show", '#', :class=>"show_description", :data =>{'div-id' => "d_jp_#{picture.id}"} %>
+        </td class=list-column>
+        <td><%= image_tag(picture.thumb) %></td>
+        <td class=list-column>
+          <%= link_to "preview", "http://#{request.host}/visions/#{picture.vision.id}/#{picture.id}" %>
+        </td>
+        <td class=list-column><%= picture.is_published %></td>
+        <td class="list-column list-row-action">
+          <div class='list-row-action-wrapper'>
+            <%= link_to tag_icon(:edit), url(:pictures, :edit, :id => picture.id), :method => :get, :rel => :tooltip, :title => "#{pat(:edit)} picture", :class => 'list-row-action-wrapper-link' %>
+            <%= link_to tag_icon(:trash), url(:pictures, :destroy, :id => picture.id), :method => :delete, :rel => :tooltip, :title => "#{pat(:delete)} picture", :class => 'list-row-action-delete-one list-row-action-wrapper-link', :onsubmit => "return confirm('#{pat(:confirm)}')" %>
+            <div class="popover list-row-action-popover-delete-one left">
+              <div class=arrow> </div>
+              <h3 class=popover-title><%= pat(:delete, :model => "account") %></h3>
+              <div class=popover-content>
+                <%- form_tag url(:pictures, :destroy, :id => picture.id), :method => :delete do %>
+                  <%= submit_tag pat(:delete), :class =>'list-row-action-popover-delete-one-btn btn btn-danger btn-small' %>
+                  <div class="btn btn-small cancel"><%= pat(:cancel) %></div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= (will_paginate @pictures).html_safe rescue ''%>
+</div>
