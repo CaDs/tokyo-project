@@ -2,6 +2,7 @@
 module TokyoProject
   class App < Padrino::Application
     use ConnectionPoolManagement
+    use Rack::Deflater
     register Padrino::Rendering
     register Padrino::Mailer
     register Padrino::Helpers
