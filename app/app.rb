@@ -13,7 +13,7 @@ module TokyoProject
     register Padrino::Sprockets
     sprockets minify: false
 
-    Padrino.cache = Padrino::Cache.new(:Memcached, backend: ::Dalli::Client.new)
+    set :cache, Padrino::Cache.new(:Memcached, backend: ::Dalli::Client.new)
     enable :caching
 
     ##
