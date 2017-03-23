@@ -5,7 +5,6 @@ xml.rss "version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/", "x
     xml.link uri("/")
     xml.description "Visions of Tokyo. A lonely alley, a crowded street, a field full of cherry blossoms, there is magic on every corner of this city."
     pictures = @cached_pictures
-    pictures ||= @pictures_array
     pictures.each do |p|
       picture_url = uri url(:visions, :show, id: "#{p.vision_id}", pid: p.id)
       xml.item do
@@ -17,7 +16,6 @@ xml.rss "version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/", "x
       end
     end
     posts = @cached_posts
-    posts ||= @posts
     posts.each do |post|
       xml.item do
         post_url = uri url(:blog, :show, id: "#{post.id}")
