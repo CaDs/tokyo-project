@@ -20,7 +20,7 @@ TokyoProject::App.controllers :areas do
     cache_time = Padrino.env == :production ? 86_400 : 1
     cache(key, expires: cache_time) do
       @area = Area.find(params[:id]) rescue nil
-      @area ||= Area.find_by_url_title(params[:id]) rescue nil
+      @area ||= Area.find_by_url_title(URI.encode(params[:id])) rescue nil
 
       content_for(:meta_description) { @area.description.to_s }
       content_for(:title) { @area.name }
