@@ -23,7 +23,7 @@ TokyoProject::App.controllers :visions do
 
     cache(key, expires: cache_time) do
       @vision = Vision.preload(:pictures, :area).find(params[:id]) rescue nil
-      @vision ||= Vision.find_by_url_title(params[:id])
+      @vision ||= Vision.find_by_url_title(URI.encode(params[:id]))
 
       content_for(:meta_description) { @vision.meta_description.present? ? @vision.meta_description : @vision.short_description }
       content_for(:meta_keywords) { @vision.meta_keywords }
