@@ -24,7 +24,7 @@ gem 'sinatra-flash', require: 'sinatra/flash'
 gem 'activerecord', '>= 3.1', require: 'active_record'
 gem 'activesupport', '>= 3.1'
 gem 'bcrypt'
-gem 'erubis'
+gem 'erubi'
 gem 'mysql2'
 
 # Security
@@ -49,7 +49,7 @@ gem 'rack-test', require: 'rack/test', group: 'test'
 gem 'rspec', group: 'test'
 
 # Padrino Stable Gem
-gem 'padrino', '0.13.3.3'
+gem 'padrino'
 gem 'padrino-sprockets', require: ['padrino/sprockets']
 # enable js minification
 gem 'uglifier'
