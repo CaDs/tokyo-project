@@ -13,8 +13,9 @@
         ga('send', 'pageview');
 
       </script>
-      <%= NewRelic::Agent.browser_timing_header %>
+
     <% end %>
+    <%= NewRelic::Agent.browser_timing_header %>
     <meta charset="utf-8">
     <%
       title = "Tokyo Project #{yield_content(:title)}"
@@ -97,7 +98,6 @@
         </div>
       </div>
     </div>
-    <%= NewRelic::Agent.browser_timing_footer if Padrino.env.to_s == "production"%>
   </footer>
 </html>
 <!-- UserVoice JavaScript SDK (only needed once on a page) -->
