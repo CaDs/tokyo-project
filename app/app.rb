@@ -77,9 +77,9 @@ module TokyoProject
 
     require 'builder'
     get '/sitemap', provides: [:xml] do
-      static_pages = [uri(url('/')), uri(url('/about')), uri(url(:areas, :index)), uri(url(:visions, :index))]
+      static_pages = [uri(url('/')), uri(url('/about')), uri(url(:areas, :index)), uri(url(:places, :index))]
       areas = Area.find_each.collect { |area| uri url(:areas, :show, id: area.url_title.to_s) }
-      visions = Vision.find_each.collect { |vision| uri url(:visions, :show, id: vision.url_title.to_s) }
+      visions = Vision.find_each.collect { |vision| uri url(:places, :show, id: vision.url_title.to_s) }
       posts = Post.find_each.collect { |post| uri url(:blog, :show, id: post.id.to_s) }
       @urls = static_pages + areas + visions + posts
       render 'layouts/sitemap'

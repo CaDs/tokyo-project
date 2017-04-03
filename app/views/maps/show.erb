@@ -3,7 +3,7 @@
     <div class="span12">
       <h2><%=@vision.title%></h2>
       <h4>
-         Back to <%= link_to "normal view", url(:visions, :show, :id => @vision.url_title) %> 
+         Back to <%= link_to "normal view", url(:places, :show, :id => @vision.url_title) %>
       </h4>
       <h4 class="muted"><%= @vision.short_description %></h4>
     </div>
@@ -32,7 +32,7 @@
                     <div class="image_ban">
                       <% picture = Picture.find(box[1]) %>
                       <h4> <%= box[0] %></h4>
-                      <%= link_to(image_tag(picture.medium), url(:visions, :show, id: "#{picture.vision.id}", pid: picture.id))%>
+                      <%= link_to(image_tag(picture.medium), url(:places, :show, id: "#{picture.vision.id}", pid: picture.id))%>
                     </div>
                   </li>
                 <% end %>

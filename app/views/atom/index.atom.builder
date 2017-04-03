@@ -8,7 +8,7 @@ xml.feed  xmlns: "http://www.w3.org/2005/Atom" do
 
   @pictures.each do |picture|
     xml.entry do
-      picture_url = uri url(:visions, :show, id: "#{picture.vision.id}", pid: picture.id)
+      picture_url = uri url(:places, :show, id: "#{picture.vision.id}", pid: picture.id)
       xml.title   picture.vision.title
       xml.link    rel: "alternate", href: picture_url
       xml.id      picture_url
