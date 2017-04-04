@@ -1,9 +1,9 @@
 <div class="container">
   <div class="jumbotron">
-    <%= link_to(image_tag("big_logo.png", :title => "View more visions"), '/visions')%>
-    <h4>Visions of Tokyo. A lonely alley, a crowded street, a field full of cherry blossoms, there is magic on every corner of this city.</h4>
+    <%= link_to(image_tag("big_logo.png", :title => "View more visions", class: 'big_logo'), '/visions')%>
+    <h3>Discover the path less traveled around Tokio and Japan.</h3>
   </div>
-</div> <!-- /container -->
+</div>
 <div class="container">
   <div class="row-fluid">
     <ul class="thumbnails">
@@ -13,5 +13,20 @@
       </li>
       <% end %>
     </ul>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="span1"></div>
+    <div class="span10">
+      <div class="jumbotron red_button">
+        <p class="red_button">
+          <a href="<%= url(:places, :index) %>">
+            See all <span class='counter'><%= Vision.count %></span> places
+          </a>
+        </p>
+      </div>
+    </div>
+    <div class="span1"></div>
   </div>
 </div>

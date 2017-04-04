@@ -21,12 +21,9 @@
       title = "Tokyo Project #{yield_content(:title)}"
       meta_description = yield_content(:meta_description)
       meta_description ||= "Visions and pictures from Tokyo. A lonely alley, a crowded street, a field full of cherry blossoms, there is magic on every corner of this city."
-      meta_keywords = yield_content(:meta_keywords)
-      meta_keywords ||= "japan, tokyo, photography, travel, tokyo-project, tokyo project, fotografía, japón"
     %>
     <title><%= title %></title>
     <meta name="description" content="<%= meta_description %>" />
-    <meta name="keywords" content="<%= meta_keywords %>"/>
     <meta name="author" content="Carlos Donderis Sanz">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
