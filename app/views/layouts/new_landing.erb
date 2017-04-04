@@ -72,7 +72,7 @@
       <br clear="all"/>
       <% @latest_visions.each_with_index do |vision, index| %>
         <div class="header" id="anchor_<%= vision.id %>">
-          <h3><%= link_to(vision.title, url(:visions, :show, :id => vision.url_title)) %></h3>
+          <h3><%= link_to(vision.title, url(:places, :show, :id => vision.url_title)) %></h3>
         </div>
         <div class="gap gap-100" style="background-image:url(<%= vision.pictures.published.last.large%>);"></div>
         <div class="content" id="anchor_<%= vision.id %>">

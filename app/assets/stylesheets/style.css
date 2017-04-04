@@ -7,6 +7,10 @@ body {
   margin: 10px 0;
   text-align: center;
 }
+
+.jumbotron .big_logo {
+  max-width: 45%;
+}
 .jumbotron h1 {
   font-size: 72px;
   line-height: 1;
@@ -14,6 +18,24 @@ body {
 .jumbotron .btn {
   font-size: 21px;
   padding: 14px 24px;
+}
+
+.jumbotron .red_button {
+  font-size: 20px;
+  padding: 14px 24px;
+  background-color: #F6242F;
+}
+.jumbotron .red_button:hover {
+  font-size: 20px;
+  padding: 14px 24px;
+  background-color: #D7212F;
+}
+.jumbotron .red_button a {
+  color: white;
+  text-decoration: none;
+}
+.jumbotron .red_button .counter {
+  font-size: 25px;
 }
 .flash_message{
   text-align: center;

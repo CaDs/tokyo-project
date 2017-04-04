@@ -8,7 +8,7 @@ source 'https://rubygems.org'
 # gemspec
 
 # Server requirements
-gem 'puma'
+# gem 'puma'
 gem 'foreman'
 gem 'bundler', '1.13.7'
 
@@ -63,6 +63,6 @@ gem 'builder'
 group :development, :test do
   gem 'awesome_print'
   gem 'byebug'
-  gem 'rubocop', require: false
+  gem 'rubocop', '0.47.1',  require: false
   gem 'rubocop-checkstyle_formatter', require: false
 end

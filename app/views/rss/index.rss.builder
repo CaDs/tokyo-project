@@ -6,7 +6,7 @@ xml.rss "version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/", "x
     xml.description "Visions of Tokyo. A lonely alley, a crowded street, a field full of cherry blossoms, there is magic on every corner of this city."
     pictures = @cached_pictures
     pictures.each do |p|
-      picture_url = uri url(:visions, :show, id: "#{p.vision_id}", pid: p.id)
+      picture_url = uri url(:places, :show, id: "#{p.vision_id}", pid: p.id)
       xml.item do
         xml.title   p.vision.title
         xml.description "<p>#{image_tag(p.medium)}</p><p>A new picture has been added to #{p.vision.title}</p><br/><p>#{p.description_en} </p>"

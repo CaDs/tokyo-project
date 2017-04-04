@@ -3,7 +3,7 @@
     picture_url = vision.published_pictures.first.medium rescue nil
     picture_url ||= Vision::DEFAULT_MEDIUM_PICTURE_URL
   %>
-  <%= link_to(image_tag(picture_url), url(:visions, :show, :id => vision.url_title))%>
+  <%= link_to(image_tag(picture_url), url(:places, :show, :id => vision.url_title))%>
 </div>
-<h2><%= link_to(vision.title, url(:visions, :show, :id => vision.url_title)) %></h2>
+<h2><%= link_to(vision.title, url(:places, :show, :id => vision.url_title)) %></h2>
 <p><%= vision.short_description %></p>
