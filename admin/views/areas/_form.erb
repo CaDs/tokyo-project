@@ -8,7 +8,7 @@
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
   <%= f.label :description, :class => 'control-label' %>
   <div class='controls'>
-    <%= f.text_field :description, :class => :text_field %>
+    <%= f.text_area :description, :class => :text_area, cols: 100, rows: 5 %>
   </div>
 </fieldset>
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
