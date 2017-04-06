@@ -13,6 +13,7 @@ TokyoProject::Admin.controllers :pictures do
 
   post :create do
     @picture = Picture.new(params[:picture])
+    byebug
     if @picture.save
       flash[:notice] = 'Picture was successfully created.'
       redirect url(:pictures, :edit, id: @picture.id)

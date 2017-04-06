@@ -34,36 +34,26 @@
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
   <%= f.label :description_en, :class => 'control-label' %>
   <div class='controls'>
-    <%= f.text_area :description_en, :class => 'text_area', :id => "rich_text1" %>
+    <%= f.text_area :description_en, :class => 'text_area', :id => "rich_text1", cols: 100, rows: 5  %>
   </div>
 </fieldset>
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
   <%= f.label :description_es, :class => 'control-label' %>
   <div class='controls'>
     <%= f.error_message_on :description_es %>
-    <%= f.text_area :description_es, :class => 'text_area', :id => "rich_text2" %>
+    <%= f.text_area :description_es, :class => 'text_area', :id => "rich_text2", cols: 100, rows: 5 %>
   </div>
 </fieldset>
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
   <%= f.label :description_jp, :class => 'control-label' %>
   <div class='controls'>
-    <%= f.text_area :description_jp, :class => 'text_area', :id => "rich_text3" %>
+    <%= f.text_area :description_jp, :class => 'text_area', :id => "rich_text3", cols: 100, rows: 5 %>
   </div>
 </fieldset>
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
   <%= f.label :is_published, :class => 'control-label' %>
   <div class='controls'>
-    <%= f.select :is_published, :options => [["no", false], ["yes", true]] %>
-  </div>
-</fieldset>
-<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
-  <%= label_tag :schedule_at, :class => 'control-label' %>
-  <div id="schedule_at" class="controls input-append date">
-    <%= f.text_field :schedule_at, :class => :text_field, :data => {:format => "dd/MM/yyyy hh:mm:ss"} %>
-    <span class="add-on">
-      <i data-time-icon="icon-time" data-date-icon="icon-calendar">
-      </i>
-    </span>
+    <%= f.select :is_published, :options => [[false, false], [true, true]] %>
   </div>
 </fieldset>
 

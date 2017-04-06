@@ -14,19 +14,13 @@
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
   <%= f.label :short_description, :class => 'control-label' %>
   <div class='controls'>
-    <%= f.text_area :short_description, :class => :text_area %>
+    <%= f.text_area :short_description, :class => :text_area, cols: 100, rows: 5 %>
   </div>
 </fieldset>
 <fieldset class='control-group <%= error ? 'has-error' : ''%>'>
   <%= f.label :meta_description, :class => 'control-label' %>
   <div class='controls'>
-    <%= f.text_area :meta_description, :class => :text_area %>
-  </div>
-</fieldset>
-<fieldset class='control-group <%= error ? 'has-error' : ''%>'>
-  <%= f.label :meta_keywords, :class => 'control-label' %>
-  <div class='controls'>
-    <%= f.text_field :meta_keywords, :class => :text_field %>
+    <%= f.text_area :meta_description, :class => :text_area , cols: 100, rows: 5%>
   </div>
 </fieldset>
 <div class="form-actions">

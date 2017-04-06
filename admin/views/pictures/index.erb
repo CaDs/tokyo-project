@@ -9,9 +9,6 @@
       <tr>
         <th class="header"><%= mat(:picture, :id) %></th>
         <th class="header"><%= mat(:picture, :vision_id) %></th>
-        <th class="header"><%= mat(:picture, :description_en) %></th>
-        <th class="header"><%= mat(:picture, :description_es) %></th>
-        <th class="header"><%= mat(:picture, :description_jp) %></th>
         <th class="header"><%= mat(:picture, :preview) %></th>
         <th class="header"><%= mat(:picture, :share_url) %></th>
         <th class="header">is published</th>
@@ -23,24 +20,6 @@
       <tr class=list-row>
         <td class=list-column><%= picture.id %></td>
         <td class=list-column><%= link_to picture.vision.title, url(:visions, :edit, picture.vision_id) %></td>
-        <td class=list-column>
-          <div id="d_en_<%=picture.id%>" style="display:none">
-            <%= picture.description_en.html_safe %>
-          </div>
-          <%= link_to "show", '#', :class=>"show_description", :data =>{'div-id' => "d_en_#{picture.id}"} %>
-        </td>
-        <td class=list-column>
-          <div id="d_es_<%=picture.id%>" style="display:none">
-            <%= picture.description_es.html_safe %>
-          </div>
-          <%= link_to "show", '#', :class=>"show_description", :data =>{'div-id' => "d_es_#{picture.id}"} %>
-        </td>
-        <td class=list-column>
-          <div id="d_jp_<%=picture.id%>" style="display:none">
-            <%= picture.description_jp.html_safe %>
-          </div>
-          <%= link_to "show", '#', :class=>"show_description", :data =>{'div-id' => "d_jp_#{picture.id}"} %>
-        </td class=list-column>
         <td><%= image_tag(picture.thumb) %></td>
         <td class=list-column>
           <%= link_to "preview", "http://#{request.host}/visions/#{picture.vision.id}/#{picture.id}" %>
