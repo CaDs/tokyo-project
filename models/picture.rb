@@ -51,7 +51,12 @@ class Picture < ActiveRecord::Base
       Padrino.cache.delete(key + suffix)
     end
 
-    keys = ["vision_show_#{vision.id}", "vision_show_#{vision.id}_#{id}"]
+    keys = [
+      "vision_show_#{vision.id}",
+      "vision_show_#{vision.id}_#{id}",
+      "places_show_#{vision.id}",
+      "places_show_#{vision.id}_#{id}"
+    ]
     keys.each { |k| Padrino.cache.delete(k) }
     vision.clear_cache
   end

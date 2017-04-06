@@ -43,7 +43,9 @@ class Vision < ActiveRecord::Base
 
   def clear_cache
     Padrino.cache.delete('visions')
+    Padrino.cache.delete('places')
     Padrino.cache.delete("vision_show_#{id}")
+    Padrino.cache.delete("places_show_#{id}")
     Padrino.cache.delete("maps_show_#{id}")
     area.clear_cache
   end
