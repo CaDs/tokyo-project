@@ -53,9 +53,13 @@ class Picture < ActiveRecord::Base
 
     keys = [
       "vision_show_#{vision.id}",
+      "vision_show_#{vision.url_title}",
       "vision_show_#{vision.id}_#{id}",
+      "vision_show_#{vision.url_title}_#{id}",
       "places_show_#{vision.id}",
-      "places_show_#{vision.id}_#{id}"
+      "places_show_#{vision.url_title}",
+      "places_show_#{vision.id}_#{id}",
+      "places_show_#{vision.url_title}_#{id}"
     ]
     keys.each { |k| Padrino.cache.delete(k) }
     vision.clear_cache
