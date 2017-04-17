@@ -6,7 +6,7 @@ TokyoProject::App.controllers :areas do
 
   get :index do
     key = 'areas'
-    cache_time = Padrino.env == :production ? 86_400 : 1
+    cache_time = Padrino.env == :production ? 86_400 : 60
     cache(key, expires: cache_time) do
       content_for(:meta_description) { 'A tour around alleys, parks, temples. Get lost and discover new faces of Tokyo by walking around it areas.' }
       content_for(:title) { 'Areas' }
@@ -17,7 +17,7 @@ TokyoProject::App.controllers :areas do
 
   get :show, map: '/areas/:id(/:pid)?' do
     key = "area_show_#{params[:id]}"
-    cache_time = Padrino.env == :production ? 86_400 : 1
+    cache_time = Padrino.env == :production ? 86_400 : 60
     cache(key, expires: cache_time) do
       @area = Area.find(params[:id]) rescue nil
       @area ||= Area.find_by_url_title(URI.encode(params[:id])) rescue nil

@@ -47,7 +47,7 @@ module TokyoProject
 
     get '/', cache: true do
       cache_key 'root_path'
-      expires(Padrino.env.to_s == 'production' ? 86_400 : 1)
+      expires(Padrino.env.to_s == 'production' ? 86_400 : 60)
       latest_visions = Picture.published
                               .select('vision_id')
                               .order('created_at DESC')
@@ -61,7 +61,7 @@ module TokyoProject
 
     get '/new_landing', cache: true do
       cache_key 'new_landing'
-      expires(Padrino.env.to_s == 'production' ? 86_400 : 1)
+      expires(Padrino.env.to_s == 'production' ? 86_400 : 60)
       @latest_visions = Picture.published
                                .order('created_at DESC')
                                .collect(&:vision_id)

@@ -2,7 +2,7 @@
 TokyoProject::App.controllers :maps do
   get :show, map: '/maps/:id' do
     key = "maps_show_#{params[:id]}"
-    cache_time = Padrino.env == :production ? 86_400 : 1
+    cache_time = Padrino.env == :production ? 86_400 : 60
 
     cache(key, expires: cache_time) do
       @vision = Vision.find(params[:id])

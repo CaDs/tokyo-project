@@ -5,7 +5,7 @@ TokyoProject::App.controllers :places do
 
   get :index, map: '/places' do
     key = 'places'
-    cache_time = Padrino.env == :production ? 86_400 : 1
+    cache_time = Padrino.env == :production ? 86_400 : 60
 
     cache(key, expires: cache_time) do
       @visions = Vision.order('created_at DESC').find_all { |v| v.published_pictures.any? }
@@ -18,8 +18,8 @@ TokyoProject::App.controllers :places do
   get :show, map: '/places/:id(/:pid)?' do
     key = "places_show_#{params[:id]}"
     key += "_#{params[:pid]}" if params[:pid]
-    cache_time = Padrino.env == :production ? 86_400 : 1
-
+    cache_time = Padrino.env == :production ? 86_400 : 60
+puts "key: #{key}"
     cache(key, expires: cache_time) do
       @vision = Vision.preload(:pictures, :area).find(params[:id]) rescue nil
       @vision ||= Vision.find_by_url_title(URI.encode(params[:id]))
