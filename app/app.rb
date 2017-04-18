@@ -7,10 +7,10 @@ module TokyoProject
     register Padrino::Mailer
     register Padrino::Helpers
     register Padrino::Cookies
-    register Padrino::Flash
-    register Padrino::Sprockets
     register Padrino::Cache
-
+    register Padrino::Flash
+    register Padrino::Cache
+    register Padrino::Sprockets
     sprockets minify: false
 
     set :cache, Padrino::Cache.new(:Memcached, backend: ::Dalli::Client.new)
