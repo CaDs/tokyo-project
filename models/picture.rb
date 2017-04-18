@@ -48,7 +48,7 @@ class Picture < ActiveRecord::Base
     key = "cached_picture_#{id}"
 
     %w(_tumb _medium _large).each do |suffix|
-      Padrino.cache.delete(key + suffix)
+      TokyoProject::App.cache.delete(key + suffix)
     end
 
     keys = [
@@ -61,7 +61,7 @@ class Picture < ActiveRecord::Base
       "places_show_#{vision.id}_#{id}",
       "places_show_#{vision.url_title}_#{id}"
     ]
-    keys.each { |k| Padrino.cache.delete(k) }
+    keys.each { |k| TokyoProject::App.cache.delete(k) }
     vision.clear_cache
   end
 

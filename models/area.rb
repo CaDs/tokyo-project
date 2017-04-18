@@ -6,9 +6,9 @@ class Area < ActiveRecord::Base
   before_save :update_url_title
 
   def clear_cache
-    Padrino.cache.delete('root_path')
-    Padrino.cache.delete('areas')
-    Padrino.cache.delete("area_show_#{id}")
+    TokyoProject::App.cache.delete('root_path')
+    TokyoProject::App.cache.delete('areas')
+    TokyoProject::App.cache.delete("area_show_#{id}")
   end
 
   def update_url_title

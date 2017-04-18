@@ -19,7 +19,7 @@ TokyoProject::App.controllers :places do
     key = "places_show_#{params[:id]}"
     key += "_#{params[:pid]}" if params[:pid]
     cache_time = Padrino.env == :production ? 86_400 : 60
-puts "key: #{key}"
+
     cache(key, expires: cache_time) do
       @vision = Vision.preload(:pictures, :area).find(params[:id]) rescue nil
       @vision ||= Vision.find_by_url_title(URI.encode(params[:id]))

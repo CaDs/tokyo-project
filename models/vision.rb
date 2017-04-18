@@ -42,13 +42,13 @@ class Vision < ActiveRecord::Base
   end
 
   def clear_cache
-    Padrino.cache.delete('visions')
-    Padrino.cache.delete('places')
-    Padrino.cache.delete("vision_show_#{id}")
-    Padrino.cache.delete("vision_show_#{url_title}")
-    Padrino.cache.delete("places_show_#{id}")
-    Padrino.cache.delete("places_show_#{url_title}")
-    Padrino.cache.delete("maps_show_#{id}")
+    TokyoProject::App.cache.delete('visions')
+    TokyoProject::App.cache.delete('places')
+    TokyoProject::App.cache.delete("vision_show_#{id}")
+    TokyoProject::App.cache.delete("vision_show_#{url_title}")
+    TokyoProject::App.cache.delete("places_show_#{id}")
+    TokyoProject::App.cache.delete("places_show_#{url_title}")
+    TokyoProject::App.cache.delete("maps_show_#{id}")
     area.clear_cache
   end
 
