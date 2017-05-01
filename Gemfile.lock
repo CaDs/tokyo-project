@@ -49,6 +49,11 @@ GEM
       activerecord
       kaminari-core (= 1.0.1)
     kaminari-core (1.0.1)
+    kaminari-sinatra (1.0.1)
+      actionview
+      kaminari-core (~> 1.0)
+      padrino-helpers
+      sinatra
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.4)
@@ -177,6 +182,7 @@ DEPENDENCIES
   foreman
   geocoder
   kaminari
+  kaminari-sinatra
   memcachier
   mysql2
   newrelic_rpm

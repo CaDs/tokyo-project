@@ -41,6 +41,7 @@ gem 'flickraw', require: 'flickraw'
 gem 'geocoder'
 
 gem 'kaminari'
+gem 'kaminari-sinatra'
 
 gem 'dotenv'
 

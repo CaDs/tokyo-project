@@ -4,6 +4,7 @@
 </ul>
 
 <div class=tabs-content>
+  <%= paginate(@areas) %>
   <table id=list class="table table-striped table-hover table-condensed">
     <thead>
       <tr>
@@ -41,5 +42,5 @@
       <% end %>
     </tbody>
     </table>
-  <%= (will_paginate @areas).html_safe rescue ''%>
+    <%= paginate(@areas) %>
   </div>
