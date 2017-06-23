@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 TokyoProject::App.controllers :places do
   after do
     ActiveRecord::Base.connection.close
@@ -5,10 +7,12 @@ TokyoProject::App.controllers :places do
 
   get :index, map: '/places' do
     key = 'places'
-    cache_time = Padrino.env == :production ? 86_400 : 60
+    cache_time = Padrino.env == :production ? 86_400 : 10
 
     cache(key, expires: cache_time) do
-      @visions = Vision.order('created_at DESC').find_all { |v| v.published_pictures.any? }
+      @visions = Vision.eager_load(:pictures)
+                       .where('pictures.is_published = true')
+                       .order('visions.created_at DESC')
       content_for(:meta_description) { 'Unique moments and places captured around Tokyo' }
       content_for(:title) { 'Visions' }
       render 'places/index'
@@ -24,7 +28,14 @@ TokyoProject::App.controllers :places do
       @vision = Vision.preload(:pictures, :area).find(params[:id]) rescue nil
       @vision ||= Vision.find_by_url_title(URI.encode(params[:id]))
 
-      content_for(:meta_description) { @vision.meta_description.present? ? @vision.meta_description : @vision.short_description }
+      content_for(:meta_description) do
+        if @vision.meta_description.present?
+          @vision.meta_description
+        else
+          @vision.short_description
+        end
+      end
+
       content_for(:meta_keywords) { @vision.meta_keywords }
       content_for(:title) { @vision.title }
       if @vision

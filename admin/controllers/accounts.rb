@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 TokyoProject::Admin.controllers :accounts do
   get :index do
     @title = 'Accounts'
@@ -42,9 +43,11 @@ TokyoProject::Admin.controllers :accounts do
     if @account
       if @account.update_attributes(params[:account])
         flash[:success] = pat(:update_success, model: 'Account', id: params[:id].to_s)
-        params[:save_and_continue] ?
-          redirect(url(:accounts, :index)) :
+        if params[:save_and_continue]
+          redirect(url(:accounts, :index))
+        else
           redirect(url(:accounts, :edit, id: @account.id))
+        end
       else
         flash.now[:error] = pat(:update_error, model: 'account')
         render 'accounts/edit'

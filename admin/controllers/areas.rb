@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 TokyoProject::Admin.controllers :areas do
   get :index do
     @areas = Area.order('created_at DESC').page(params[:page]).per(10)

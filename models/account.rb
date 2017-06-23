@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Account < ActiveRecord::Base
   attr_accessor :password, :password_confirmation
 

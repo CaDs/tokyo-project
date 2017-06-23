@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class CreateVisions < ActiveRecord::Migration
   def self.up
     create_table :visions do |t|

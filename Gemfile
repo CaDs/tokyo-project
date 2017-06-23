@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 # ruby '2.4.0'
@@ -8,9 +9,9 @@ source 'https://rubygems.org'
 # gemspec
 
 # Server requirements
-gem 'puma'
-gem 'foreman'
 gem 'bundler', '1.13.7'
+gem 'foreman'
+gem 'puma'
 
 # Optional JSON codec (faster performance)
 gem 'oj'

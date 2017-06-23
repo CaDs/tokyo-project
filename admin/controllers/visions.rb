@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 TokyoProject::Admin.controllers :visions do
   get :index do
     @visions = Vision.order('created_at DESC').page(params[:page]).per(10)

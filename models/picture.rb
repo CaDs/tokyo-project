@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Picture < ActiveRecord::Base
   belongs_to :vision
   validates_uniqueness_of :flickr_id
@@ -47,7 +48,7 @@ class Picture < ActiveRecord::Base
     # should clear cache for itself, the vision and the area
     key = "cached_picture_#{id}"
 
-    %w(_tumb _medium _large).each do |suffix|
+    %w[_tumb _medium _large].each do |suffix|
       TokyoProject::App.cache.delete(key + suffix)
     end
 

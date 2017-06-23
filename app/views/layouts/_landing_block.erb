@@ -1,6 +1,9 @@
 <div class="image">
   <%
-    picture_url = vision.published_pictures.first.medium rescue nil
+    picture_url = vision.pictures
+                  .sort{|a, b| b.created_at <=> a.created_at }
+                  .find{|p| p.is_published}
+                  .medium rescue nil
     picture_url ||= Vision::DEFAULT_MEDIUM_PICTURE_URL
   %>
   <%= link_to(image_tag(picture_url), url(:places, :show, :id => vision.url_title))%>

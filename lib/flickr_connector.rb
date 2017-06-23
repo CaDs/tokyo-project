@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class FlickrConnector
   def initialize
     # if Padrino.environment == :development

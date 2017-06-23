@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class CreateAccounts < ActiveRecord::Migration
   def self.up
     create_table :accounts do |t|

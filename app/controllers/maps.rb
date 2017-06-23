@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 TokyoProject::App.controllers :maps do
   get :show, map: '/maps/:id' do
     key = "maps_show_#{params[:id]}"

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 TokyoProject::App.controllers :blog do
   get :index do
     key = 'blog'

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 TokyoProject::App.controllers :visions do
   after do
     ActiveRecord::Base.connection.close

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 TokyoProject::Admin.controllers :posts do
   get :index do
     @title = 'Posts'
@@ -45,9 +46,11 @@ TokyoProject::Admin.controllers :posts do
       if @post.update_attributes(params[:post])
         flash[:success] = pat(:update_success, model: 'Post', id: params[:id].to_s)
         @post.clear_cache
-        params[:save_and_continue] ?
-          redirect(url(:posts, :index)) :
+        if params[:save_and_continue]
+          redirect(url(:posts, :index))
+        else
           redirect(url(:posts, :edit, id: @post.id))
+        end
       else
         flash.now[:error] = pat(:update_error, model: 'post')
         render 'posts/edit'

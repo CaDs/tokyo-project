@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 TokyoProject::App.controllers :areas do
   after do
     ActiveRecord::Base.connection.close
@@ -10,7 +11,9 @@ TokyoProject::App.controllers :areas do
     cache(key, expires: cache_time) do
       content_for(:meta_description) { 'A tour around alleys, parks, temples. Get lost and discover new faces of Tokyo by walking around it areas.' }
       content_for(:title) { 'Areas' }
-      @areas = Area.order('created_at DESC').find_all { |a| a.visions.any? && a.visions.sum { |v| v.published_pictures.size } > 0 }
+      @areas = Area.order('created_at DESC').find_all do |a|
+        a.visions.any? && a.visions.sum { |v| v.published_pictures.size }.positive?
+      end
       render 'areas/index'
     end
   end
