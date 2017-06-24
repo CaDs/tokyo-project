@@ -5,7 +5,7 @@
     </div>
     <div class="span8">
       <% @posts.each do |post| %>
-        <%= partial 'blog/post', :locals => { :post => post } %>
+        <%= partial 'blog/post', locals: { post: post } %>
       <% end %>
     </div>
   </div>

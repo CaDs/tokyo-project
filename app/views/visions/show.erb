@@ -3,8 +3,8 @@
     <div class="span12">
       <h2><%=@vision.title%></h2>
       <h4>
-        See more visions for <%= link_to @vision.area.name, url(:areas, :show, :id => @vision.area.url_title) %> area
-        <%= link_to "(View on map)", url(:maps, :show, :id => @vision.id) if @vision.map_info?%>
+        See more visions for <%= link_to @vision.area.name, url(:areas, :show, id: @vision.area.url_title) %> area
+        <%= link_to "(View on map)", url(:maps, :show, id: @vision.id) if @vision.map_info?%>
       </h4>
       <h4 class="muted"><%= @vision.short_description %></h4>
     </div>
@@ -25,7 +25,7 @@
         <div class="carousel-inner">
           <% @pictures.each_with_index do |picture, i| %>
             <% css_class = (@picture ? (@picture.id == picture.id ? "active" : "") : (i == 0 ? "active" : "") )%>
-            <%= partial('places/picture', :locals => {:css_class => css_class, :picture => picture})%>
+            <%= partial('places/picture', locals: {css_class: css_class, picture: picture})%>
           <% end %>
         </div>
         <a class="left carousel-control vision_link" href="#canvas" data-slide="prev">‹</a>

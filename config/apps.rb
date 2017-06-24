@@ -33,6 +33,8 @@ Padrino.configure_apps do
   set :protection, except: :path_traversal
   set :protect_from_csrf, true
 end
+Padrino::Logger::Config[:development] = { log_level: :debug, stream: :to_file }
+
 
 # Mounts the core application for this project
 

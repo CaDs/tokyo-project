@@ -27,8 +27,8 @@
     <meta name="author" content="Carlos Donderis Sanz">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <%= feed_tag(:rss, url(:rss, :index, :format => :rss), :title => "RSS") %>
-    <%= feed_tag(:atom, url(:atom, :index, :format => :atom), :title => "ATOM") %>
+    <%= feed_tag(:rss, url(:rss, :index, format: :rss), title: "RSS") %>
+    <%= feed_tag(:atom, url(:atom, :index, format: :atom), title: "ATOM") %>
 
     <%= stylesheet_link_tag "bootstrap.min" %>
     <%= stylesheet_link_tag "bootstrap-responsive.min" %>

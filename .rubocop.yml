@@ -8,7 +8,7 @@ SymbolProc:
   Enabled: false
 RedundantBegin:
     Enabled: false
-Style/IndentationConsistency:
+Layout/IndentationConsistency:
   Description: 'I would like to use private indentation'
   Enabled: false
 Style/AndOr:

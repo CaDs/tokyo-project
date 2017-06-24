@@ -7,13 +7,14 @@ TokyoProject::App.controllers :areas do
 
   get :index do
     key = 'areas'
-    cache_time = Padrino.env == :production ? 86_400 : 60
+    cache_time = Padrino.env == :production ? 86_400 : 10
     cache(key, expires: cache_time) do
       content_for(:meta_description) { 'A tour around alleys, parks, temples. Get lost and discover new faces of Tokyo by walking around it areas.' }
       content_for(:title) { 'Areas' }
-      @areas = Area.order('created_at DESC').find_all do |a|
-        a.visions.any? && a.visions.sum { |v| v.published_pictures.size }.positive?
-      end
+      @areas = Area.eager_load(:visions)
+                   .eager_load(visions: :pictures)
+                   .order('areas.created_at DESC')
+                   .where("visions.id is not null and pictures.id is not null")
       render 'areas/index'
     end
   end

@@ -4,7 +4,13 @@
       <ul class="thumbnails">
         <% group.compact.each do |vision| %>
           <li class="span4">
-            <%= partial('layouts/landing_block', :locals => {:vision => vision, :show_link => true})%>
+            <%=
+              partial 'layouts/landing_block',
+                locals: {
+                  vision: vision,
+                  show_link: true
+                }
+            %>
           </li>
         <% end %>
       </ul>

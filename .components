@@ -3,7 +3,7 @@
 :test: rspec
 :mock: none
 :script: jquery
-:renderer: erb
+:renderer: erubi
 :stylesheet: none
-:admin_renderer: erb
+:admin_renderer: erubi
 :namespace: TokyoProject
