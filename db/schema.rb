@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 13) do
+ActiveRecord::Schema.define(version: 14) do
 
   create_table "accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -35,15 +35,18 @@ ActiveRecord::Schema.define(version: 13) do
     t.integer  "vision_id"
     t.integer  "account_id"
     t.string   "flickr_id"
-    t.text     "description_en", limit: 65535
-    t.text     "description_es", limit: 65535
-    t.text     "description_jp", limit: 65535
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.text     "description_en",  limit: 65535
+    t.text     "description_es",  limit: 65535
+    t.text     "description_jp",  limit: 65535
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.boolean  "is_published"
     t.string   "longitude"
     t.string   "latitude"
     t.datetime "schedule_at"
+    t.string   "thumb_size_url"
+    t.string   "medium_size_url"
+    t.string   "large_size_url"
   end
 
   create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

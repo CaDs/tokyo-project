@@ -11,25 +11,31 @@ class Picture < ActiveRecord::Base
   end
 
   def thumb
+    return thumb_size_url if thumb_size_url.present?
     cache_key = "cached_picture_#{id}_tumb"
     Padrino.cache.fetch(cache_key) do
       url = FlickRaw.url_t(flickr_version)
+      update_attribute(:thumb_size_url, url)
       Padrino.cache.store(cache_key, url, expires: 86_400)
     end
   end
 
   def medium
+    return medium_size_url if medium_size_url.present?
     cache_key = "cached_picture_#{id}_medium"
     Padrino.cache.fetch(cache_key) do
       url = FlickRaw.url_z(flickr_version)
+      update_attribute(:medium_size_url, url)
       Padrino.cache.store(cache_key, url, expires: 86_400)
     end
   end
 
   def large
+    return large_size_url if large_size_url.present?
     cache_key = "cached_picture_#{id}_large"
     Padrino.cache.fetch(cache_key) do
       url = FlickRaw.url_b(flickr_version)
+      update_attribute(:large_size_url, url)
       Padrino.cache.store(cache_key, url, expires: 86_400)
     end
   end
